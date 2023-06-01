@@ -21,3 +21,25 @@ In the FdF project, the map represents a terrain or landscape with different ele
 
 understanding isometric projection allows the program to transform the map's coordinates and display them in a visually pleasing way. It ensures that the elevation levels are properly represented, and the lines connecting the points follow the correct angles and perspectives, creating the illusion of depth.
  
+ 
+ 
+ # HOW TO START WITH THE PROJECT
+
+
+  ### How I structured my project
+| function name | Description | youtube links |
+| ----------------------------- | ------------------------------------------------- | ------------------------------------------------------- |
+|   READ FILE                   |                     ..                            |               ..                                        |
+|   DRAWING LINE FUNCTION       |                     ..                            |               ..                                        |
+|         ...                   |                     ..                            |               ..                                        |
+|         ...                   |                     ..                            |               ..                                        |
+|         ...                   |                     ..                            |               ..                                        |
+|         ...                   |                     ..                            |               ..                                        |
+|         ...                   |                     ..                            |               ..                                        |
+|         ...                   |                     ..                            |               ..                                        |
+|         ...                   |                     ..                            |               ..                                        |
+
+
+
+
+
