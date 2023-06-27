@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_read_to_backup.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 12:06:32 by atucci            #+#    #+#             */
-/*   Updated: 2023/02/01 11:18:39 by atucci           ###   ########.fr       */
+/*   Created: 2023/06/27 16:07:26 by atucci            #+#    #+#             */
+/*   Updated: 2023/06/27 16:07:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdint.h>
+
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_read_to_backup(int fd, char *backup)
 {
-	size_t	total_size;
-	void	*ptr;
+	char	*buff;
+	int		bytes;
 
-	if (nmemb == SIZE_MAX && size == SIZE_MAX)
+	buff = malloc(BUFFER_SIZE + 1);
+	if (!buff)
 		return (NULL);
-	if (nmemb == 0 || size == 0)
+	bytes = 1;
+	while (!ft_strchr(backup, '\n') && bytes != 0)
 	{
-		nmemb = 1;
-		size = 1;
+		bytes = read(fd, buff, BUFFER_SIZE);
+		if (bytes == -1)
+		{
+			free(buff);
+			return (NULL);
+		}
+		buff[bytes] = '\0';
+		backup = ft_strjoin(backup, buff);
 	}
-	total_size = nmemb * size;
-	ptr = malloc(total_size);
-	if (ptr == 0)
-	{
-		return (0);
-	}
-	ft_memset(ptr, 0, total_size);
-	return (ptr);
+	free(buff);
+	return (backup);
 }

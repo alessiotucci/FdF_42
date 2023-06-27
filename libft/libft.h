@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:38:39 by atucci            #+#    #+#             */
-/*   Updated: 2023/02/01 15:57:23 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/27 16:13:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <limits.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                              STRUCT PROTOTYPES
@@ -87,5 +92,8 @@ int		check_sign_flags(const char *str, int i);
 int		pt_print_padding(char c, int width);
 int		check_formatting_flags(const char *str, int i);
 int		print_sign(int n);
-
+char	*get_next_line(int fd);
+char	*ft_read_to_backup(int fd, char *backup);
+char	*ft_get_line(char *backup);
+char	*ft_backup(char *backup);
 #endif 

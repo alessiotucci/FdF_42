@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_get_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 12:06:32 by atucci            #+#    #+#             */
-/*   Updated: 2023/02/01 11:18:39 by atucci           ###   ########.fr       */
+/*   Created: 2023/06/27 16:08:12 by atucci            #+#    #+#             */
+/*   Updated: 2023/06/27 16:18:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdint.h>
+
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_get_line(char *backup)
 {
-	size_t	total_size;
-	void	*ptr;
+	int		i;
+	char	*str;
 
-	if (nmemb == SIZE_MAX && size == SIZE_MAX)
+	i = 0;
+	if (!backup[i])
 		return (NULL);
-	if (nmemb == 0 || size == 0)
+	while (backup[i] && backup[i] != '\n')
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 2));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (backup[i] && backup[i] != '\n')
 	{
-		nmemb = 1;
-		size = 1;
+		str[i] = backup[i];
+		i++;
 	}
-	total_size = nmemb * size;
-	ptr = malloc(total_size);
-	if (ptr == 0)
+	if (backup[i] == '\n')
 	{
-		return (0);
+		str[i] = backup[i];
+		i++;
 	}
-	ft_memset(ptr, 0, total_size);
-	return (ptr);
+	str[i] = '\0';
+	return (str);
 }

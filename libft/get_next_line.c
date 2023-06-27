@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 12:06:32 by atucci            #+#    #+#             */
-/*   Updated: 2023/02/01 11:18:39 by atucci           ###   ########.fr       */
+/*   Created: 2023/06/27 15:59:25 by atucci            #+#    #+#             */
+/*   Updated: 2023/06/27 16:00:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdint.h>
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*get_next_line(int fd)
 {
-	size_t	total_size;
-	void	*ptr;
+	char		*line;
+	static char	*backup;
 
-	if (nmemb == SIZE_MAX && size == SIZE_MAX)
-		return (NULL);
-	if (nmemb == 0 || size == 0)
-	{
-		nmemb = 1;
-		size = 1;
-	}
-	total_size = nmemb * size;
-	ptr = malloc(total_size);
-	if (ptr == 0)
-	{
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	}
-	ft_memset(ptr, 0, total_size);
-	return (ptr);
+	backup = ft_read_to_backup(fd, backup);
+	if (!backup)
+		return (NULL);
+	line = ft_get_line(backup);
+	backup = ft_backup(backup);
+	return (line);
 }

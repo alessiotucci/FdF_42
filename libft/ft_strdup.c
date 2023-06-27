@@ -18,7 +18,7 @@ char	*ft_strdup(const char *sour)
 
 	len = ft_strlen(sour) + 1;
 	dupli = malloc(len * sizeof(char));
-	if (dupli == '\0')
+	if (dupli == (void *)0)
 	{
 		return (0);
 	}

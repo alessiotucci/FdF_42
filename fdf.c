@@ -3,10 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/01 13:33:14 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/27 16:42:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fdf.h"
+
+int	main(int ac, char *av[])
+{
+	if (ac != 2)
+	{
+		ft_printf("exit\n");
+		exit(0);
+	}
+	else
+		return(ft_printf(av[1]));
+}
