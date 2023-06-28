@@ -6,12 +6,15 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/28 12:16:48 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/28 13:45:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <fcntl.h>
 #include "fdf.h"
 #include <mlx.h>
+#include <stdio.h>
 
 int	check_the_map(char *file_name)
 {
@@ -24,7 +27,13 @@ int	check_the_map(char *file_name)
 	last_char = &file_name[len - 4];
 	result = ft_strncmp(last_char, compare, len);
 	if (result != 0)
-    return(ft_printf("\033[1;37;45mWrong file name\n"));
+    {
+	ft_printf("\033[1;37;45mWrong file name\033[0m\n");
+	return (1);
+	}
+	result = open(file_name, O_RDONLY);
+	if (result == -1)
+		ft_printf("\033[1;31mcan't open the file\033[0m\n");
 	return (result);
 
 }
@@ -56,12 +65,15 @@ int	main(int ac, char *av[])
 	int width;
 	int	height;
 	int	fd;
-	
+	char *stringa;
+	//
 	width = STANDARD_WINDOWS_WIDTH;
 	height = STANDARD_WINDOWS_HEIGHT;
-	fd = ft_printf("\033[1;34mI am reading this file...\033[1;34m\n");   // Set text color to blue
+	fd = ft_printf("\033[1;34mI am reading this file...\033[0m\n");   // Set text color to blue
 
-	
+	// int fuck = open(av[1], O_RDONLY);
+	// char *string = get_next_line(fuck);	
+
 	if (ac != 2 && av)
 	{
 		ft_printf("\033[1;31mexit\n");
@@ -69,6 +81,11 @@ int	main(int ac, char *av[])
 	}
 	// I need to perfom the check of the map
 	fd = check_the_map(av[1]);
-	if (fd == 0)
+	if (fd != 0)
+	{
+	ft_printf("\033[1;41mSEgmentation FAULt\033[0m\n");
+
+	stringa = get_next_line(fd);
 	open_windows(width, height);
+	}
 }
