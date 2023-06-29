@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/28 11:23:24 by atucci           ###   ########.fr       */
+/*   Updated: 2023/06/29 15:37:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@
 #  define STANDARD_WINDOWS_HEIGHT 480
 # endif
 
+
+typedef struct s_line
+{
+	int x;
+	int y;
+	struct s_line *next;
+}	t_line;
+
 // includes
 # include "libft/libft.h"
 // including minilibx library
@@ -30,5 +38,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <stddef.h>
-
+t_line *drawline_breseham(t_line a, t_line b);
+t_line *dham(t_line a, t_line b);
+t_line *from_ints_to_nodes(int x, int y);
 #endif
