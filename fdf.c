@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/29 15:56:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/03 19:37:08 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,42 @@ int	check_the_map(char *file_name)
 		ft_printf("\033[1;31mcan't open the file\033[0m\n");
 	return (result);
 
+}
+int	read_map(char *av, t_map *map)
+{
+	char	*str;
+	int		fd;
+
+	fd = open(av, O_RDONLY);
+	if (fd == -1)
+		return(0);
+	str = malloc((sizeof(char)) * 1000);
+	read(fd, str, 1000);
+	map->matrix = ft_split(str, '\n');
+	if (!map->matrix)
+		exit(0);
+	close(fd);
+	free(str);
+	return (1);
+}
+
+void	print_matrix(t_map *map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	 while (map->matrix[i])
+    {
+        j = 0;
+        while (map->matrix[i][j])
+        {
+            ft_printf("%c ", map->matrix[i][j]);
+            j++;
+        }
+        ft_printf("\n");
+        i++;
+    }
 }
 
  void draw_a_point(void *ptr_need, void *windows_ptr, int x, int y, int color)
@@ -108,7 +144,6 @@ int	main(int ac, char *av[])
 	int width;
 	int	height;
 	int	fd;
-	//char *stringa;
 	// this is for testing
 	//
 	width = STANDARD_WINDOWS_WIDTH;
@@ -124,6 +159,9 @@ int	main(int ac, char *av[])
 		exit(0);
 	}
 	
+	
+	
+	t_map	*mappetta = malloc(sizeof(t_map));
 	// trying to create two nodes;
 	t_line *a = from_ints_to_nodes(1, 1);
 	t_line *b = from_ints_to_nodes(100,123);
@@ -132,15 +170,14 @@ int	main(int ac, char *av[])
 	fd = check_the_map(av[1]);
 	if (fd != 0)
 	{
-	ft_printf("\033[1;41mSEgmentation FAULt\033[0m\n");
 	ft_printf("\npoint a [%d][%d]\n", a->x, a->y );
 	ft_printf("\npoint b [%d][%d]\n", b->x, b->y);
 	ft_printf("\nlunghezza dario (%d)\n", get_lenght(dario));
 	ft_printf("dario points\n");
-	print_list(&dario);
-
-
-	//stringa = get_next_line(fd);
+	//print_list(&dario);
+	read_map(av[1], mappetta);
+	print_matrix(mappetta);
+	
 	open_windows(width, height, &dario);
 	}
 }
