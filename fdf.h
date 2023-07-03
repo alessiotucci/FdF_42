@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/03 19:13:49 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/03 23:42:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_line
 {
 	int x;
 	int y;
+	int	z;
 	struct s_line *next;
 }	t_line;
 
