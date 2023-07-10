@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/10 15:20:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/10 16:10:10 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	print_list(t_line **linea)
 	while (tmp != NULL)
 	{
 		
-		ft_printf("\nX[%d]\tY[%d]\n", tmp->x, tmp->y);
+		ft_printf("\nX[%d]\tY[%d]\tZ[%d]\n", tmp->x, tmp->y, tmp->z);
 		tmp = tmp->next;
 	}
 }
@@ -121,10 +121,6 @@ int	main(int ac, char *av[])
 		exit(0);
 	}
 	t_map	*mappetta = malloc(sizeof(t_map));	
-	// I need to perfom the check of the map	
-	// t_line *a = from_ints_to_nodes(1, 1, 0);
-	// t_line *b = from_ints_to_nodes(100,123, 0);
-	//t_line *dario = dham(*a, *b);
 	fd = check_the_map(av[1]);
 	if (fd != 0)
 	{
@@ -134,7 +130,13 @@ int	main(int ac, char *av[])
 
 	//print_list(&dario);
 	read_map(av[1], mappetta);
-	//print_matrix(mappetta);
+	print_matrix(mappetta);
+//	t_line  *create_list_from_map(t_map *map);
+	t_line *dario = create_list_from_map(mappetta);
+	print_list(&dario);
+	// now that I have a 2d char array I need to make a linked list of point;
+	//
+	
 	//open_windows(width, height, &dario);
 	}
 }

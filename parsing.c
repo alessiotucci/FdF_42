@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/10 15:20:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/10 16:08:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,41 @@ void	print_matrix(t_map *map)
     }
 }
 
+t_line	*create_list_from_map(t_map *map)
+{
+	t_line	*head = NULL;
+	t_line	*current = NULL;
+	int		x;
+	int		y;
+	int		z;
+
+	x = 0;
+	y = 0;
+	while (y < map->width)
+	{
+		x = 0;
+		while (x < map->height)
+		{
+			z = map->matrix[y][x] - 48;
+			t_line *new_node = from_ints_to_nodes(x, y, z);
+			if (head == NULL)
+			{
+				head = new_node;
+				current = head;
+			}
+			else
+			{
+				current->next = new_node;
+				current = current->next;
+			}
+		x++;
+		}
+	y++;
+	}
+return (head);
+}
+
+
 void	height_width(t_map *map)
 {
 	int	i;
@@ -80,7 +115,6 @@ void	height_width(t_map *map)
 		map->width = j;
 	}
 }
-
 
 
 
