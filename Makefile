@@ -4,10 +4,10 @@ NAME = fdf
 
 SRC = ./fdf.c \
 	  ./utils.c \
-      #./moves.c \
-	  #srcs/sorting.c \
-	  srcs/moves2.c \
-	  srcs/quick_sort.c \
+      ./parsing.c \
+	  ./split_utils.c \
+	 # srcs/moves2.c \
+	  #srcs/quick_sort.c \
 
 #This sets the variable SRC to a list of C source files that are needed to build the fdf  executable.
 

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/05 00:21:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/10 11:49:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,52 +37,14 @@ int	check_the_map(char *file_name)
 	return (result);
 
 }
-int	read_map(char *av, t_map *map)
-{
-	char	*str;
-	int		fd;
-	char	**tmp;
-	
 
-	fd = open(av, O_RDONLY);
-	if (fd == -1)
-		return(0);
-	str = malloc((sizeof(char)) * 1000);
-	read(fd, str, 1000);
-	//map->matrix =
-	 tmp = ft_split(str, '\n');
-	if (!map->matrix)
-		exit(0);
-	close(fd);
-	free(str);
-	return (1);
-}
-
-void	print_matrix(t_map *map)
-{
-	int i;
-	int j;
-
-	i = 0;
-	 while (map->matrix[i])
-    {
-        j = 0;
-        while (map->matrix[i][j])
-        {
-            ft_printf("%c ", map->matrix[i][j]);
-            j++;
-        }
-        ft_printf("\n");
-        i++;
-    }
-}
 
  void draw_a_point(void *ptr_need, void *windows_ptr, int x, int y, int color)
 {
 	mlx_pixel_put(ptr_need, windows_ptr,  x, y, color);
 	return ;
 }
- static	void	open_windows(int wid, int hei, t_line **linea)
+ 	void	open_windows(int wid, int hei, t_line **linea)
  {
  	void	*windows_pointer;
  	void	*pointer_needed;
@@ -153,10 +115,6 @@ int	main(int ac, char *av[])
 	width = STANDARD_WINDOWS_WIDTH;
 	height = STANDARD_WINDOWS_HEIGHT;
 	fd = ft_printf("\033[1;34mI am reading this file...\033[0m\n");   // Set text color to blue
-
-	// int fuck = open(av[1], O_RDONLY);
-	// char *string = get_next_line(fuck);	
-	
 	if (ac != 2 && av)
 	{
 		ft_printf("\033[1;31mexit\n");
@@ -164,22 +122,21 @@ int	main(int ac, char *av[])
 	}
 	t_map	*mappetta = malloc(sizeof(t_map));	
 	// I need to perfom the check of the map	
-	t_line *a = from_ints_to_nodes(1, 1, 0);
-	t_line *b = from_ints_to_nodes(100,123, 0);
-	t_line *dario = dham(*a, *b);
+	// t_line *a = from_ints_to_nodes(1, 1, 0);
+	// t_line *b = from_ints_to_nodes(100,123, 0);
+	//t_line *dario = dham(*a, *b);
 	fd = check_the_map(av[1]);
 	if (fd != 0)
 	{
-	ft_printf("\npoint a [%d][%d]\n", a->x, a->y, a->z );
-	ft_printf("\npoint b [%d][%d]\n", b->x, b->y, b->z);
-	ft_printf("\nlunghezza dario (%d)\n", get_lenght(dario));
-	ft_printf("dario points\n");
+	// ft_printf("\npoint a [%d][%d]\n", a->x, a->y, a->z );
+	// ft_printf("\npoint b [%d][%d]\n", b->x, b->y, b->z);
+	//ft_printf("\nlunghezza dario (%d)\n", get_lenght(dario));
 
 	//print_list(&dario);
 	read_map(av[1], mappetta);
-	print_matrix(mappetta);
-	
-	open_windows(width, height, &dario);
+	//print_matrix(mappetta);
+	print_map(mappetta);
+	//open_windows(width, height, &dario);
 	}
 }
 
