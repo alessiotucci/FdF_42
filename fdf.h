@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/10 16:01:47 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/10 16:28:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_line
 # include <limits.h>
 # include <stdlib.h>
 # include <stddef.h>
+void	draw_a_point(void *ptr_need, void *windows_ptr, int x, int y, int color);
+void    open_windows(int wid, int hei, t_line **linea);
 t_line *drawline_breseham(t_line a, t_line b);
 t_line *dham(t_line a, t_line b);
 t_line *from_ints_to_nodes(int x, int y, int z);

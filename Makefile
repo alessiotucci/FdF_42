@@ -6,7 +6,7 @@ SRC = ./fdf.c \
 	  ./utils.c \
       ./parsing.c \
 	  ./split_utils.c \
-	 # srcs/moves2.c \
+	 ./windows_draws.c \
 	  #srcs/quick_sort.c \
 
 #This sets the variable SRC to a list of C source files that are needed to build the fdf  executable.
