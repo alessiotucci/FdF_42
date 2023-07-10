@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:51 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/29 16:13:42 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/05 00:15:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ t_line *dham(t_line a, t_line b)
 	int		delta_y;
 	int		slope;
 	int		decision_paramater;
-	end = from_ints_to_nodes(b.x, b.y);// End node of the line
-    start = from_ints_to_nodes(a.x, a.y);
+	end = from_ints_to_nodes(b.x, b.y, b.z);// End node of the line
+    start = from_ints_to_nodes(a.x, a.y, a.z);
 	current = start;// Pointer to traverse the linked list
 	delta_x = abs(b.x - a.x);
 	delta_y = abs(b.y - a.y);
@@ -157,7 +157,7 @@ t_line *dham(t_line a, t_line b)
         }
 
         // Create a new node for the next point
-        current->next = from_ints_to_nodes(current->x, current->y);
+        current->next = from_ints_to_nodes(current->x, current->y, current->z);
         current = current->next;
     }
 

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/03 19:37:08 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/05 00:21:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,16 @@ int	read_map(char *av, t_map *map)
 {
 	char	*str;
 	int		fd;
+	char	**tmp;
+	
 
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 		return(0);
 	str = malloc((sizeof(char)) * 1000);
 	read(fd, str, 1000);
-	map->matrix = ft_split(str, '\n');
+	//map->matrix =
+	 tmp = ft_split(str, '\n');
 	if (!map->matrix)
 		exit(0);
 	close(fd);
@@ -113,7 +116,7 @@ int	get_lenght(t_line *head)
 	}
 	return (count);
 }
-t_line *from_ints_to_nodes(int x, int y)
+t_line *from_ints_to_nodes(int x, int y, int z)
 {
 	t_line	*node;
 	
@@ -122,6 +125,7 @@ t_line *from_ints_to_nodes(int x, int y)
 	{
 		node->x = x;
 		node->y = y;
+		node->z = z;
 		node->next = NULL;
 	}
 	return (node);
@@ -158,22 +162,19 @@ int	main(int ac, char *av[])
 		ft_printf("\033[1;31mexit\n");
 		exit(0);
 	}
-	
-	
-	
-	t_map	*mappetta = malloc(sizeof(t_map));
-	// trying to create two nodes;
-	t_line *a = from_ints_to_nodes(1, 1);
-	t_line *b = from_ints_to_nodes(100,123);
+	t_map	*mappetta = malloc(sizeof(t_map));	
+	// I need to perfom the check of the map	
+	t_line *a = from_ints_to_nodes(1, 1, 0);
+	t_line *b = from_ints_to_nodes(100,123, 0);
 	t_line *dario = dham(*a, *b);
-	// I need to perfom the check of the map
 	fd = check_the_map(av[1]);
 	if (fd != 0)
 	{
-	ft_printf("\npoint a [%d][%d]\n", a->x, a->y );
-	ft_printf("\npoint b [%d][%d]\n", b->x, b->y);
+	ft_printf("\npoint a [%d][%d]\n", a->x, a->y, a->z );
+	ft_printf("\npoint b [%d][%d]\n", b->x, b->y, b->z);
 	ft_printf("\nlunghezza dario (%d)\n", get_lenght(dario));
 	ft_printf("dario points\n");
+
 	//print_list(&dario);
 	read_map(av[1], mappetta);
 	print_matrix(mappetta);

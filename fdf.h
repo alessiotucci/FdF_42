@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/03 23:42:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/05 00:09:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ typedef struct s_line
 # include <stddef.h>
 t_line *drawline_breseham(t_line a, t_line b);
 t_line *dham(t_line a, t_line b);
-t_line *from_ints_to_nodes(int x, int y);
+t_line *from_ints_to_nodes(int x, int y, int z);
 int	read_map(char *av, t_map *map);
 #endif
