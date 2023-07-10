@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/10 11:48:26 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/10 15:20:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_map
 	int		height;
 	int		width;
 	char	**matrix;
-	int		***coordinax;
 }	t_map;
 
 typedef struct s_line
@@ -52,6 +51,4 @@ t_line *from_ints_to_nodes(int x, int y, int z);
 int		read_map(char *av, t_map *map);
 void	print_matrix(t_map *map);
 void	height_width(t_map *map);
-void	three_dim_maps(t_map *map);
-void print_map(t_map *map);
 #endif

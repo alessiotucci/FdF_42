@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/10 11:49:26 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/10 15:20:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,6 @@ int	main(int ac, char *av[])
 	//print_list(&dario);
 	read_map(av[1], mappetta);
 	//print_matrix(mappetta);
-	print_map(mappetta);
 	//open_windows(width, height, &dario);
 	}
 }

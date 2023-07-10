@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/10 12:54:02 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/10 15:20:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	read_map(char *av, t_map *map)
 	if (!map->matrix)
 		exit(0);
 	height_width(map);
-	three_dim_maps(map);
 	close(fd);
 	free(str);
 	return (1);
@@ -82,60 +81,6 @@ void	height_width(t_map *map)
 	}
 }
 
-void	three_dim_maps(t_map *map)
-{
-	int		y;
-	int		x;
-
-	map->coordinax = (int ***)malloc(map->height * sizeof(int **));
-	y = 0;
-	while (y < map->height)
-	{
-		map->coordinax[y] = (int **)malloc(map->width * sizeof(int *));
-		x = 0;
-		while (x < map->width)
-		{
-			map->coordinax[y][x] = (int *)malloc(sizeof(int));
-			map->coordinax[y][x][0] = map->matrix[y][x] - '0';
-			x++;
-		}
-	y++;
-	}
-}
-
-void print_map(t_map *map)
-{
-	int y = 0;
-	while (y < map->height)
-	{
-		int x = 0;
-		while (x < map->width)
-		{
-			printf("%c ", map->matrix[y][x]);
-			x++;
-		}
-		printf("\n");
-		y++;
-	}
-		printf("\n");
-
-	printf("\033[1;44mheight of the map [%d]\033[0m\n", map->height);
-    printf("\033[1;46mwidth of the map [%d]\033[0m\n", map->width);
 
 
-	printf("Coordinax:\n");
-	y = 0;
-	while (y < map->height)
-	{
-		int x = 0;
-		while (x < map->width)
-		{
-			printf("\033[37m([%d], ", map->coordinax[y][x][0]);   // White color for x
-			printf("\033[34m[%d], ", map->coordinax[y][x][1]);   // Blue color for y
-			printf("\033[32m[%d])\n\033[0m ", map->coordinax[y][x][2]);  // Green color for z
-			x++;
-		}
-		printf("\n");
-		y++;
-	}
-}
+
