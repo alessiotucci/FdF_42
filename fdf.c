@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/10 16:39:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/12 16:39:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ int	get_lenght(t_line *head)
 	}
 	return (count);
 }
-t_line *from_ints_to_nodes(int x, int y, int z)
+t_line *from_ints_to_nodes(int x, int y, int z, char id)
 {
 	t_line	*node;
 	
 	node = (t_line *)malloc(sizeof(t_line));
 	if (node != NULL)
 	{
+		node->name = id;
 		node->x = x;
 		node->y = y;
 		node->z = z;
@@ -75,7 +76,7 @@ void	print_list(t_line **linea)
 	tmp = *linea;
 	while (tmp != NULL)
 	{
-		
+		ft_printf("\npoint:%c\n", tmp->name);	
 		ft_printf("\nX[%d]\tY[%d]\tZ[%d]\n", tmp->x, tmp->y, tmp->z);
 		tmp = tmp->next;
 	}

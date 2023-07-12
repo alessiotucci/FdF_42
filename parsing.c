@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/10 17:09:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/12 17:20:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ t_line	*create_list_from_map(t_map *map)
 	int		x;
 	int		y;
 	int		z;
+	char	id;
 
+	id = 97;
 	x = 0;
 	y = 0;
 	while (y < map->width)
@@ -79,7 +81,9 @@ t_line	*create_list_from_map(t_map *map)
 		while (x < map->height)
 		{
 			z = map->matrix[y][x] - 48;
-			t_line *new_node = from_ints_to_nodes(x, y, z);
+			//int p_x = (x * STANDARD_WINDOWS_WIDTH) / map->width;
+		   	//int	p_y = (y * STANDARD_WINDOWS_HEIGHT) / map->height;
+			t_line *new_node = from_ints_to_nodes(x, y, z, id);
 			if (head == NULL)
 			{
 				head = new_node;
@@ -90,6 +94,7 @@ t_line	*create_list_from_map(t_map *map)
 				current->next = new_node;
 				current = current->next;
 			}
+		id++;
 		x++;
 		}
 	y++;
