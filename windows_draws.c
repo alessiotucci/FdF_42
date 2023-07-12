@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/12 11:15:35 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/12 12:13:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fdf.h"
@@ -31,6 +31,7 @@ void    open_windows(int wid, int hei, t_line **linea)
 	 if (!pointer_needed)
  		exit(1);
  	windows_pointer = mlx_new_window(pointer_needed, wid, hei, "this is a try");
+	// I need to extract this while loops to create an other function to draw lines
 	while (tmp != NULL)
  	{
 	pixel_x = (tmp->x * 640) / 3;// this is a small add, the number 3 is bc the map I am testing is a 3X3
