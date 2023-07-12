@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/10 16:28:56 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/12 11:00:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define FDF_H
 // define the standard windows size
 # ifndef STANDARD_WINDOWS_WIDTH
-#  define STANDARD_WINDOWS_WIDTH 640
+#  define STANDARD_WINDOWS_WIDTH 640 
 # endif
 
 # ifndef STANDARD_WINDOWS_HEIGTH
