@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/12 17:20:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/13 11:02:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,10 @@ t_line	*create_list_from_map(t_map *map)
 		while (x < map->height)
 		{
 			z = map->matrix[y][x] - 48;
-			//int p_x = (x * STANDARD_WINDOWS_WIDTH) / map->width;
-		   	//int	p_y = (y * STANDARD_WINDOWS_HEIGHT) / map->height;
-			t_line *new_node = from_ints_to_nodes(x, y, z, id);
+			// WITH THIS CONVERSION I CREATE PIXELS COORDINATES FROM INTS
+			int p_x = (x * STANDARD_WINDOWS_WIDTH) / map->width;
+		   	int	p_y = (y * STANDARD_WINDOWS_HEIGHT) / map->height;
+			t_line *new_node = from_ints_to_nodes(p_x, p_y, z, id);
 			if (head == NULL)
 			{
 				head = new_node;
