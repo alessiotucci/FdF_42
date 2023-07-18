@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/18 11:50:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/18 11:54:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <sys/stat.h>
+
+typedef struct s_data
+{
+
+}		t_data;
+
+typedef struct s_map
+{
+
+}		t_map;
 
 int	main(int ac, char *av[]);
 int	map_registration(t_data *info, int fd);
