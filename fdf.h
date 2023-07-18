@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/18 11:50:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/18 12:17:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,32 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <sys/stat.h>
+
+typedef struct s_data
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	int	win_widht;
+	int	win_height;
+	char	project_type;
+	int	fd;
+	int	garbage;
+	int	change_projection;
+}		t_data;
+
+typedef struct s_map
+{
+	int	x_orthogonal;
+	int	y_orthogonal;
+	int	z_orthogonal;
+	int	x_display;
+	int	y_display;
+	int	color;
+	t_map	*right_point;
+	t_map	*down_point;
+
+}		t_map;
 
 int	main(int ac, char *av[]);
 int	map_registration(t_data *info, int fd);
