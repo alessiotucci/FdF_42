@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/18 12:40:05 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/18 14:49:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,9 @@
 #ifndef FDF_H
 # define FDF_H
 
-# include "./mlx_linux/mlx.h"
-# include "./mlx_linux/mlx_init.h"
-# include "./libft/libft.h"
- 
-# ifndef DEFAULT_WIDTH
-# define DEFAULT_WIDTH 1280
-# endif 
-
-# ifndef DEFAULT_HEIGHT
-# define DEFAULT_HEIGHT 720
-# endif 
-
-
+# include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"
+# include "../libft/libft.h"
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
@@ -35,6 +25,15 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <sys/stat.h>
+
+# ifndef DEFAULT_WIDTH
+# define DEFAULT_WIDTH 1280
+# endif 
+
+# ifndef DEFAULT_HEIGHT
+# define DEFAULT_HEIGHT 720
+# endif 
+
 
 typedef struct s_data
 {
@@ -57,8 +56,8 @@ typedef struct s_map
 	int	x_display;
 	int	y_display;
 	int	color;
-	t_map	*right_point;
-	t_map	*down_point;
+//	s_map	*right_point;
+//	s_map	*down_point;
 
 }		t_map;
 
