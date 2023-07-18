@@ -14,6 +14,13 @@
 # It automates the compilation and linking of C source files to create the final executable.
 # Let's go through each section step by step, and explain basic concepts of Makefiles.
 
+# Colors for echo commands
+GREEN := \033[1;32m
+CYAN := \033[1;36m
+YELLOW := \033[1;33m
+RED := \033[1;31m
+RESET := \033[0m
+
 # Phony targets: These are special targets that don't represent actual files.
 # They are used to group common tasks that can be executed regardless of file existence.
 # We have phony targets for building, cleaning, and other project-related actions.
@@ -49,7 +56,7 @@ LD_FLAGS := $(LIB_FLAGS)
 # Target for building the final executable "fdf."
 # This rule specifies that "fdf" depends on the "libfdf.a" library (defined in $(LIB)).
 $(NAME): $(LIB)
-	@echo "Building $(NAME) executable..."
+	@echo "$(CYAN)Building $(NAME) executable...$(RESET)"
 	$(CC) $(CFLAGS) $(addprefix -I,$(LIB_DIRS)) $(LIB) $(LD_FLAGS) -o $@
 	@echo "$(NAME) executable created successfully!"
 
@@ -60,7 +67,7 @@ all: $(NAME)
 # Target for building the "libfdf.a" library.
 # This rule specifies that "libfdf.a" depends on object files and headers.
 $(LIB): $(OBJS)
-	@echo "Building $(LIB) static library..."
+	@echo "$(CYAN)Building $(LIB) static library...$(RESET)"
 	ar rcs $@ $(OBJS)
 	@echo "$(LIB) static library created successfully!"
 
@@ -73,55 +80,55 @@ $(LIB): $(OBJS)
 # Target for building the bonus part (if any).
 # Bonus files are filtered out and treated separately.
 bonus: $(BONUS_OBJS)
-	@echo "Building bonus part..."
+	@echo "Building bonus part...$(RESET)"
 	ar rcs $(LIB) $(BONUS_OBJS)
-	@echo "Bonus part built successfully!"
+	@echo "Bonus part built successfully!$(RESET)"
 
 # Other targets and rules for various tasks like cleaning up build artifacts, etc.
 # ...
 
 # Clean up object files and the final executable.
 clean:
-	@echo "Cleaning up object files..."
+	@echo "Cleaning up object files...$(RESET)"
 	rm -f $(OBJS)
-	@echo "Object files cleaned up successfully!"
+	@echo "Object files cleaned up successfully!$(RESET)"
 
 # Clean up object files, the final executable, and the library.
 fclean: clean
-	@echo "Cleaning up build artifacts and executables..."
+	@echo "Cleaning up build artifacts and executables...$(RESET)"
 	rm -f $(LIB) $(NAME)
-	@echo "Build artifacts and executables cleaned up successfully!"
+	@echo "Build artifacts and executables cleaned up successfully!$(RESET)"
 
 # Perform a clean build by cleaning and then building all targets.
 re: fclean all
 
 # Target for configuring the minilibx library for the current environment (if applicable).
 mlx:
-	@echo "Configuring minilibx library..."
+	@echo "Configuring minilibx library...$(RESET)"
 	cd $(MLX_DIR) && ./configure
-	@echo "Minilibx library configured successfully!"
+	@echo "Minilibx library configured successfully!$(RESET)"
 
 # Target for recursively making subdirectories (like mlx_linux and libft).
 make_subdirs:
-	@echo "Building subdirectories..."
+	@echo "Building subdirectories...$(RESET)"
 	for dir in $(SUBDIRS); do $(MAKE) -C $$dir; done
-	@echo "Subdirectories built successfully!"
+	@echo "Subdirectories built successfully!$(RESET)"
 
 # Target for checking the source files for norminette compliance (coding style guidelines).
 norm:
-	@echo "Checking source files for norminette compliance..."
+	@echo "Checking source files for norminette compliance...$(RESET)"
 	norminette $(filter-out $(MLX_DIR)%,$(SRCS) $(wildcard **/*.c))
-	@echo "Norminette check completed!"
+	@echo "Norminette check completed!$(RESET)"
 
 # Target for downloading the minilibx library for Linux (if needed).
 download_mlx:
-	@echo "Downloading minilibx library..."
+	@echo "Downloading minilibx library...$(RESET)"
 	git clone git@github.com:42Paris/minilibx-linux.git $(MLX_DIR)
-	@echo "Minilibx library downloaded successfully!"
+	@echo "Minilibx library downloaded successfully!$(RESET)"
 
 # Target for cleaning up the downloaded minilibx library and its build artifacts.
 clean_mlx: fclean
-	@echo "Cleaning up minilibx library..."
+	@echo "Cleaning up minilibx library...$(RESET)"
 	rm -rfd $(MLX_DIR)
-	@echo "Minilibx library cleanup completed successfully!"
+	@echo "Minilibx library cleanup completed successfully!$(RESET$(RESET))"
 
