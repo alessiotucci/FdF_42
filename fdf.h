@@ -57,8 +57,8 @@ typedef struct s_map
 	int	x_display;
 	int	y_display;
 	int	color;
-	t_map	*right_point;
-	t_map	*down_point;
+	//s_map	*right_point;
+	//s_map	*down_point;
 
 }		t_map;
 

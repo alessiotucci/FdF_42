@@ -14,9 +14,9 @@
 #ifndef FDF_H
 # define FDF_H
 
-# include "../mlx_linux/mlx.h"
-# include "../mlx_linux/mlx_int.h"
-# include "../libft/libft.h"
+# include "./mlx_linux/mlx.h"
+# include "./mlx_linux/mlx_int.h"
+# include "./libft/libft.h"
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
