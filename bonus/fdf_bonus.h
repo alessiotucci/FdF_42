@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/18 12:15:49 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/18 12:40:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_map
 }		t_map;
 
 int	main(int ac, char *av[]);
-int	map_registration(t_data *info, int fd);
+int	map_registration(t_data *info);
 int	points_conjuction(t_data *info, t_map ***map);
 int	connection_management(t_data *info, t_map ***map);
 int	isometric(t_data *info, t_map ***map);
