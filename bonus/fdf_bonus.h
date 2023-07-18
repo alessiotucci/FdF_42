@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/18 11:54:42 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/18 12:15:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,27 @@
 
 typedef struct s_data
 {
-
+	void	*mlx;
+	void	*win;
+	void	*img;
+	int	win_widht;
+	int	win_height;
+	char	project_type;
+	int	fd;
+	int	garbage;
+	int	change_projection;
 }		t_data;
 
 typedef struct s_map
 {
+	int	x_orthogonal;
+	int	y_orthogonal;
+	int	z_orthogonal;
+	int	x_display;
+	int	y_display;
+	int	color;
+	t_map	*right_point;
+	t_map	*down_point;
 
 }		t_map;
 
