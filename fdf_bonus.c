@@ -12,23 +12,41 @@
 
 #include "fdf_bonus.h"
 
-static int	check_the_map(char *file_name)
+static int	check_the_map(int fd)
 {
-	int	fd;
-	char	*helping;
-	//char	**matrix;
+	char	*ret;
+	char	**thot; // 2D array to store map data
 
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
+	// Open the file for reading
+
+	ret = get_next_line(fd);
+	// Read the file line by line using get_next_line
+//	while (ret)
+//	{
+		// Here, 'line' contains the current line read from the file
+		// You can process the line as needed (e.g., split it into tokens or convert characters to integers)
+		// After processing, you can store the data in your map data structure
+		thot = ft_split(ret, ' '); // Split the line into tokens based on spaces
+		ft_printf(" this is the fist line %s\n", thot[0]);
+		// Now 'map_data' contains an array of strings, each element representing a value in the map
+		// You can convert these strings to integers and store them in your map structure
+//	}
+
+	// Check for errors or end of file
+	if (ret == NULL)
 	{
-		ft_printf("can't open the map\n");
-		return (fd);
+		// Error occurred during file read, handle the error here (e.g., close the file and free memory)
+		ft_printf("\033[1;41mError: reading the map\n\033[0m"); // Red background for error message
+		// FREE SPLIT NEEDED Free the memory allocated for 'map_data' if there was an error
+		close(fd);
+		return (-1);
 	}
-	helping = malloc(sizeof(char) * 1000);
-	return(read(fd, helping, 1000));
-	//matrix = ft_split(helping, '\n');
-	// now I need to check  the matrix  to perfom the map checks...
-	//return 0;	
+
+	// Close the file since it's no longer needed
+	close(fd);
+
+	// Return success
+	return (0);
 }
 
 static int	what_kind_project(char *str)
@@ -97,7 +115,7 @@ int	main(int ac, char *av[])
 		}	
 		if (ac == 5)
 			info.project_type = what_kind_project(av[4]);
-		info.fd = check_the_map(av[1]);
+		info.fd = check_the_map(info.fd);
 	}	
 	ft_printf("larghezza%d\n", info.win_widht);
 	ft_printf("lunghezza%d\n", info.win_height);
