@@ -15,7 +15,7 @@
 # define FDF_H
 
 # include "./mlx_linux/mlx.h"
-# include "./mlx_linux/mlx_init.h"
+# include "./mlx_linux/mlx_int.h"
 # include "./libft/libft.h"
  
 # ifndef DEFAULT_WIDTH

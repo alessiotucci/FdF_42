@@ -1,65 +1,60 @@
-.PHONY: all clean fclean re mlx_config make_subdirs norm download_mlx \
-		clean_mlx bonus
-.DEFAULT_GOAL := $(NAME)
 NAME := fdf
-LIB := libfdf.a
-LIB_BONUS := libfdf_bonus.a
-LIBS := mlx_linux/libmlx.a mlx_linux/libmlx_Linux.a libft/libft.a
-BONUS_DIR := bonus
-SRCS_FILES := $(wildcard **/fdf*.c)
-SRCS := $(filter-out %bonus%.c,$(SRCS_FILES))
-BONUS_SRCS := $(filter-out $(SRCS),$(SRCS_FILES))
-HEADERS := fdf.h libft/libft.h $(wildcard mlx_linux/*.h)
-BONUS_HEADERS := $(BONUS_DIR)/fdf_bonus.h libft/libft.h $(wildcard mlx_linux/*.h)
-OBJS := $(patsubst %.c, %.o, $(SRCS))
-BONUS_OBJS := $(patsubst %.c, %.o, $(BONUS_SRCS))
-SUBDIRS := mlx_linux/ libft/
-LIB_DIRS := $(addprefix ./, $(SUBDIRS))
-LIB_FLAGS := $(addprefix -L, $(LIB_DIRS))
+
+# Directories
+SRCDIR := .
+LIBFTDIR := libft
+MLXDIR := mlx_linux
+
+# Source Files
+SRC := fdf.c fdf_bonus.c 
+OBJ := $(SRC:.c=.o)
+
+# Compiler and Flags
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror -O3 -g
-LD_FLAGS := $(LIB_FLAGS) -lmlx -lft -lXext -lX11 -lm
+LDFLAGS := -L$(LIBFTDIR) -lft -L$(MLXDIR) -lmlx -lX11 -lXext -lm
 
-$(NAME): $(LIB)
-	$(CC) $(CFLAGS) $(addprefix -I, $(LIB_DIRS)) libfdf.a $(LD_FLAGS) -o $@
+# Check for multibinary project
+BONUS_SRC := fdf_bonus.c
+ifdef BONUS_SRC
+	BONUS_NAME := fdf_bonus
+endif
 
-all: $(NAME)
+# Targets
+all: $(NAME) $(BONUS_NAME)
 
-bonus: $(LIB_BONUS)
-	$(CC) $(CFLAGS) $(addprefix -I, $(LIB_DIRS)) libfdf_bonus.a $(LD_FLAGS) -o fdf
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(NAME)
 
-$(LIB): mlx_config make_subdirs $(OBJS)
-	ar rcs $@ $(OBJS) $(HEADERS) $(LIBS)
+$(BONUS_NAME): $(BONUS_SRC:.c=.o)
+	$(CC) $(CFLAGS) $(BONUS_SRC:.c=.o) $(LDFLAGS) -o $(BONUS_NAME)
 
-$(LIB_BONUS): mlx_config make_subdirs $(BONUS_OBJS)
-	ar rcs $@ $(OBJS) $(BONUS_HEADERS) $(LIBS)
+%.o: $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJS): $(SRCS) $(HEADERS)
-	$(CC) $(CFLAGS) -c $^
+# Automatic Compilation of libft
+libft:
+	$(MAKE) -C $(LIBFTDIR)
 
-$(BONUS_OBJS): $(BONUS_SRCS) $(BONUS_HEADERS)
-	$(CC) $(CFLAGS) -c $^
+# Automatic Compilation of mlx_linux
+mlx:
+	$(MAKE) -C $(MLXDIR)
 
-mlx_config:
-	cd mlx_linux && ./configure
-
-make_subdirs:
-	for dir in $(SUBDIRS); do $(MAKE) -C $$dir; done
-
+# Cleaning rules
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS) $(wildcard **/*.o) $(wildcard *.gch) $(wildcard **/*.gch)
+	rm -f $(OBJ)
+	$(MAKE) -C $(LIBFTDIR) clean
+	$(MAKE) -C $(MLXDIR) clean
 
 fclean: clean
-	rm -f $(LIBS) $(LIB) $(LIB_BONUS) fdf
+	rm -f $(NAME) $(BONUS_NAME)
+	$(MAKE) -C $(LIBFTDIR) fclean
 
+# Rebuild the project
 re: fclean all
 
-download_mlx:
-	git clone git@github.com:42Paris/minilibx-linux.git
-	mv minilibx-linux mlx_linux
+# Multibinary rule
+both: all
 
-clean_mlx: fclean
-	rm -rfd mlx_linux
+.PHONY: all clean fclean re libft mlx both
 
-norm:
-	norminette $(filter-out mlx_linux/%, $(SRCS_FILES) $(wildcard **/*.c) $(HEADERS) $(BONUS_HEADERS))
