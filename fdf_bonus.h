@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/19 10:10:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/19 11:10:42 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,24 @@
 # define DEFAULT_HEIGHT 720
 # endif 
 
-
 typedef struct s_data
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int	win_widht;
-	int	win_height;
-	char	project_type;
-	int	fd;
-	int	garbage;
-	int	change_projection;
-}		t_data;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	int			win_width;
+	int			win_height;
+	int			img_width;
+	int			img_height;
+	int			fd;
+	int			garbage;
+	int			chg_projection;
+	int			max_x;
+	int			max_y;
+	ssize_t		count;
+	char		projection_type;
+}				t_data;
+
 
 typedef struct s_map
 {
