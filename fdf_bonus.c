@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:59:31 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/19 18:04:26 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/19 18:14:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ static int	check_the_map(char *file_name, t_data info)
 		ft_printf("\033[1;31mCan't read the map 😴 \033[0m\n");
 		return (fd);
 	}
-	helping  = get_next_line(fd);
-	while (helping != NULL)
+	//helping  = get_next_line(fd);
+	//while (helping != NULL)
+	while ((helping = get_next_line(fd)) != NULL)
 	{
 		if (!helping)
 			return (-1);
@@ -41,6 +42,7 @@ static int	check_the_map(char *file_name, t_data info)
 				count_x++;
 		}
 		count_y++;
+		
 	}
 	info.max_x = count_x;
 	info.max_y = count_y;
