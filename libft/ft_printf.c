@@ -3,58 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 12:39:36 by atucci            #+#    #+#             */
-/*   Updated: 2023/03/27 11:24:01 by atucci           ###   ########.fr       */
+/*   Created: 2023/03/06 09:50:38 by fporciel          #+#    #+#             */
+/*   Updated: 2023/03/07 10:55:47 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/* 
+* This software is made available to anyone who wants to retrace the 
+* author's learning path through the projects of school 42.
+* Copyright (C) 2023  fporciel
+* 
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+* You can contact the author at: 
+*- fporciel@student.42roma.it
+*/
 
 #include "libft.h"
 
-#include <stdarg.h>
-
-static int	phold(va_list *arg, char q, int count)
+static int	ft_printf2(const char *format, int *i)
 {
-	if (q == 'c')
-		count += pt_putchar(va_arg(*arg, int));
-	else if (q == 's')
-		count += pt_putstr(va_arg(*arg, char *));
-	else if (q == 'd' || q == 'i')
-		count += ft_putnbr(va_arg(*arg, int));
-	else if (q == 'p')
-		count += ft_pointer(va_arg(*arg, unsigned long));
-	else if (q == '%')
-		count += pt_putchar('%');
-	else if (q == 'u')
-		count += ft_putuns(va_arg(*arg, unsigned int));
-	else if (q == 'x')
-		count += ft_number_base(va_arg(*arg, unsigned int), "0123456789abcdef");
-	else if (q == 'X')
-		count += ft_number_base(va_arg(*arg, unsigned int), "0123456789ABCDEF");
-	return (count);
+	int	result;
+
+	result = 0;
+	(*i)++;
+	if (format[(*i)] == 37)
+	{
+		write(1, &(format[(*i)]), 1);
+		result++;
+	}
+	(*i)++;
+	return (result);
+}
+
+static int	ft_printf1(const char *format, va_list ap, int result)
+{
+	int	i;
+
+	i = 0;
+	while (format[i] != 0)
+	{
+		if (format[i] != 37)
+		{
+			write(1, &(format[i]), 1);
+			result++;
+			i++;
+		}
+		else if (ft_is_format_spec(format, i) == 0)
+			i++;
+		else if (ft_is_format_spec(format, i) == 1)
+			result = result + ft_printf2(format, &i);
+		else if (ft_is_format_spec(format, i) == 2)
+			result = result + ft_conversion(format, &i, ap);
+	}
+	return (result);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	int		count;
-	int		i;
-	va_list	args;
+	va_list	ap;
+	int		result;
 
-	va_start(args, format);
-	count = 0;
-	i = 0;
-	while (format[i])
-	{
-		if (format[i] == '%')
-		{	
-			count = phold(&args, ((char *) format)[i + 1], count);
-			i++;
-		}
-		else
-			count += pt_putchar(format[i]);
-	i++;
-	}
-	va_end(args);
-	return (count);
+	if ((format == NULL) || (format[0] == 0))
+		return (0);
+	va_start(ap, format);
+	result = 0;
+	result = ft_printf1(format, ap, result);
+	va_end(ap);
+	return (result);
 }

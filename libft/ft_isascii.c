@@ -3,17 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 11:59:50 by atucci            #+#    #+#             */
-/*   Updated: 2023/01/20 14:58:20 by atucci           ###   ########.fr       */
+/*   Created: 2023/01/18 11:06:37 by fporciel          #+#    #+#             */
+/*   Updated: 2023/02/09 14:56:30 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/* 
+* This software is made available to anyone who wants to retrace the 
+* author's learning path through the projects of school 42.
+* Copyright (C) 2023  fporciel
+* 
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+* You can contact the author at: 
+*- fporciel@student.42roma.it
+*/
+
 #include "libft.h"
 
-int	ft_isascii(int argum)
+int	ft_isascii(int c)
 {
-	if (argum >= 0 && argum <= 127)
-		return (1);
-	return (0);
+	return ((c >= 0) && (c <= 127));
 }

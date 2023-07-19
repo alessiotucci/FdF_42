@@ -3,33 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 12:06:32 by atucci            #+#    #+#             */
-/*   Updated: 2023/02/01 11:18:39 by atucci           ###   ########.fr       */
+/*   Created: 2023/01/19 13:21:34 by fporciel          #+#    #+#             */
+/*   Updated: 2023/02/07 16:23:19 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdint.h>
+/* 
+* This software is made available to anyone who wants to retrace the 
+* author's learning path through the projects of school 42.
+* Copyright (C) 2023  fporciel
+* 
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+* You can contact the author at: 
+*- fporciel@student.42roma.it
+*/
+
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+static void	*ft_callocmemset(void *cal, int c, size_t countsize)
 {
-	size_t	total_size;
-	void	*ptr;
+	size_t	i;
 
-	if (nmemb == SIZE_MAX && size == SIZE_MAX)
+	i = 0;
+	while (i < countsize)
+	{
+		*((unsigned char *)cal + i) = (unsigned int)c;
+		i++;
+	}
+	return (cal);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*cal;
+
+	if ((count == SIZE_MAX) || (size == SIZE_MAX))
 		return (NULL);
-	if (nmemb == 0 || size == 0)
-	{
-		nmemb = 1;
-		size = 1;
-	}
-	total_size = nmemb * size;
-	ptr = malloc(total_size);
-	if (ptr == 0)
-	{
-		return (0);
-	}
-	ft_memset(ptr, 0, total_size);
-	return (ptr);
+	cal = (void *)malloc(count * size);
+	if (cal == NULL)
+		return (NULL);
+	ft_callocmemset(cal, 0, (count * size));
+	return (cal);
 }

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/18 12:39:32 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/19 10:21:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ typedef struct s_map
 	int	x_display;
 	int	y_display;
 	int	color;
-	//s_map	*right_point;
-	//s_map	*down_point;
+	struct  s_map	*right_point;
+	struct  s_map	*down_point;
 
 }		t_map;
 

@@ -3,97 +3,55 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
+#    By: fporciel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/25 14:12:05 by atucci            #+#    #+#              #
-#    Updated: 2023/06/27 16:10:42 by atucci           ###   ########.fr        #
+#    Created: 2023/02/09 17:20:25 by fporciel          #+#    #+#              #
+#    Updated: 2023/05/21 12:24:21 by fporciel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+# 
+# This software is made available to anyone who wants to retrace the 
+# author's learning path through the projects of school 42.
+# Copyright (C) 2023  fporciel
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+# You can contact the author at: 
+#- fporciel@student.42roma.it
+#
 
-Library		= libft
+.PHONY: all clean fclean re
+.DEFAULT_GOAL := $(NAME)
+NAME := libft.a
+SRCS := $(wildcard ft_*.c) $(wildcard get_*.c)
+HEADERS := libft.h
+OBJS := $(patsubst %.c,%.o,$(SRCS))
+CC := gcc
+CFLAGS := -Wall -Wextra -Werror -c
 
-files 	   = ft_strlen \
-			 ft_memmove \
-			 ft_memcpy \
-			 ft_strlcpy \
-			 ft_strlcat \
-			 ft_isalpha \
-			 ft_isdigit \
-			 ft_isalnum \
-			 ft_isascii \
-			 ft_isprint \
-			 ft_memset \
-			 ft_bzero \
-			 ft_toupper \
-			 ft_tolower \
-			 ft_strchr \
-			 ft_strrchr \
-			 ft_strncmp \
-			 ft_memchr \
-			 ft_memcmp \
-			 ft_strnstr \
-			 ft_atoi \
-			 ft_calloc \
-			 ft_strdup \
-			 ft_substr \
-			 ft_strjoin \
-			 ft_strtrim \
-			 ft_split \
-			 ft_itoa \
-			 ft_strmapi \
-			 ft_striteri \
-			 ft_putchar_fd \
-			 ft_putstr_fd \
-			 ft_putendl_fd \
-			 ft_putnbr_fd \
-			 ft_lstnew \
-			 ft_lstadd_front \
-			 ft_lstsize \
-			 ft_lstlast \
-			 ft_lstadd_back \
-			 ft_lstdelone \
-			 ft_lstclear \
-			 ft_lstiter \
-			 ft_lstmap \
-			 ft_printf \
-			 ft_num_utils \
-			 ft_printf_utils \
-			 ft_pointer \
-			 get_next_line \
-			 ft_read_to_backup \
-			 ft_get_line \
-			 ft_backup \
-
-
-
-
-
-
-Compiler	= clang
-
-CmpFlags	= -Wall -Wextra -Werror
-
-OUTN	= $(Library).a
-
-CFILES	= $(files:%=%.c)
-
-OFILES	= $(files:%=%.o)
-
-NAME	= $(OUTN)
-
-$(NAME):
-	$(Compiler) $(CmpFlags) -c $(CFILES) -I./
-	ar -rc $(OUTN) $(OFILES)
+$(NAME): $(OBJS) $(HEADERS)
+	ar rcs $@ $^
 
 all: $(NAME)
 
+$(OBJS): $(SRCS) $(HEADERS)
+	$(CC) $(CFLAGS) $^
+
 clean:
-	rm -f $(NAME)
-	rm -f $(OFILES)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all, clean, fclean, re

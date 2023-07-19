@@ -3,29 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 12:01:12 by atucci            #+#    #+#             */
-/*   Updated: 2023/01/30 14:01:41 by atucci           ###   ########.fr       */
+/*   Created: 2023/01/19 09:51:38 by fporciel          #+#    #+#             */
+/*   Updated: 2023/01/26 08:10:51 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/* 
+* This software is made available to anyone who wants to retrace the 
+* author's learning path through the projects of school 42.
+* Copyright (C) 2023  fporciel
+* 
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+* You can contact the author at: 
+*- fporciel@student.42roma.it
+*/
+
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *sour, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*char_dest;
-	char	*char_sour;
-	size_t	count;
-
-	if (dest == 0 && sour == 0)
-		return (0);
-	count = 0;
-	char_dest = (char *) dest;
-	char_sour = (char *) sour;
-	while (count < n)
+	if (!(dst) && !(src))
+		return (NULL);
+	while (n > 0)
 	{
-		char_dest[count] = char_sour[count];
-		count++;
+		((unsigned char *)dst)[n - 1] = ((unsigned char *)src)[n - 1];
+		n--;
 	}
-	return (char_dest);
+	return (dst);
 }
