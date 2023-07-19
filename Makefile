@@ -1,82 +1,62 @@
-# Project Name
-NAME := fdf_bonus
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/07/19 10:02:09 by atucci            #+#    #+#              #
+#    Updated: 2023/07/19 10:02:30 by atucci           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-# Directories
-SRCDIR := .
-LIBFTDIR := libft
-MLXDIR := mlx_linux
-
-# Source Files
-SRC := fdf_bonus.c
-OBJ := $(SRC:.c=.o)
-
-# Compiler and Flags
+.PHONY: all clean fclean re mlx-config-start make-subdirs norm \
+		download-minilibx clean-minilibx
+.DEFAULT_GOAL := $(NAME)
+NAME := fdf
+LIB := progfdf.a
+LIBS := $(wildcard **/*.a)
+SRCS := $(wildcard fdf*.c)
+HEADERS := $(wildcard *.h)
+OBJS := $(patsubst %.c, %.o, $(SRCS))
+SUBDIRS := $(filter-out %mlx_linux/, $(wildcard */))
+LIB_DIRS := $(addprefix ./, $(wildcard */))
+LIB_FLAGS := $(addprefix -L, $(LIB_DIRS))
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror -O3 -g
-LDFLAGS := -L$(LIBFTDIR) -lft -L$(MLXDIR) -lmlx -lX11 -lXext -lm
+LD_FLAGS := $(LIB_FLAGS) -lfdf -lmlx -lft -lXext -lX11 -lm
 
-# Color codes for echo commands
-GREEN := \033[1;32m
-CYAN := \033[1;36m
-YELLOW := \033[1;33m
-RED := \033[1;31m
-RESET := \033[0m
+$(NAME): $(LIB)
+	$(CC) $(CFLAGS) $(addprefix -I, $(LIB_DIRS)) progfdf.a $(LD_FLAGS) -o $@
 
-# Corny emojis
-DANCING_EMOJI := 🕺
-MIC_DROP_EMOJI := 🎤🎶
-PARTY_EMOJI := 🎉
-TRASH_EMOJI := 🗑️
+all: $(NAME)
 
-# Targets
-all: libft mlx $(NAME)
+$(LIB): mlx-config-start make-subdirs $(OBJS)
+	ar rcs $@ $(OBJS) $(HEADERS) $(LIBS)
 
-$(NAME): $(OBJ)
-	@echo "$(CYAN)Building $(DANCING_EMOJI)$(NAME) binary...$(RESET)"
-	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(NAME)
-	@echo "$(GREEN)$(NAME) binary created successfully! $(MIC_DROP_EMOJI)$(RESET)"
+$(OBJS): $(SRCS) $(HEADERS)
+	$(CC) $(CFLAGS) -c $^
 
-%.o: $(SRCDIR)/%.c
-	@echo "$(CYAN)Compiling $<...$(RESET)"
-	$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$(GREEN)$< compiled successfully! $(PARTY_EMOJI)$(RESET)"
+mlx-config-start:
+	cd mlx_linux && ./configure
 
-# Automatic Compilation of libft
-libft:
-	@echo "$(CYAN)Compiling libft library...$(RESET)"
-	$(MAKE) -C $(LIBFTDIR)
-	@echo "$(GREEN)libft library compiled successfully! $(PARTY_EMOJI)$(RESET)"
+make-subdirs:
+	for dir in $(SUBDIRS); do $(MAKE) -C $$dir; done
 
-# Automatic Compilation of mlx_linux
-mlx:
-	@echo "$(CYAN)Compiling mlx_linux library...$(RESET)"
-	$(MAKE) -C $(MLXDIR)
-	@echo "$(GREEN)mlx_linux library compiled successfully! $(PARTY_EMOJI)$(RESET)"
-
-# Cleaning rules
 clean:
-	@echo "$(YELLOW)Cleaning up object files...$(RESET)"
-	rm -f $(OBJ)
-	@echo "$(GREEN)Object files cleaned up successfully! $(PARTY_EMOJI)$(RESET)"
-	@echo "$(YELLOW)Cleaning .o files of libft...$(RESET)"
-	$(MAKE) -C $(LIBFTDIR) clean
-	@echo "$(GREEN).o files of libft cleaned up successfully! $(TRASH_EMOJI)$(RESET)"
-	@echo "$(YELLOW)Cleaning .o files of mlx_linux...$(RESET)"
-	$(MAKE) -C $(MLXDIR) clean
-	@echo "$(GREEN).o files of mlx_linux cleaned up successfully! $(TRASH_EMOJI)$(RESET)"
+	rm -f $(OBJS) $(wildcard **/*.o) $(wildcard *.gch) $(wildcard **/*.gch)
 
 fclean: clean
-	@echo "$(YELLOW)Cleaning up $(NAME) binary...$(RESET)"
-	rm -f $(NAME)
-	@echo "$(GREEN)$(NAME) binary cleaned up successfully! $(PARTY_EMOJI)$(RESET)"
-	@echo "$(YELLOW)Cleaning libft library...$(RESET)"
-	$(MAKE) -C $(LIBFTDIR) fclean
-	@echo "$(GREEN)libft library cleaned up successfully! $(TRASH_EMOJI)$(RESET)"
+	rm -f $(LIBS) $(LIB) $(NAME)
 
 re: fclean all
 
-# Bonus rule (same as all rule for now)
-bonus: all
+download-minilibx:
+	git clone git@github.com:42Paris/minilibx-linux.git
+	mv minilibx-linux mlx_linux
 
-.PHONY: all clean fclean re libft mlx bonus
+clean-minilibx: fclean
+	rm -rfd mlx_linux
 
+norm:
+	norminette $(filter-out mlx_linux/%, $(SRCS) $(wildcard **/*.c))
