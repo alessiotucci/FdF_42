@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:59:31 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/19 13:02:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/19 18:02:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -65,6 +65,7 @@ static t_map	**memory_management(t_map ***map, char *line)
 	int	count;
 	int	num;
 
+	num = 0;
 	count = 0;
 	while (line[count] != 0)
 	{
@@ -72,7 +73,7 @@ static t_map	**memory_management(t_map ***map, char *line)
 			num++;
 		count++;
 	}
-	(*map) = (t_map **)malloc((num + 2) * sizeof(t_map *));
+	(*map) = (t_map **)malloc(sizeof(t_map *) * (num + 1));
 	if ((*map) == NULL)
 		return (NULL);
 	return (*map);
@@ -80,13 +81,12 @@ static t_map	**memory_management(t_map ***map, char *line)
 
 static t_map	***point_generation(t_map ***map, t_data *info, int x, int z)
 {
-	int	y;
 	(**map) = (t_map *)malloc(sizeof(t_map));
 	if ((**map) == NULL)
 		return (NULL);
 	(**map)->y_orthogonal = (*info).count;
 	(**map)->x_orthogonal = x;
-	(**map)->z_orthogonal = y;
+	(**map)->z_orthogonal = z;
 	(**map)++;
 	return (map);
 }
@@ -139,5 +139,5 @@ int	map_registration(t_data *info)
 			map = NULL;
 	}
 	map -= (*info).count;
-	return (points_conjunction(info, &map));
+	return (points_conjuction(info, &map));
 }
