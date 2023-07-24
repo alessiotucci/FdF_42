@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/19 11:10:42 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/24 09:26:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,28 @@ typedef struct s_data
 	int			chg_projection;
 	int			max_x;
 	int			max_y;
+	int			y_count;
+	int			x_count;
+	int			z_count;
 	ssize_t		count;
 	char		projection_type;
+	char		pre_buf;
+	char		nex_buf;
 }				t_data;
-
 
 typedef struct s_map
 {
-	int	x_orthogonal;
-	int	y_orthogonal;
-	int	z_orthogonal;
-	int	x_display;
-	int	y_display;
-	int	color;
-	struct	s_map	*right_point;
-	struct	s_map	*down_point;
-
-}		t_map;
+	int					x_orthogonal;
+	int					y_orthogonal;
+	int					z_orthogonal;
+	int					x_display;
+	int					y_display;
+	int					z_display;
+	int					color;
+	int					stop_param;
+	struct s__map		*right_point;
+	struct s_map		*down_point;
+}						t_map;
 
 int	main(int ac, char *av[]);
 int	map_registration(t_data *info);
