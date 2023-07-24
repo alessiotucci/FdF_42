@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:59:31 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/19 18:14:23 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/24 09:46:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,8 @@ int	main(int ac, char *av[])
 	ft_printf("finestra opt%d\n", info.win_height);
 	ft_printf("fd:%d\n", info.fd);
 // call the other funciton passing the fd file descriptor;
+	if (info.fd >= 0)
+		map_registration(&info);
 	return (0);
 	}
 }

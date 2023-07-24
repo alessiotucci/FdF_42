@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/24 09:26:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/24 10:05:28 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,12 @@ typedef struct s_map
 
 int	main(int ac, char *av[]);
 int	map_registration(t_data *info);
-int	points_conjuction(t_data *info, t_map ***map);
+int	points_conjunction(t_data *info, t_map ***map);
 int	connection_management(t_data *info, t_map ***map);
 int	isometric(t_data *info, t_map ***map);
 int	image_management(t_data *info, t_map ***map);
 int	set_pixel_values(t_data *info, t_map ***map);
 int	display_image(t_data *info, t_map ***map);
-
+// to test 
+void printMap( t_map *map);
 #endif

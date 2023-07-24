@@ -6,11 +6,29 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:03:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/19 14:45:04 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/24 09:44:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+
+ void printMap( t_map *map)
+
+{
+    ft_printf("\033[1;36mx_orthogonal: %d\033[0m\n", map->x_orthogonal);
+    ft_printf("\033[1;36my_orthogonal: %d\033[0m\n", map->y_orthogonal);
+    ft_printf("\033[1;36mz_orthogonal: %d\033[0m\n", map->z_orthogonal);
+    ft_printf("\033[1;32mx_display: %d\033[0m\n", map->x_display);
+   // ft_printf("\033[1;32my_display: %d\033[0m\n", map->y_display);
+   // ft_printf("\033[1;32mz_display: %d\033[0m\n", map->z_display);
+    ft_printf("\033[1;30mcolor: %d\033[0m\n", map->color);
+   // ft_printf("\033[1;31mstop_param: %d\033[0m\n", map->stop_param);
+    
+    // Print pointer members with a different background color
+    ft_printf("\033[1;47mright_point: %p\033[0m\n", (void*)map->right_point);
+    ft_printf("\033[1;47mdown_point: %p\033[0m\n", (void*)map->down_point);
+}
 
 static int	update_point_connect(t_map *curr, t_map *rig, t_map *dwn)
 {
