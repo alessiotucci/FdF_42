@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_points_conjuctions.c                           :+:      :+:    :+:   */
+/*   fdf_points_conjunctions.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:03:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/24 09:44:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/24 10:26:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	connect_points_in_map(t_data *info, t_map ***map)
 	return (0);
 }
 
-int	points_conjuctions(t_data *info, t_map ***map)
+int	points_conjunctions(t_data *info, t_map ***map)
 {
 	if (!info || !map || !*map)
 		return (-1);
