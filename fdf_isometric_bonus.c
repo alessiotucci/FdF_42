@@ -6,24 +6,18 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:47:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/25 10:14:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/25 12:00:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 /* build a macro to work  with radiants */
 
 static	void	apply_iso_projection(t_map *pnt)
 {
-	int	x_iso;
-	int	y_iso;
-	int	z_iso;
-
-	x_iso = (pnt->x_orthogonal - pnt->y_orthogonal) * cos(0.523599);
-	y_iso = -pnt->z_orthogonal + (pnt->x_orthogonal + pnt->y_orthogonal)
+	pnt->x_display = (pnt->x_orthogonal - pnt->y_orthogonal) * cos(0.523599);
+	pnt->y_display = - pnt->z_orthogonal + (pnt->x_orthogonal + pnt->y_orthogonal)
 		* sin(0.523599);
-	z_iso = pnt->z_orthogonal;
 }
 
 int	isometric(t_data *info, t_map ***map)
@@ -42,4 +36,6 @@ int	isometric(t_data *info, t_map ***map)
 		}
 		i++;
 	}
+return (0);
 }
+
