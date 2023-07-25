@@ -15,6 +15,10 @@ By using Bresenham's Algorithm, the FdF project can efficiently draw lines betwe
 
 # Isometric projection
 
+![image](https://github.com/alessiotucci/FdF_42/assets/116757689/e34cb88f-126c-4939-b7ac-f1f665a63bf3)
+
+
+
 In the FdF project, the map represents a terrain or landscape with different elevation levels. By applying isometric projection, the project aims to display the map in a visually appealing and intuitive manner. Without isometric projection, the map would appear flat and lose the depth and dimensionality necessary for understanding its structure.
 
 
