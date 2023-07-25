@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 16:20:07 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/24 12:43:17 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/25 14:16:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ static int	connect_points_in_map(t_data *info, t_map ***map)
 				update_point_connect(&(*map)[y][x], &(*map)[y][x + 1], NULL);
 			if (y + 1 <= info->max_y)
 				update_point_connect(&(*map)[y][x], NULL, &(*map)[y + 1][x]);
-			ft_printf("map values[%d,%d]\n", y, x);
-			printMap(&(*map)[y][x]);
 			x++;
 		}
 		y++;
@@ -50,5 +48,5 @@ int	points_conjunction(t_data *info, t_map ***map)
 	if (!info || !map || !*map)
 		return (-1);
 	connect_points_in_map(info, map);
-	return (0);
+	return (isometric(info, map));
 }

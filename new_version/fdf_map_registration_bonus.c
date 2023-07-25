@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:59:31 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/24 11:48:31 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/25 14:14:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -121,7 +121,6 @@ static int	map_division(t_data *info, t_map **map, char *line)
 		return (clean_split(info, &splitted_line));
 	info->x_count = 0;
 
-	ft_printf("\033[1;34m splitted line: %s\033[0m\n", splitted_line[info->x_count]);
 	while (splitted_line[info->x_count] != NULL)
 	{
 		info->z_count = ft_atoi(splitted_line[info->x_count]);
@@ -138,7 +137,6 @@ int	map_registration(t_data *info)
 	static t_map	**map;
 	char			*line;
 	
-	ft_printf("\033[1;31mTroubles with the registration of the map!\033[0m\n");
 	map = (t_map **)malloc(sizeof(t_map *) * (info->max_y + 2));
 	if (map == NULL)
 		return (0);
