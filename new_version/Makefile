@@ -6,7 +6,7 @@
 #    By: fporciel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 16:47:20 by fporciel          #+#    #+#              #
-#    Updated: 2023/07/26 13:23:41 by atucci           ###   ########.fr        #
+#    Updated: 2023/07/26 13:41:42 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # 
@@ -31,6 +31,11 @@
 #- fporciel@student.42roma.it
 #
 
+# Define color macros
+GREEN = \033[1;32m
+YELLOW = \033[1;33m
+RESET = \033[0m
+
 .PHONY: all clean fclean re mlx_config make_subdirs norm download_mlx \
 		clean_mlx bonus rebonus
 .DEFAULT_GOAL := $(NAME)
@@ -53,7 +58,7 @@ LD_FLAGS := $(LIB_FLAGS) -lmlx -lft -lXext -lX11 -lm
 
 # Compilation for the main program
 $(NAME): $(LIB)
-	@echo "Compiling $(NAME)..."
+	@echo "$(YELLOW)Compiling $(NAME)...$(RESET)"
 	$(CC) $(CFLAGS) $(addprefix -I, $(LIB_DIRS)) libfdf.a $(LD_FLAGS) -o $@
 	@echo "$(NAME) compiled successfully! 🚀"
 
@@ -63,7 +68,7 @@ all: $(NAME)
 bonus: $(LIB_BONUS)
 	@echo "Compiling bonus program..."
 	$(CC) $(CFLAGS) $(addprefix -I, $(LIB_DIRS)) libfdf_bonus.a $(LD_FLAGS) -o fdf_bonus
-	@echo "Bonus program compiled successfully! 🌟"
+	@echo "$(GREEN)Bonus program compiled successfully! 🌟$(RESET)"
 
 # Building the static library
 $(LIB): mlx_config make_subdirs $(OBJS)
@@ -74,7 +79,7 @@ $(LIB): mlx_config make_subdirs $(OBJS)
 $(LIB_BONUS): mlx_config make_subdirs $(BONUS_OBJS)
 	@echo "Building static library $(LIB_BONUS)..."
 	ar rcs $@ $(BONUS_OBJS) $(BONUS_HEADERS) $(LIBS)
-	@echo "$(LIB_BONUS) built successfully! 📚"
+	@echo "$(GREEN) $(LIB_BONUS) built successfully! 📚 $(RESET)"
 
 $(OBJS): $(SRCS) $(HEADERS)
 	$(CC) $(CFLAGS) -c $^
