@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:15:28 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/26 10:58:18 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 12:53:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -31,7 +31,7 @@
 *- fporciel@student.42roma.it
 */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 /* build a macro to work  with radiants */
 
 // this is just for testing
@@ -39,14 +39,16 @@ static void	printMap( t_map *map)
 {	
 	
 	ft_printf("|----SINGLE POINT DATA:------|\n");
-	ft_printf("\033[1;36mx_orthogonal: %d\033[0m\n", map->x_orthogonal);
-	ft_printf("\033[1;36my_orthogonal: %d\033[0m\n", map->y_orthogonal);
-	ft_printf("\033[1;36mz_orthogonal: %d\033[0m\n", map->z_orthogonal);
-	ft_printf("\033[1;32mx_display: %d\033[0m\n", map->x_display);
-	ft_printf("\033[1;32my_display: %d\033[0m\n", map->y_display);
-	ft_printf("\033[1;32mz_display: %d\033[0m\n", map->z_display);
-	ft_printf("\033[1;30mcolor: %d\033[0m\n", map->color);
-//	ft_printf("\033[1;31mstop_param: %d\033[0m\n", map->stop_param);
+	ft_printf("\033[1;36mx_orthogonal: %d\033[0m\n",	map->x_orthogonal);
+	ft_printf("\033[1;36my_orthogonal: %d\033[0m\n",	map->y_orthogonal);
+	ft_printf("\033[1;36mz_orthogonal: %d\033[0m\n",	map->z_orthogonal);
+	ft_printf("\033[1;32mx_display: %d\033[0m\n",		map->x_display);
+	ft_printf("\033[1;32my_display: %d\033[0m\n",		map->y_display);
+	ft_printf("\033[1;32mz_display: %d\033[0m\n",		map->z_display);
+	ft_printf("\033[1;30mcolor: %d\033[0m\n",		map->color);
+	ft_printf("\033[1;36mprecision x: %d\033[0m\n",		map->x_precision);
+	ft_printf("\033[1;36mprecision y: %d\033[0m\n",		map->y_precision);
+	ft_printf("\033[1;31mstop_param: %d\033[0m\n", map->stop_param);
 	ft_printf("\033[1;47mright_point: %p\033[0m\n", (void*)map->right_point);
 	ft_printf("\033[1;47mdown__point: %p\033[0m\n", (void*)map->down_point);
 	ft_printf("---------------------------\n\n");
@@ -58,9 +60,10 @@ static	void	apply_iso_projection(t_map *pnt)
 	
 	x_d = (pnt->x_orthogonal - pnt->y_orthogonal) * cos(0.523599);
 	y_d = -pnt->z_orthogonal + (pnt->x_orthogonal + pnt->y_orthogonal) * sin(0.523599);
-	pnt->x_display = round(x_d);
-	pnt->y_display = round(y_d);
-	printf("double x, y[%lf,%lf]\n", x_d, y_d);
+	pnt->x_display = floor(x_d);
+	pnt->y_display = floor(y_d);
+	pnt->x_precision = (x_d - floor(x_d)) * 10000;
+	pnt->y_precision = (y_d - floor(y_d)) * 10000;
 	printMap(pnt);
 }
 
@@ -75,7 +78,7 @@ int	isometric(t_data *info, t_map ***map)
 		x = 0;
 		while (x <= info->max_x)
 		{
-			apply_iso_projection(&(*map)[y][x]);
+			apply_iso_projection(&((*map)[y][x]));
 			x++;
 		}
 		y++;

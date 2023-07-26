@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:24:37 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/25 11:03:09 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 12:52:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -53,28 +53,7 @@
 #  define DEFAULT_HEIGHT 720
 # endif
 
-typedef struct s_data
-{
-	void		*mlx;
-	void		*win;
-	void		*img;
-	int			win_width;
-	int			win_height;
-	int			img_width;
-	int			img_height;
-	int			fd;
-	int			garbage;
-	int			chg_projection;
-	int			max_x;
-	int			max_y;
-	int			y_count;
-	int			x_count;
-	int			z_count;
-	ssize_t		count;
-	char		projection_type;
-	char		pre_buf;
-	char		nex_buf;
-}				t_data;
+
 
 typedef struct s_map
 {
@@ -84,11 +63,52 @@ typedef struct s_map
 	int					x_display;
 	int					y_display;
 	int					z_display;
+	int					x_precision;
+	int					y_precision;
+	int					z_precision;
 	int					color;
 	int					stop_param;
 	struct s_map		*right_point;
 	struct s_map		*down_point;
 }						t_map;
+
+typedef struct s_data
+{
+	void		*mlx;
+	void		*win;
+	void		*img;
+	int			width;
+	int			height;
+	int			fd;
+	int			garbage;
+	int			max_x;
+	int			max_y;
+	int			y_count;
+	int			x_count;
+	int			z_count;
+	int			projection_check;
+	int			zoom_plus_check;
+	int			zoom_minus_check;
+	int			right_trans_check;
+	int			left_trans_check;
+	int			up_trans_check;
+	int			down_trans_check;
+	int			right_rot_check;
+	int			left_rot_check;
+	int			up_rot_check;
+	int			down_rot_check;
+	int			keyrel;
+	int			*bits;
+	int			*lsize;
+	int			*endian;
+	ssize_t		count;
+	char		*img_data;
+	char		projection_type;
+	char		pre_buf;
+	char		nex_buf;
+	t_map		***map;
+}				t_data;
+
 
 int	main(int argc, char **argv);
 int	map_registration(t_data *info);
@@ -104,7 +124,6 @@ int	image_management(t_data *info, t_map ***map);
 int	set_pixel_values(t_data *info, t_map ***map);
 int	display_image(t_data *info, t_map ***map);
 // for testing
-void	printMap(t_map *map);
 int	keep_checking(t_data *info, t_map ***map);
 
 

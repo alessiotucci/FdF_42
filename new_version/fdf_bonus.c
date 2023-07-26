@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:08:37 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/19 17:58:55 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:56:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -48,8 +48,8 @@ static int	check_projection(t_data *info, int argc, char **argv)
 		return (0);
 	if (argc == 5)
 	{
-		(*info).win_width = ft_atoi(argv[3]);
-		(*info).win_height = ft_atoi(argv[4]);
+		(*info).width = ft_atoi(argv[3]);
+		(*info).height = ft_atoi(argv[4]);
 	}
 	return (1);
 }
@@ -142,8 +142,8 @@ int	main(int argc, char **argv)
 {
 	static t_data	info;
 
-	info.win_width = DEFAULT_WIDTH;
-	info.win_height = DEFAULT_HEIGHT;
+	info.width = DEFAULT_WIDTH;
+	info.height = DEFAULT_HEIGHT;
 	info.projection_type = 112;
 	if ((argc != 2) && (argc != 3) && (argc != 4) && (argc != 5))
 		return (0);
@@ -158,8 +158,8 @@ int	main(int argc, char **argv)
 		info.garbage = check_projection(&info, argc, argv);
 	if (argc == 4)
 	{
-		info.win_width = ft_atoi(argv[2]);
-		info.win_height = ft_atoi(argv[3]);
+		info.width = ft_atoi(argv[2]);
+		info.height = ft_atoi(argv[3]);
 	}
 	if (info.fd >= 0)
 		info.garbage = map_registration(&info);
