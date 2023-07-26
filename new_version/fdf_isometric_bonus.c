@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:15:28 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/26 13:30:55 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 14:28:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -62,8 +62,8 @@ static	void	apply_iso_projection(t_map *pnt)
 	y_d = -pnt->z_orthogonal + (pnt->x_orthogonal + pnt->y_orthogonal) * sin(0.523599);
 	pnt->x_display = floor(x_d);
 	pnt->y_display = floor(y_d);
-	pnt->x_precision = (x_d - floor(x_d)) * 10000;
-	pnt->y_precision = (y_d - floor(y_d)) * 10000;
+	pnt->x_precision = (x_d - floor(x_d)) * 1000;
+	pnt->y_precision = (y_d - floor(y_d)) * 1000;
 	printMap(pnt);	// delete this line if not needed 
 }
 
