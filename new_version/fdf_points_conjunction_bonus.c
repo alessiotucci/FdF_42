@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 16:20:07 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/25 14:16:30 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 13:52:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	update_point_connect(t_map *curr, t_map *rig, t_map *dwn)
 	return (0);
 }
 
-static int	connect_points_in_map(t_data *info, t_map ***map)
+int	points_conjunction(t_data *info, t_map ***map)
 {
 	int	x;
 	int	y;
@@ -40,9 +40,9 @@ static int	connect_points_in_map(t_data *info, t_map ***map)
 		}
 		y++;
 	}
-	return (0);
+	return (connection_management(info));
 }
-
+/*
 int	points_conjunction(t_data *info, t_map ***map)
 {
 	if (!info || !map || !*map)
@@ -50,3 +50,4 @@ int	points_conjunction(t_data *info, t_map ***map)
 	connect_points_in_map(info, map);
 	return (isometric(info, map));
 }
+*/

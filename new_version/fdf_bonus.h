@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:24:37 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/26 12:52:14 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 14:01:08 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -113,16 +113,15 @@ typedef struct s_data
 int	main(int argc, char **argv);
 int	map_registration(t_data *info);
 int	points_conjunction(t_data *info, t_map ***map);
-int	connection_management(t_data *info, t_map ***map);
+int	connection_management(t_data *info);
 int	isometric(t_data *info, t_map ***map);
-int	parallel_ortographic(t_data *info, t_map ***map);
+int	orthographic(t_data *info, t_map ***map);
 int	equirectangular(t_data *info, t_map ***map);
-int	zoom(t_data *info, t_map ***map);
-int	translation(t_data *info, t_map ***map);
-int	rotation(t_data *info, t_map ***map);
-int	image_management(t_data *info, t_map ***map);
-int	set_pixel_values(t_data *info, t_map ***map);
-int	display_image(t_data *info, t_map ***map);
+int	zoom(t_data *info, t_map ***map, int to);
+int	translation(t_data *info, t_map ***map, int to);
+int	rotation(t_data *info, t_map ***map, int to);
+int	image_sizeing_and_posit(t_data *info, t_map ***map);
+int	draw_the_image(t_data *info, t_map ***map);
 // for testing
 int	keep_checking(t_data *info, t_map ***map);
 
