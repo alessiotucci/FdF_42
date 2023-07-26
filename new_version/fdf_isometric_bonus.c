@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:15:28 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/26 14:28:18 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 15:09:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -72,6 +72,7 @@ int	isometric(t_data *info, t_map ***map)
 	int	y;
 	int	x;
 
+	info->projection_type = 'i';
 	y = 0;
 	while (y <= info->max_y)
 	{
