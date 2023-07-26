@@ -6,11 +6,12 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:21:50 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/26 14:25:35 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 14:34:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "fdf_bonus.h"
 
-int	zoom(t_data *info, t_map ***map, int to);
+int	zoom(t_data *info, t_map ***map, int to)
 {
 	if (info && map && to)
 		return (0);
