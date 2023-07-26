@@ -6,7 +6,7 @@
 #    By: fporciel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 16:47:20 by fporciel          #+#    #+#              #
-#    Updated: 2023/07/26 10:24:49 by atucci           ###   ########.fr        #
+#    Updated: 2023/07/26 13:23:41 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # 
@@ -38,8 +38,8 @@ NAME := fdf
 LIB := libfdf.a
 LIB_BONUS := libfdf_bonus.a
 LIBS := mlx_linux/libmlx.a mlx_linux/libmlx_Linux.a libft/libft.a
-SRCS := $(filter-out %bonus%.c,$(wildcard fdf*.c))
-BONUS_SRCS := $(wildcard *_bonus.c)
+SRCS := $(filter-out %bonus.c,$(wildcard fdf*.c))
+BONUS_SRCS := $(wildcard fdf*_bonus.c)
 HEADERS := fdf.h libft/libft.h $(wildcard mlx_linux/*.h)
 BONUS_HEADERS := fdf_bonus.h libft/libft.h $(wildcard mlx_linux/*.h)
 OBJS := $(patsubst %.c, %.o, $(SRCS))
@@ -62,7 +62,7 @@ all: $(NAME)
 # Compilation for the bonus program
 bonus: $(LIB_BONUS)
 	@echo "Compiling bonus program..."
-	$(CC) $(CFLAGS) $(addprefix -I, $(LIB_DIRS)) libfdf_bonus.a $(LD_FLAGS) -o fdf
+	$(CC) $(CFLAGS) $(addprefix -I, $(LIB_DIRS)) libfdf_bonus.a $(LD_FLAGS) -o fdf_bonus
 	@echo "Bonus program compiled successfully! 🌟"
 
 # Building the static library

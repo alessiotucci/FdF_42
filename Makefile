@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 10:22:13 by atucci            #+#    #+#              #
-#    Updated: 2023/07/26 10:22:37 by atucci           ###   ########.fr        #
+#    Updated: 2023/07/26 13:21:57 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIB := libfdf.a
 LIB_BONUS := libfdf_bonus.a
 LIBS := mlx_linux/libmlx.a mlx_linux/libmlx_Linux.a libft/libft.a
 SRCS := $(filter-out %bonus%.c,$(wildcard fdf*.c))
-BONUS_SRCS := $(wildcard *_bonus.c)
+BONUS_SRCS := $(wildcard fdf*_bonus.c)
 HEADERS := fdf.h libft/libft.h $(wildcard mlx_linux/*.h)
 BONUS_HEADERS := fdf_bonus.h libft/libft.h $(wildcard mlx_linux/*.h)
 OBJS := $(patsubst %.c, %.o, $(SRCS))
