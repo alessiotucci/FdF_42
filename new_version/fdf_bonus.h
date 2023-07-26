@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:24:37 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/26 14:01:08 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 17:53:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -122,6 +122,7 @@ int	translation(t_data *info, t_map ***map, int to);
 int	rotation(t_data *info, t_map ***map, int to);
 int	image_sizeing_and_posit(t_data *info, t_map ***map);
 int	draw_the_image(t_data *info, t_map ***map);
+int	draw_lines(t_data *info, t_map ***map);
 // for testing
 int	keep_checking(t_data *info, t_map ***map);
 
