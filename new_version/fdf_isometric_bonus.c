@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:15:28 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/25 16:29:54 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/25 16:36:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -34,7 +34,7 @@
 #include "fdf.h"
 /* build a macro to work  with radiants */
 
-/* this is just for testing
+// this is just for testing
 static void	printMap( t_map *map)
 {	
 	
@@ -50,7 +50,7 @@ static void	printMap( t_map *map)
 	ft_printf("\033[1;47mright_point: %p\033[0m\n", (void*)map->right_point);
 	ft_printf("\033[1;47mdown__point: %p\033[0m\n", (void*)map->down_point);
 	ft_printf("---------------------------\n\n");
-}*/
+}
 static	void	apply_iso_projection(t_map *pnt)
 {
 	if (pnt == NULL)
@@ -58,6 +58,7 @@ static	void	apply_iso_projection(t_map *pnt)
 	pnt->x_display = (pnt->x_orthogonal - pnt->y_orthogonal) * cos(0.523599);
 	pnt->y_display = -pnt->z_orthogonal + (pnt->x_orthogonal + pnt->y_orthogonal)
 		* sin(0.523599);
+	printMap(pnt);
 }
 
 int	isometric(t_data *info, t_map ***map)
