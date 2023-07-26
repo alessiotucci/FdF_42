@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:15:28 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/26 10:51:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 10:58:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -58,8 +58,8 @@ static	void	apply_iso_projection(t_map *pnt)
 	
 	x_d = (pnt->x_orthogonal - pnt->y_orthogonal) * cos(0.523599);
 	y_d = -pnt->z_orthogonal + (pnt->x_orthogonal + pnt->y_orthogonal) * sin(0.523599);
-	pnt->x_display = x_d;
-	pnt->y_display = y_d;
+	pnt->x_display = round(x_d);
+	pnt->y_display = round(y_d);
 	printf("double x, y[%lf,%lf]\n", x_d, y_d);
 	printMap(pnt);
 }
