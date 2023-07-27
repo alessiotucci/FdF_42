@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/27 11:54:35 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 17:51:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,85 +27,114 @@ void printMap(t_map *map)
     ft_printf("\033[1;47mdown_point: %p\033[0m\n",	(void*)map->down_point);
 }
 
-void	bresenham_init(t_bres *params, t_map *start, t_map end)
+// Initialize the Bresenham parameters for the current line
+void bresenham_init(t_bres *params, t_map *start, t_map *end)
 {
 	params->x0 = start->x_display;
 	params->y0 = start->y_display;
-	params->x1 = end->x_display;
-	params->y1 = end->y_display;
-	params->delta_x = abs(params->x1 - params->x0);
-	params->delta_y = abs(params->y1 - params->y0);
-	params->slope = params->delta_y -  params->delta_x;
+	params->delta_x = abs(end->x_display - params->x0);
+	params->delta_y = abs(end->y_display - params->y0);
+	params->slope = params->delta_y - params->delta_x;
 	params->x = params->x0;
 	params->y = params->y0;
 }
-int	bresenham_next(t_bres *params)
+
+// Calculate the next point on the line using the Bresenham algorithm
+// Return 1 if there are more points to draw, 0 if we reached the end point
+int bresenham_next(t_bres *params)
 {
-	if (params->x != params->x1)
+	// Check if we reached the end point
+	if (params->x != params->x0)
 	{
 		if (params->slope > 0)
 		{
-			if (params->y1 > params->y0)
+			// Slope is greater than 1
+			if (params->y > params->y0)
 				params->y += 1;
 			else
 				params->y -= 1;
 			params->slope -= params->delta_x;
 		}
 		else
-			params->slope += params->delta_y;
-		// other block of  statements
-	if (params->x1 > params->x0)
-		params->x += 1;
-	else
-		params->x -= 1;
-	
-	return (1);
-	}
-return (0);
-}
-// color the point of  the maps in the image
-// maybe I should change the prototype to adapt it to bresenham algorithm.
-static void draw_pixel(t_data *info, t_map *map)
-{
-	if (info == NULL || map == NULL)
-		return (ft_printf("\teither one of the value is null\n"));
-	int	pixel_x;
-	int	pixel_y;
-	int	index;
-	
-	pixel_x = map->x_display;
-	pixel_y = map->y_display;
-// general formula to light up a pixel	
-	index = (size_t)info->lsize * pixel_y + pixel_x * ((size_t)info->bits / 8);
-	info->img_data[index] = 255; // set the pixel red;
-}
-// bresenham algorithm function
-
-int	draw_lines(t_data *info, t_map ***map)
-{
-	if (info == NULL || map == NULL)
-		return (ft_printf("some paramater is null :(\n"));
-	// I have to set up a while cycle to go throught all the point of the map!
-	int	y;
-	int	x;
-
-	if (map == NULL)
-		ft_printf("stronzo: map == NULL!\n");// delete later on	
-	y = 0;
-	while (y <= info->max_y)
-	{
-		x = 0;
-		while (x <= info->max_x)
 		{
-		printf("x[%d] <= info->max_x[%d]\n", x, info->max_x);
-		draw_pixel(info, &(*map)[y][x]);	
-		//printMap(info->map[y][x]);
-		x++;
+			// Slope is less than or equal to 1
+			params->slope += params->delta_y;
 		}
-	y++;
+
+		// Move to the next pixel
+		if (params->x > params->x0)
+			params->x += 1;
+		else
+			params->x -= 1;
+
+		// Return 1 to indicate there are more points to draw
+		return (1);
 	}
+
+	// Return 0 to indicate we reached the end point
 	return (0);
 }
+
+// Draw a line between two points on the map using the Bresenham algorithm
+void draw_line(t_data *info, t_map *start, t_map *end)
+{
+	t_bres param;
+	bresenham_init(&param, start, end);
+	while (bresenham_next(&param))
+	{
+		// Draw the current point on the line
+		draw_pixel(info, &param);
+	}
+}
+
+// Color the point of the maps in the image
+static void draw_pixel(t_data *info, t_bres *param)
+{
+	if (info == NULL || param == NULL)
+	{
+		return; // Do nothing if the parameters are NULL
+	}
+
+	int pixel_x = param->x;
+	int pixel_y = param->y;
+	int index = (size_t)info->lsize * pixel_y + pixel_x * ((size_t)info->bits / 8);
+	info->img_data[index] = 255; // Set the pixel to red
+}
+
+// Function to draw lines between all points on the map
+int draw_lines(t_data *info, t_map ***map)
+{
+	if (info == NULL || map == NULL)
+	{
+		return (ft_printf("Some parameter is NULL.\n"));
+	}
+
+	// Loop through all the points in the map and draw lines
+	int y = 0;
+	while (y <= info->max_y)
+	{
+		int x = 0;
+		while (x <= info->max_x)
+		{
+			// Draw a line from the current point to the next point
+			if (x < info->max_x)
+			{
+				draw_line(info, &(*map)[y][x], &(*map)[y][x + 1]);
+			}
+			if (y < info->max_y)
+			{
+				draw_line(info, &(*map)[y][x], &(*map)[y + 1][x]);
+			}
+
+			x++;
+		}
+		y++;
+	}
+
+	return (0);
+}
+
+
 /* general formula to find the index in the char * (a string)
  index = lsize * y + x * (bits / 8)
 	int	i;

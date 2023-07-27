@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:24:37 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/27 10:56:16 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 17:34:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -114,6 +114,10 @@ typedef struct s_data
 
 typedef	struct s_bres
 {
+	int	x;
+	int	x0;
+	int	y;
+	int	y0;
 	int	delta_x;
 	int	delta_y;
 	int	slope;
