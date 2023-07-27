@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:24:37 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/26 17:53:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 18:44:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -54,6 +54,9 @@
 # endif
 
 
+# ifndef PI
+#  define PI 3.14159265358979323846
+# endif
 
 typedef struct s_map
 {
@@ -114,9 +117,9 @@ int	main(int argc, char **argv);
 int	map_registration(t_data *info);
 int	points_conjunction(t_data *info, t_map ***map);
 int	connection_management(t_data *info);
-int	isometric(t_data *info, t_map ***map);
-int	orthographic(t_data *info, t_map ***map);
-int	equirectangular(t_data *info, t_map ***map);
+//int	isometric(t_data *info);
+//int	orthographic(t_data *info);
+//int	equirectangular(t_data *info);
 int	zoom(t_data *info, t_map ***map, int to);
 int	translation(t_data *info, t_map ***map, int to);
 int	rotation(t_data *info, t_map ***map, int to);

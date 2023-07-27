@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/26 18:09:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/26 18:16:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	draw_lines(t_data *info, t_map ***map)
 		x = 0;
 		while (x <= info->max_x)
 		{
-		ligh_a_pixel(&(*info)[y][x]);
+		light_a_pixel(&(*map)[y][x]);
 		x++;
 		}
 	y++;
