@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:24:37 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/27 07:07:25 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 10:56:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -112,6 +112,13 @@ typedef struct s_data
 	t_map		***map;
 }				t_data;
 
+typedef	struct s_bres
+{
+	int	delta_x;
+	int	delta_y;
+	int	slope;
+	int	decision_p;
+}	t_bres;
 
 int	main(int argc, char **argv);
 int	map_registration(t_data *info);
