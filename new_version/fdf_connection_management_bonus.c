@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:53:52 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/27 08:48:40 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 09:35:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static int image_management(int keycode, t_data *info)
     if (keycode == 0)
     {
         projection_function(info, info->map);
-        transformation_function(info, info->map, keycode, 3);
+       // transformation_function(info, info->map, keycode, 3);
     }
 
 	ft_printf("\033[1;43m\t\t\t-->draw line then segfault!!!\033[0m\n");

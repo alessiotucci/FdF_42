@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/27 09:22:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 10:08:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,22 @@ void printMap(t_map *map)
     ft_printf("\033[1;47mdown_point: %p\033[0m\n",	(void*)map->down_point);
 }
 
-/*/ color the point of  the maps in the image
-static void actual_draws(t_map *map)
+// color the point of  the maps in the image
+static void draw_pixel(t_data *info, t_map *map)
 {
 	ft_printf("\tI am so dumb\n");
-	printMap(map);
+	int	pixel_x;
+	int	pixel_y;
+	int	index;
+	
+	pixel_x = map->x_display;
+	pixel_y = map->y_display;
+// general formula to light up a pixel	
+	index = info->lsize * pixel_y + pixel_x * (bits / 8);
+	info->img_data[index] = 255; // set the pixel red;
 }
 // bresenham algorithm function
-*/
+
 int	draw_lines(t_data *info, t_map ***map)
 {
 	ft_printf("I am dumb\n");
