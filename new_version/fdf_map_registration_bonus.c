@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:59:31 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/26 13:51:01 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 08:36:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -126,7 +126,7 @@ int	map_registration(t_data *info)
 	{
 		line = NULL;
 		line = get_next_line(info->fd);
-		ft_printf("\033[1;41mthis is the line from gnl: -->\t %s\033[0m\n", line);
+		ft_printf("\033[1;41mthis is the first check:MAP REGISTRATION\033[0m\n");
 		if ((line == NULL) && (info->y_count <= info->max_y))
 			return (cleaner(&map, info, NULL));
 		if (line != NULL)
