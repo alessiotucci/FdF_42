@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/27 18:05:57 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 18:15:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int draw_lines(t_data *info, t_map ***map)
 {
 	if (info == NULL || map == NULL)
 	{
-		return (ft_printf("Some parameter is NULL.\n"));
+		return (ft_printf("\033[1;31meither INFO or MAP are NULL\nexit the function draw lines\033[0m\n"));
 	}
 
 	// Loop through all the points in the map and draw lines
