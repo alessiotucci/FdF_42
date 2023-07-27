@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/26 18:16:19 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 07:10:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 // bresenham algorithm function
 static  void light_a_pixel(t_map *point)
 {
-	int	i;
+	int i = 0;
+	if (point)
+	printf("i = %d\n", i);
 
 	// i is gonna be the INDEX;
 }
