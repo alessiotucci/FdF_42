@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/27 07:10:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 08:08:52 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,10 @@
 // color the point of  the maps in the image
 
 // bresenham algorithm function
-static  void light_a_pixel(t_map *point)
-{
-	int i = 0;
-	if (point)
-	printf("i = %d\n", i);
-
-	// i is gonna be the INDEX;
-}
-
 
 int	draw_lines(t_data *info, t_map ***map)
 {
-// I have to set up a while cycle to go throught all the point of the map!
+	// I have to set up a while cycle to go throught all the point of the map!
 	int	y;
 	int	x;
 	
@@ -37,7 +28,7 @@ int	draw_lines(t_data *info, t_map ***map)
 		x = 0;
 		while (x <= info->max_x)
 		{
-		light_a_pixel(&(*map)[y][x]);
+		actual_draws(&(*map)[y][x]);
 		x++;
 		}
 	y++;
