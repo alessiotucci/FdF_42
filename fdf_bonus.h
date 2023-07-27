@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:30 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/24 10:05:28 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 11:31:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,16 @@ typedef struct s_map
 	struct s__map		*right_point;
 	struct s_map		*down_point;
 }						t_map;
+
+typedef struct s_bres
+{
+	int	x;
+	int	y;
+	int	delta_x;
+	int	delta_y;
+	int	slope;
+	int	decison_p;
+}		t_bres; 
 
 int	main(int ac, char *av[]);
 int	map_registration(t_data *info);
