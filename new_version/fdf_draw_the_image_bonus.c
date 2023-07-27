@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/27 17:51:06 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 18:05:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,6 @@ int bresenham_next(t_bres *params)
 	return (0);
 }
 
-// Draw a line between two points on the map using the Bresenham algorithm
-void draw_line(t_data *info, t_map *start, t_map *end)
-{
-	t_bres param;
-	bresenham_init(&param, start, end);
-	while (bresenham_next(&param))
-	{
-		// Draw the current point on the line
-		draw_pixel(info, &param);
-	}
-}
-
 // Color the point of the maps in the image
 static void draw_pixel(t_data *info, t_bres *param)
 {
@@ -100,6 +88,20 @@ static void draw_pixel(t_data *info, t_bres *param)
 	int index = (size_t)info->lsize * pixel_y + pixel_x * ((size_t)info->bits / 8);
 	info->img_data[index] = 255; // Set the pixel to red
 }
+
+
+// Draw a line between two points on the map using the Bresenham algorithm
+void draw_line(t_data *info, t_map *start, t_map *end)
+{
+	t_bres param;
+	bresenham_init(&param, start, end);
+	while (bresenham_next(&param))
+	{
+		// Draw the current point on the line
+		draw_pixel(info, &param);
+	}
+}
+
 
 // Function to draw lines between all points on the map
 int draw_lines(t_data *info, t_map ***map)
