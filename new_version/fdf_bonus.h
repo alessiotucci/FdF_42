@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:24:37 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/26 18:44:25 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 07:07:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -115,6 +115,12 @@ typedef struct s_data
 
 int	main(int argc, char **argv);
 int	map_registration(t_data *info);
+int	connection_management(t_data *info);
+int	projection_function(t_data *info, t_map ***map);
+int	transformation_function(t_data *info, t_map ***map, int to, int param);
+int	draw_lines(t_data *info, t_map ***map);
+
+// OLD VERSION OF THE HEADER FILE
 int	points_conjunction(t_data *info, t_map ***map);
 int	connection_management(t_data *info);
 //int	isometric(t_data *info);
