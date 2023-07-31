@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/31 13:08:50 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/31 13:33:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int bresenham_next(t_bres *params)
 }
 
 /* Color the point of the maps in the image*/
-static void draw_pixel(t_data *info, t_bres *param)
+static void my_put_pixel(t_data *info, t_bres *param)
 {
 	if (info == NULL || param == NULL)
 		return; // Do nothing if the parameters are NULL
@@ -79,14 +79,14 @@ static void draw_pixel(t_data *info, t_bres *param)
 }
 
 /* Draw a line between two points on the map using the Bresenham algorithm*/
-void draw_line(t_data *info, t_map *start, t_map *end)
+static void drawing(t_data *info, t_map *start, t_map *end)
 {
 	t_bres param;
 	bresenham_init(&param, start, end);
 	while (bresenham_next(&param))
 	{
 		// Draw the current point on the line
-		draw_pixel(info, &param);
+		my_put_pixel(info, &param);
 	}
 }
 
@@ -106,9 +106,9 @@ int draw_lines(t_data *info, t_map ***map)
 		{
 			// Draw a line from the current point to the next point
 			if (x < info->max_x)
-				draw_line(info, &(*map)[y][x], &(*map)[y][x + 1]);
+				drawing(info, &(*map)[y][x], &(*map)[y][x + 1]);
 			if (y < info->max_y)
-				draw_line(info, &(*map)[y][x], &(*map)[y + 1][x]);
+				drawing(info, &(*map)[y][x], &(*map)[y + 1][x]);
 			x++;
 		}
 		y++;

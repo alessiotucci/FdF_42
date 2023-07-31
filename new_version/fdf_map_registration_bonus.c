@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:59:31 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/27 08:36:03 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/31 13:44:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -138,6 +138,7 @@ int	map_registration(t_data *info)
 			free(line);
 	}
 	map[info->y_count] = NULL;
+	info->map = &map; // I am a dumb fuck
 	info->garbage = points_conjunction(info, &map);
 	return (cleaner(&map, info, NULL));
 }

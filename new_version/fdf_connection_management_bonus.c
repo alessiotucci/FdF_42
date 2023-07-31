@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:53:52 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/31 12:23:06 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/31 13:45:29 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,15 @@ static int image_management(int keycode, t_data *info)
     info->bits = &bits;
     info->lsize = &lsize;
     info->endian = &endian;
-    // If keycode is 0, apply the initial projection and transformations
-    if (keycode == 0)
-    {
-        projection_function(info, info->map);
-	transformation_function(info, info->map, keycode, 3);
-    }
-	ft_printf("\033[1;43m\t\t\t-->draw line then segfault!!!\033[0m\n");
+	if (keycode != 0)
+		transformations_management(keycode, info); 
+	// If keycode is 0, apply the initial projection and transformations
+	if (keycode == 0)
+	{
+		projection_function(info, info->map);
+		transformation_function(info, info->map, keycode, 3);
+	}
+	ft_printf("\033[1;43m\t\t\t-->function call:[DRAW_LINES]!!!\033[0m\n");
 	// Draw lines based on the updated image data
 	draw_lines(info, info->map);
 	ft_printf("\033[1;43m\t\t\t\t-->put img to win: function calls!\033[0m\n");
