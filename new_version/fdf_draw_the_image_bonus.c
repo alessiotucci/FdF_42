@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/27 18:15:05 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/27 18:30:12 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void printMap(t_map *map)
     ft_printf("\033[1;47mdown_point: %p\033[0m\n",	(void*)map->down_point);
 }
 
-// Initialize the Bresenham parameters for the current line
+/* Initialize the Bresenham parameters for the current line*/
 void bresenham_init(t_bres *params, t_map *start, t_map *end)
 {
 	params->x0 = start->x_display;
@@ -39,8 +39,8 @@ void bresenham_init(t_bres *params, t_map *start, t_map *end)
 	params->y = params->y0;
 }
 
-// Calculate the next point on the line using the Bresenham algorithm
-// Return 1 if there are more points to draw, 0 if we reached the end point
+/*/ Calculate the next point on the line using the Bresenham algorithm
+// Return 1 if there are more points to draw, 0 if we reached the end point*/
 int bresenham_next(t_bres *params)
 {
 	// Check if we reached the end point
@@ -60,22 +60,19 @@ int bresenham_next(t_bres *params)
 			// Slope is less than or equal to 1
 			params->slope += params->delta_y;
 		}
-
 		// Move to the next pixel
 		if (params->x > params->x0)
 			params->x += 1;
 		else
 			params->x -= 1;
-
 		// Return 1 to indicate there are more points to draw
 		return (1);
 	}
-
 	// Return 0 to indicate we reached the end point
 	return (0);
 }
 
-// Color the point of the maps in the image
+/* Color the point of the maps in the image*/
 static void draw_pixel(t_data *info, t_bres *param)
 {
 	if (info == NULL || param == NULL)
@@ -89,8 +86,7 @@ static void draw_pixel(t_data *info, t_bres *param)
 	info->img_data[index] = 255; // Set the pixel to red
 }
 
-
-// Draw a line between two points on the map using the Bresenham algorithm
+/* Draw a line between two points on the map using the Bresenham algorithm*/
 void draw_line(t_data *info, t_map *start, t_map *end)
 {
 	t_bres param;
@@ -102,15 +98,13 @@ void draw_line(t_data *info, t_map *start, t_map *end)
 	}
 }
 
-
-// Function to draw lines between all points on the map
+/*Function to draw lines between all points on the map*/
 int draw_lines(t_data *info, t_map ***map)
 {
 	if (info == NULL || map == NULL)
 	{
 		return (ft_printf("\033[1;31meither INFO or MAP are NULL\nexit the function draw lines\033[0m\n"));
 	}
-
 	// Loop through all the points in the map and draw lines
 	int y = 0;
 	while (y <= info->max_y)
@@ -120,19 +114,13 @@ int draw_lines(t_data *info, t_map ***map)
 		{
 			// Draw a line from the current point to the next point
 			if (x < info->max_x)
-			{
 				draw_line(info, &(*map)[y][x], &(*map)[y][x + 1]);
-			}
 			if (y < info->max_y)
-			{
 				draw_line(info, &(*map)[y][x], &(*map)[y + 1][x]);
-			}
-
 			x++;
 		}
 		y++;
 	}
-
 	return (0);
 }
 
