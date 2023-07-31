@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:53:52 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/31 12:15:26 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/31 12:19:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ static int image_management(int keycode, t_data *info)
     {
         mlx_destroy_image(info->mlx, info->img);
         mlx_clear_window(info->mlx, info->win);
-        transformations_management(keycode, info);
+	free(info->img_data); 
+	//transformations_management(keycode, info);
     }
 
     // Create a new image and set img_data for further drawing
@@ -83,16 +84,14 @@ static int image_management(int keycode, t_data *info)
     if (keycode == 0)
     {
         projection_function(info, info->map);
-       // transformation_function(info, info->map, keycode, 3);
+	transformation_function(info, info->map, keycode, 3);
     }
-
 	ft_printf("\033[1;43m\t\t\t-->draw line then segfault!!!\033[0m\n");
 	// Draw lines based on the updated image data
 	draw_lines(info, info->map);
-
 	ft_printf("\033[1;43m\t\t\t\t-->put img to win: function calls!\033[0m\n");
-    // Put the updated image to the window
-    mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);
+	// Put the updated image to the window
+	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);
     return (0);
 }
 
