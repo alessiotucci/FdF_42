@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:53:52 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/31 12:19:09 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/31 12:23:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static int transformations_management(int keycode, t_data *info)
     }
     return (0);
 }
-
 // Handle image management and drawing
 static int image_management(int keycode, t_data *info)
 {
@@ -72,14 +71,12 @@ static int image_management(int keycode, t_data *info)
 	free(info->img_data); 
 	//transformations_management(keycode, info);
     }
-
     // Create a new image and set img_data for further drawing
     info->img = mlx_new_image(info->mlx, info->width, info->height);
     info->img_data = mlx_get_data_addr(info->img, &bits, &lsize, &endian);
     info->bits = &bits;
     info->lsize = &lsize;
     info->endian = &endian;
-
     // If keycode is 0, apply the initial projection and transformations
     if (keycode == 0)
     {
@@ -107,13 +104,10 @@ static int closing_management(int keycode, t_data *info)
         // Reset the keyrel flag and update the image accordingly
         info->keyrel = 0;
         image_management(keycode, info);
-
         // Wait for the keyrel flag to be set again before proceeding
         while (info->keyrel != 1)
-        {
             image_management(keycode, info);
-        }
-    }
+   } 
     // Handle window close events
     else if (keycode == 65307 || keycode == 0)
     {
@@ -124,9 +118,7 @@ static int closing_management(int keycode, t_data *info)
         exit(0);
     }
     else
-    {
         return (0);
-    }
     return (0);
 }
 
@@ -134,26 +126,19 @@ static int closing_management(int keycode, t_data *info)
 int connection_management(t_data *info)
 {
     ft_printf("\033[1;33mSecond check: CONNECTION MANAGEMENT\033[0m\n");
-
     // Initialize MiniLibX
     info->mlx = mlx_init();
-
     // Create a window with the specified dimensions and title
     info->win = mlx_new_window(info->mlx, info->width, info->height, "FdF");
-
     // Set closing_management function to handle window close events
     mlx_hook(info->win, 2, (1L << 0), closing_management, info);
     mlx_hook(info->win, 17, (1L << 2), closing_management, info);
-
     // Initialize image and draw the initial map
     image_management(0, info);
-
     // Set release_management function to handle key release events
     mlx_hook(info->win, 3, (1L << 1), release_management, info);
-
     // Start the MiniLibX loop for event handling
     mlx_loop(info->mlx);
-
     return (0);
 }
 
