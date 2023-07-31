@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:53:52 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/27 09:35:16 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/31 12:15:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,43 +33,24 @@ static int transformations_management(int keycode, t_data *info)
 {
     // Handle projection changes
     if ((keycode == 65293) && (info->projection_check < 2))
-    {
         info->projection_check++;
-    }
     else if ((keycode == 65293) && (info->projection_check == 2))
-    {
-        info->projection_check = 0;
-    }
-    // Handle transformations
+        info->projection_check = 0;// Handle transformations
     else if ((keycode > 65360) && (keycode < 65365))
-    {
         transformation_function(info, info->map, keycode, 0);
-    }
     else if ((keycode == 119) || (keycode == 97) || (keycode == 115)
         || (keycode == 100))
-    {
         transformation_function(info, info->map, keycode, 1);
-    }
     else if ((keycode == 65451) || (keycode == 65453))
-    {
-        transformation_function(info, info->map, keycode, 2);
-    }
-
-    // Handle projection type changes
-    if (keycode == 65293)
+        transformation_function(info, info->map, keycode, 2);// Handle projection type changes
+    if ((keycode == 0) || (keycode == 65293))
     {
         if (info->projection_check == 0)
-        {
             info->projection_type = 105; // 'i' for isometric
-        }
         else if (info->projection_check == 1)
-        {
             info->projection_type = 112; // 'p' for parallel
-        }
         else
-        {
             info->projection_type = 101; // 'e' for equirectangular
-        }
         // Perform the projection based on the selected type
         projection_function(info, info->map);
     }
