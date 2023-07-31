@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/31 14:07:28 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/31 17:39:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,18 @@ void bresenham_init(t_bres *params, t_map *start, t_map *end)
 	params->slope = params->delta_y - params->delta_x;
 	params->x = params->x0;
 	params->y = params->y0;
+	//ft_printf("I am  a dumb  fuck, params->y[%d]\n", params->y);
 }
 
 /*/ Calculate the next point on the line using the Bresenham algorithm
 // Return 1 if there are more points to draw, 0 if we reached the end point*/
 static int bresenham_next(t_bres *params, t_map *start)
 {
+	static int check_if_first;
 	
-	ft_printf("FUNCTION CALL: bresenhham_Next!!\n");
-	// Check if we reached the end point
-	if (params->x != start->x_display)
+	check_if_first = 0;
+//	Check if we reached the end point
+	if ((params->x != start->x_display) || (check_if_first == 0))
 	{
 		if (params->slope > 0)
 		{
@@ -64,36 +66,48 @@ static int bresenham_next(t_bres *params, t_map *start)
 			params->x += 1;
 		else
 			params->x -= 1;
+		check_if_first++;
 		return (1);// Return 1 to indicate there are more points to draw
 	}
 	// Return 0 to indicate we reached the end point
-	ft_printf("Return 0 to indicate we reached the end point\n");
+	ft_printf("Return 0 to indicate we reached the end point\nvalue of int[%d]\n", check_if_first);
 	return (0);
 }
 
 /* Color the point of the maps in the image*/
 static void my_put_pixel(t_data *info, t_bres *param)
 {
+	int	pixel_x;	
+	int	pixel_y;
+	int	index;
+
+	ft_printf("\033[1;45mIssue of segvault\033[0m\n");
 	if (info == NULL || param == NULL)
 		return; // Do nothing if the parameters are NULL
-	int pixel_x = param->x;
-	int pixel_y = param->y;
-	int index = (size_t)info->lsize * pixel_y + pixel_x * ((size_t)info->bits / 8);
+	pixel_x = param->x;
+	pixel_y = param->y;
+	ft_printf("\033[1;36minfo->lsize[%d]\033[0m\n", info->lsize);
+	ft_printf("\033[1;36minfo->bits[%d]\033[0m\n", (info->bits));
+	ft_printf("\033[1;36mpixel_y: %d, pixel_x: %d\033[0m\n", pixel_x, pixel_y);
+	index = (size_t)info->lsize * pixel_y + pixel_x * ((size_t)info->bits / 8);
+	ft_printf("\033[1;46mthe value of  index [%d]\033[0m\n", index);
+	ft_printf("\033[1;45mThe projection type  is {%c}\033[0m\n", info->projection_type);
+	ft_printf("this is the len of img_data: %d\n", ft_strlen(info->img_data));
+	ft_printf("\033[1;45mThe img_data pointer is %s \033[0m\n", info->img_data);
 	info->img_data[index] = 255; // Set the pixel to red
 }
 
 /* Draw a line between two points on the map using the Bresenham algorithm*/
 static void drawing(t_data *info, t_map *start, t_map *end)
 {
-	ft_printf("printing  the start\n");
+	static  int count = 0;
+	ft_printf("printing  the start[%d]\n", count);
 	printMap(start);
-	t_bres param;
+	static t_bres param;
 	bresenham_init(&param, start, end);
 	while (bresenham_next(&param, start))
-	{
-		// Draw the current point on the line
 		my_put_pixel(info, &param);
-	}
+	count++;
 }
 
 /*Function to draw lines between all points on the map*/
@@ -108,9 +122,9 @@ int draw_lines(t_data *info, t_map ***map)
 		{
 			// Draw a line from the current point to the next point
 			if (x < info->max_x)
-				drawing(info, &(*map)[y][x], &(*map)[y][x + 1]);
+				drawing(&(*info), &(*map)[y][x], &(*map)[y][x + 1]);
 			if (y < info->max_y)
-				drawing(info, &(*map)[y][x], &(*map)[y + 1][x]);
+				drawing(&(*info), &(*map)[y][x], &(*map)[y + 1][x]);
 			x++;
 		}
 		y++;

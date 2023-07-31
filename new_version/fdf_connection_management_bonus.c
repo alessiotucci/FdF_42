@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:53:52 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/31 13:45:29 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/31 17:42:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,12 @@ static int image_management(int keycode, t_data *info)
 	//transformations_management(keycode, info);
     }
     // Create a new image and set img_data for further drawing
-    info->img = mlx_new_image(info->mlx, info->width, info->height);
-    info->img_data = mlx_get_data_addr(info->img, &bits, &lsize, &endian);
-    info->bits = &bits;
-    info->lsize = &lsize;
-    info->endian = &endian;
+	info->img = mlx_new_image(info->mlx, info->width, info->height);
+	info->img_data = mlx_get_data_addr(info->img, &bits, &lsize, &endian);
+	ft_printf(" the value of the len of info->img_data is: %d\n", ft_strlen(info->img_data));
+	info->bits = &bits;
+	info->lsize = &lsize;
+	info->endian = &endian;
 	if (keycode != 0)
 		transformations_management(keycode, info); 
 	// If keycode is 0, apply the initial projection and transformations
