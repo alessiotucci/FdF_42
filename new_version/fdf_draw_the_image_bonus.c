@@ -6,13 +6,13 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/27 18:30:12 by atucci           ###   ########.fr       */
+/*   Updated: 2023/07/31 13:08:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
-// for testing purpose
-void printMap(t_map *map)
+/* for testing purpose
+void	printMap(t_map *map)
 {
     ft_printf("\033[1;36mx_orthogonal: %d\033[0m\n",	map->x_orthogonal);
     ft_printf("\033[1;36my_orthogonal: %d\033[0m\n",	map->y_orthogonal);
@@ -21,12 +21,12 @@ void printMap(t_map *map)
     ft_printf("\033[1;32my_display: %d\033[0m\n",	map->y_display);
     ft_printf("\033[1;32mz_display: %d\033[0m\n",	map->z_display);
     ft_printf("\033[1;30mcolor: %d\033[0m\n",		map->color);
-    ft_printf("\033[1;31mstop_param: %d\033[0m\n",	map->stop_param);
-    // Print pointer members with a different background color
-    ft_printf("\033[1;47mright_point: %p\033[0m\n",	(void*)map->right_point);
-    ft_printf("\033[1;47mdown_point: %p\033[0m\n",	(void*)map->down_point);
+	ft_printf("\033[1;31mstop_param: %d\033[0m\n",	map->stop_param);
+	// Print pointer members with a different background color
+	ft_printf("\033[1;47mright_point: %p\033[0m\n",	(void*)map->right_point);
+	ft_printf("\033[1;47mdown_point: %p\033[0m\n",	(void*)map->down_point);
 }
-
+*/
 /* Initialize the Bresenham parameters for the current line*/
 void bresenham_init(t_bres *params, t_map *start, t_map *end)
 {
@@ -48,25 +48,20 @@ int bresenham_next(t_bres *params)
 	{
 		if (params->slope > 0)
 		{
-			// Slope is greater than 1
-			if (params->y > params->y0)
+			if (params->y > params->y0) // Slope is greater than 1
 				params->y += 1;
 			else
 				params->y -= 1;
 			params->slope -= params->delta_x;
 		}
 		else
-		{
-			// Slope is less than or equal to 1
-			params->slope += params->delta_y;
-		}
+			params->slope += params->delta_y; // Slope is less than or equal to 1
 		// Move to the next pixel
 		if (params->x > params->x0)
 			params->x += 1;
 		else
 			params->x -= 1;
-		// Return 1 to indicate there are more points to draw
-		return (1);
+		return (1);// Return 1 to indicate there are more points to draw
 	}
 	// Return 0 to indicate we reached the end point
 	return (0);
@@ -76,10 +71,7 @@ int bresenham_next(t_bres *params)
 static void draw_pixel(t_data *info, t_bres *param)
 {
 	if (info == NULL || param == NULL)
-	{
 		return; // Do nothing if the parameters are NULL
-	}
-
 	int pixel_x = param->x;
 	int pixel_y = param->y;
 	int index = (size_t)info->lsize * pixel_y + pixel_x * ((size_t)info->bits / 8);
@@ -124,8 +116,23 @@ int draw_lines(t_data *info, t_map ***map)
 	return (0);
 }
 
+/*GENERAL FORMULA TO FIND THE INDEX 
+in the char * (a string)
 
-/* general formula to find the index in the char * (a string)
- index = lsize * y + x * (bits / 8)
+index = lsize * y + x * (bits / 8)
 	int	i;
-	i = info->lsize * y + x * (info->bits / 8);*/ 
+	i = info->lsize * y + x * (info->bits / 8);
+
+THIS IS THE STRUCT TO IMPLEMENT INSIDE THE HEADER:
+typedef	struct s_bres
+{
+	int	x;
+	int	x0;
+	int	y;
+	int	y0;
+	int	delta_x;
+	int	delta_y;
+	int	slope;
+	int	decision_p;
+}	t_bres;
+*/
