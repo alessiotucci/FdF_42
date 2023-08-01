@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/01 12:20:37 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/01 14:56:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,10 @@ static void my_put_pixel(t_data *info, int x, int y)
 // this is the issue with working with pointers to int!
 	index = (*info->lsize * y) + (x * (*info->bits / 8));
 	ft_printf("\033[1;46mthe value of index [%d]\033[0m\n", index);
-	ft_printf("\033[1;45mThe projection type  is {%c}\033[0m\n", info->projection_type);
 	ft_printf("this is the len of img_data: %d\n", ft_strlen(info->img_data));
 	ft_printf("\033[1;45mThe img_data pointer is %s \033[0m\n", info->img_data);
-	//info->img_data[index] = 255; // Set the pixel to red
-		//exit(0);
+	info->img_data[index] = 255; // Set the pixel to red
+		//this is for testing 
 	return ;
 }
 
@@ -90,7 +89,10 @@ static void drawing(t_data *info, t_map *str, t_map *end)
 	bresenham(info, str, end);
 }
 
-/*Function to draw lines between all points on the map*/
+/*Function to draw lines between all points on the map
+// this need to be rewritten since we dont need to iterate throught the 
+list of points since each points has pointers to down and right
+*/
 int	draw_lines(t_data *info, t_map ***map)
 {
 	// Loop through all the points in the map and draw lines
@@ -102,7 +104,7 @@ int	draw_lines(t_data *info, t_map ***map)
 		{
 			// Draw a line from the current point to the next point
 			if (x < info->max_x)
-				drawing(&(*info), &(*map)[y][x], &(*map)[y][x + 1]);
+				drawing(&(*info), &(*map)[y][x], (*map)[y][x].right_point);
 			if (y < info->max_y)
 				drawing(&(*info), &(*map)[y][x], &(*map)[y + 1][x]);
 			x++;
