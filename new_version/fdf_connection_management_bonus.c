@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:53:52 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/01 17:00:35 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/01 18:13:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,25 @@ static int transformations_management(int keycode, t_data *info)
     return (0);
 }
 // Handle image management and drawing
-static int image_management(int keycode, t_data *info)
-{
-    int bits;
-    int lsize;
-    int endian;
 
-    // If a valid keycode is provided, clear the previous image and apply transformations
-    if (keycode != 0)
-    {
-        mlx_destroy_image(info->mlx, info->img);
-        mlx_clear_window(info->mlx, info->win);
-	free(info->img_data); 
-	//transformations_management(keycode, info);
-    }
-    // Create a new image and set img_data for further drawing
-	info->img = mlx_new_image(info->mlx, info->width, info->height);
-	info->img_data = mlx_get_data_addr(info->img, &bits, &lsize, &endian);
-	info->bits = &bits;
-	info->lsize = &lsize;
-	info->endian = &endian;
+static int	image_management(int keycode, t_data *info)
+{
+	ft_printf("Inside the image management\nThe keycode is %d\n", keycode);
+	if (keycode == 65293)
+	{
+		mlx_destroy_image(info->mlx, info->img);
+		mlx_clear_window(info->mlx, info->win);
+		free(info->img_data);
+		info->img_data = NULL;
+	}
+	if (info->img_data == NULL)
+	{
+		info->img = mlx_new_image(info->mlx, info->width, info->height);
+		info->img_data = mlx_get_data_addr(info->img, &(info->bits),
+				&(info->lsize), &(info->endian));
+	}
 	if (keycode != 0)
-		transformations_management(keycode, info); 
-	// If keycode is 0, apply the initial projection and transformations
+		transformations_management(keycode, info);
 	if (keycode == 0)
 	{
 		projection_function(info, info->map);
@@ -89,9 +85,7 @@ static int image_management(int keycode, t_data *info)
 	// Draw lines based on the updated image data
 	draw_lines(info, info->map);
 	ft_printf("\033[1;43m\t\t\t\t-->put img to win: function calls!\033[0m\n");
-	// Put the updated image to the window
-	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, 0);
-    return (0);
+	return (0);
 }
 
 // Handle window closing events

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/01 17:03:09 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/01 18:33:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void ezekiel(t_data *info, int x, int y)
 	ft_printf("\033[1;36minfo->lsize[%d]\033[0m\n", info->lsize);
 	ft_printf("\033[1;36minfo->bits[%d]\033[0m\n", (info->bits));
 	ft_printf("\033[1;36mpixel_y: %d, pixel_x: %d\033[0m\n", x, y);
-	index = (*info->lsize * y) + (x * (*info->bits / 8));
+	index = (info->lsize * y) + (x * (info->bits / 8));
 	ft_printf("\033[1;46mthe value of index [%d]\033[0m\n", index);
 	ft_printf("this is the len of img_data: %d\n", ft_strlen(info->img_data));
 	ft_printf("\033[1;45mThe img_data pointer is %s \033[0m\n", info->img_data);
@@ -49,6 +49,7 @@ static void ezekiel(t_data *info, int x, int y)
 
 static void	bresenham(t_data *info, t_map *s, t_map *e)
 {
+	ft_printf("Inside the bresenham function :)\n");
 	int	delta_x;
 	int	delta_y;
 	int	p;
@@ -60,6 +61,7 @@ static void	bresenham(t_data *info, t_map *s, t_map *e)
 	x = s->x_display;
 	y = s->y_display;
 	p = 2 * delta_y - delta_x;
+	ft_printf("line 64) while x:[%d] < e->x_display[%d]\n", x , e->x_display);
 	while (x < e->x_display)
 	{
 		ezekiel(info, x, y);

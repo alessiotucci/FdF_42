@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:59:31 by fporciel          #+#    #+#             */
-/*   Updated: 2023/07/31 13:44:31 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/01 17:20:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -72,10 +72,19 @@ static int	cleaner(t_map ***map, t_data *info, char **line)
 
 static void	point_generator(t_map *map, t_data *info, int param)
 {
-	(map[info->x_count]).x_orthogonal = info->x_count;
-	(map[info->x_count]).x_display = info->x_count;
-	(map[info->x_count]).y_orthogonal = info->y_count;
-	(map[info->x_count]).y_display = info->y_count;
+if ((map == NULL) && (param == 3))
+	{
+		if ((info->max_x < info->width) && (info->max_y < info->height))
+			info->spacing = fmin((double)(info->width) / info->max_x,
+					(double)(info->height) / info->max_y);
+		else
+			info->spacing = 50.0;
+		return ;
+	}
+	(map[info->x_count]).x_orthogonal = (info->x_count * info->spacing);
+	(map[info->x_count]).x_display = (info->x_count * info->spacing);
+	(map[info->x_count]).y_orthogonal = (info->y_count * info->spacing);
+	(map[info->x_count]).y_display = (info->y_count * info->spacing);
 	(map[info->x_count]).z_orthogonal = info->z_count;
 	(map[info->x_count]).z_display = info->z_count;
 	(map[info->x_count]).right_point = NULL;
@@ -84,8 +93,6 @@ static void	point_generator(t_map *map, t_data *info, int param)
 		(map[info->x_count]).stop_param = 0;
 	if (param == 1)
 		(map[info->x_count]).stop_param = 1;
-//	ft_printf("pointers should be null\n");
-//	printMap(&map[info->x_count]);
 }
 
 static int	map_division(t_data *info, t_map **map, char *line)
