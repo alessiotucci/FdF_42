@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:24:37 by fporciel          #+#    #+#             */
-/*   Updated: 2023/08/01 14:57:07 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/01 17:16:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* 
@@ -101,9 +101,23 @@ typedef struct s_data
 	int			up_rot_check;
 	int			down_rot_check;
 	int			keyrel;
-	int			*bits;
-	int			*lsize;
-	int			*endian;
+	int			param;
+	int			bits;
+	int			lsize;
+	int			endian;
+	int			first_iteration;
+	int			trans_x;
+	int			trans_y;
+	int			x;
+	int			y;
+	double		spacing;
+	double		scaling;
+	double		min_x;
+	double		min_y;
+	double		maxim_x;
+	double		maxim_y;
+	double		central_x;
+	double		central_y;
 	ssize_t		count;
 	char		*img_data;
 	char		projection_type;

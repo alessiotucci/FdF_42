@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 13:53:52 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/31 17:47:55 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/01 17:00:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static int release_management(int keycode, t_data *info)
 static int transformations_management(int keycode, t_data *info)
 {
     // Handle projection changes
-    if ((keycode == 65293) && (info->projection_check < 2))
-        info->projection_check++;
-    else if ((keycode == 65293) && (info->projection_check == 2))
-        info->projection_check = 0;// Handle transformations
+	if ((keycode == 65293) && (info->projection_check < 2))
+		info->projection_check++;
+	else if ((keycode == 65293) && (info->projection_check == 2))
+		info->projection_check = 0;// Handle transformations
     else if ((keycode > 65360) && (keycode < 65365))
         transformation_function(info, info->map, keycode, 0);
     else if ((keycode == 119) || (keycode == 97) || (keycode == 115)
@@ -74,7 +74,6 @@ static int image_management(int keycode, t_data *info)
     // Create a new image and set img_data for further drawing
 	info->img = mlx_new_image(info->mlx, info->width, info->height);
 	info->img_data = mlx_get_data_addr(info->img, &bits, &lsize, &endian);
-	ft_printf("Mr. tucci, the value of the len of info->img_data is: %d\n", ft_strlen(info->img_data));
 	info->bits = &bits;
 	info->lsize = &lsize;
 	info->endian = &endian;

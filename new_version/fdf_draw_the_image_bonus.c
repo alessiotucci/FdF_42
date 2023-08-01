@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/01 14:56:25 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/01 17:03:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,17 @@ void	printMap(t_map *map)
 	ft_printf("\033[1;47mdown_point: %p\033[0m\n",	(void*)map->down_point);
 }
 /* Color the point of the maps in the image*/
-static void my_put_pixel(t_data *info, int x, int y)
+static void ezekiel(t_data *info, int x, int y)
 {
-//	int	pixel_x;
-//	int	pixel_y;
 	int	index;
 
 	ft_printf("\033[1;45mbits lsize are wrong\033[0m\n");
 	if (info == NULL)
 		return; // Do nothing if the parameters are NULL
-//	pixel_x = param->x;
-//	pixel_y = param->y;
+//PRINT STATEMENT  TO DEBUG
 	ft_printf("\033[1;36minfo->lsize[%d]\033[0m\n", info->lsize);
 	ft_printf("\033[1;36minfo->bits[%d]\033[0m\n", (info->bits));
 	ft_printf("\033[1;36mpixel_y: %d, pixel_x: %d\033[0m\n", x, y);
-// this is the issue with working with pointers to int!
 	index = (*info->lsize * y) + (x * (*info->bits / 8));
 	ft_printf("\033[1;46mthe value of index [%d]\033[0m\n", index);
 	ft_printf("this is the len of img_data: %d\n", ft_strlen(info->img_data));
@@ -66,7 +62,7 @@ static void	bresenham(t_data *info, t_map *s, t_map *e)
 	p = 2 * delta_y - delta_x;
 	while (x < e->x_display)
 	{
-		my_put_pixel(info, x, y);
+		ezekiel(info, x, y);
 		if (p >= 0)
 		{
 			y = y + 1;
