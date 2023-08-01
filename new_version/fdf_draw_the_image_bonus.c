@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/01 12:06:20 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/01 12:20:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ static void my_put_pixel(t_data *info, int x, int y)
 		return; // Do nothing if the parameters are NULL
 //	pixel_x = param->x;
 //	pixel_y = param->y;
-//	ft_printf("\033[1;36minfo->lsize[%d]\033[0m\n", info->lsize);
-//	ft_printf("\033[1;36minfo->bits[%d]\033[0m\n", (info->bits));
+	ft_printf("\033[1;36minfo->lsize[%d]\033[0m\n", info->lsize);
+	ft_printf("\033[1;36minfo->bits[%d]\033[0m\n", (info->bits));
 	ft_printf("\033[1;36mpixel_y: %d, pixel_x: %d\033[0m\n", x, y);
-	index = (size_t)info->lsize * y + x * ((size_t)info->bits / 8);
+// this is the issue with working with pointers to int!
+	index = (*info->lsize * y) + (x * (*info->bits / 8));
 	ft_printf("\033[1;46mthe value of index [%d]\033[0m\n", index);
 	ft_printf("\033[1;45mThe projection type  is {%c}\033[0m\n", info->projection_type);
 	ft_printf("this is the len of img_data: %d\n", ft_strlen(info->img_data));
