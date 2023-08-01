@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/31 17:39:46 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/01 10:18:36 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 //* for testing purpose
 void	printMap(t_map *map)
 {
-    ft_printf("\033[1;36mx_orthogonal: %d\033[0m\n",	map->x_orthogonal);
-    ft_printf("\033[1;36my_orthogonal: %d\033[0m\n",	map->y_orthogonal);
-    ft_printf("\033[1;36mz_orthogonal: %d\033[0m\n",	map->z_orthogonal);
-    ft_printf("\033[1;32mx_display: %d\033[0m\n",	map->x_display);
-    ft_printf("\033[1;32my_display: %d\033[0m\n",	map->y_display);
-    ft_printf("\033[1;32mz_display: %d\033[0m\n",	map->z_display);
-    ft_printf("\033[1;30mcolor: %d\033[0m\n",		map->color);
+	ft_printf("\033[1;36mx_orthogonal: %d\033[0m\n",	map->x_orthogonal);
+	ft_printf("\033[1;36my_orthogonal: %d\033[0m\n",	map->y_orthogonal);
+	ft_printf("\033[1;36mz_orthogonal: %d\033[0m\n",	map->z_orthogonal);
+	ft_printf("\033[1;32mx_display: %d\033[0m\n",	map->x_display);
+	ft_printf("\033[1;32my_display: %d\033[0m\n",	map->y_display);
+	ft_printf("\033[1;32mz_display: %d\033[0m\n",	map->z_display);
+	ft_printf("\033[1;30mcolor: %d\033[0m\n",		map->color);
 	ft_printf("\033[1;31mstop_param: %d\033[0m\n",	map->stop_param);
 	// Print pointer members with a different background color
 	ft_printf("\033[1;47mright_point: %p\033[0m\n",	(void*)map->right_point);
@@ -94,7 +94,10 @@ static void my_put_pixel(t_data *info, t_bres *param)
 	ft_printf("\033[1;45mThe projection type  is {%c}\033[0m\n", info->projection_type);
 	ft_printf("this is the len of img_data: %d\n", ft_strlen(info->img_data));
 	ft_printf("\033[1;45mThe img_data pointer is %s \033[0m\n", info->img_data);
-	info->img_data[index] = 255; // Set the pixel to red
+	//info->img_data[index] = 255; // Set the pixel to red
+	if (info->img_data == NULL)
+		exit(0);
+	return ;
 }
 
 /* Draw a line between two points on the map using the Bresenham algorithm*/
@@ -105,13 +108,15 @@ static void drawing(t_data *info, t_map *start, t_map *end)
 	printMap(start);
 	static t_bres param;
 	bresenham_init(&param, start, end);
-	while (bresenham_next(&param, start))
+	while (bresenham_next(&param, start) && (count < 10)) // this has been modified for testing
+	{
 		my_put_pixel(info, &param);
-	count++;
+		count++;
+	}
 }
 
 /*Function to draw lines between all points on the map*/
-int draw_lines(t_data *info, t_map ***map)
+int	draw_lines(t_data *info, t_map ***map)
 {
 	// Loop through all the points in the map and draw lines
 	int y = 0;
