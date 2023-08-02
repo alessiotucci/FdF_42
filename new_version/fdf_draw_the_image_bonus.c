@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/01 18:33:24 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/02 13:50:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	printMap(t_map *map)
 	ft_printf("\033[1;47mdown_point: %p\033[0m\n",	(void*)map->down_point);
 }
 /* Color the point of the maps in the image*/
-static void ezekiel(t_data *info, int x, int y)
+static void draw_point(t_data *info, int x, int y)
 {
 	int	index;
 
@@ -64,7 +64,7 @@ static void	bresenham(t_data *info, t_map *s, t_map *e)
 	ft_printf("line 64) while x:[%d] < e->x_display[%d]\n", x , e->x_display);
 	while (x < e->x_display)
 	{
-		ezekiel(info, x, y);
+		draw_point(info, x, y);
 		if (p >= 0)
 		{
 			y = y + 1;
@@ -93,18 +93,20 @@ list of points since each points has pointers to down and right
 */
 int	draw_lines(t_data *info, t_map ***map)
 {
+	int	count_x;
+	int	count_y;
 	// Loop through all the points in the map and draw lines
-	int y = 0;
+	count_y = 0;
 	while (y <= info->max_y)
 	{
-		int x = 0;
+		count_x = 0;
 		while (x <= info->max_x)
 		{
-			// Draw a line from the current point to the next point
+			// Draw a line but how?
 			if (x < info->max_x)
-				drawing(&(*info), &(*map)[y][x], (*map)[y][x].right_point);
+				drawing();
 			if (y < info->max_y)
-				drawing(&(*info), &(*map)[y][x], &(*map)[y + 1][x]);
+				drawing();
 			x++;
 		}
 		y++;
