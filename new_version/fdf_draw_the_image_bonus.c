@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/02 13:50:31 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/02 17:05:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,20 +93,21 @@ list of points since each points has pointers to down and right
 */
 int	draw_lines(t_data *info, t_map ***map)
 {
-	int	count_x;
-	int	count_y;
-	// Loop through all the points in the map and draw lines
-	count_y = 0;
-	while (y <= info->max_y)
+	int	x;
+	int	y;
+	
+	y = 0;
+	while (y < info->max_y)
 	{
-		count_x = 0;
-		while (x <= info->max_x)
+		x = 0;
+		while (x < info->max_x)
 		{
-			// Draw a line but how?
-			if (x < info->max_x)
-				drawing();
-			if (y < info->max_y)
-				drawing();
+			// Draw a line but how? this is not a good approach it goes into  seg vault
+
+			if (x < info->max_x && (map[y][x + 1] != NULL))
+				drawing(info, map[y][x + 1], map[y][x]);
+			if (y < info->max_y && (map[y + 1][x] != NULL))
+				drawing(info, map[y + 1][x], map[y][x]);
 			x++;
 		}
 		y++;
