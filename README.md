@@ -45,6 +45,11 @@ understanding isometric projection allows the program to transform the map's coo
 
 
 
+# tutorial on how to work with Images:
+[link 1](https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html)
+[link 2](https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx)
+
+
 
 
 
