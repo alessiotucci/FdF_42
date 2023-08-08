@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/08 15:41:00 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/08 18:11:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@
 int	main()
 {
 	parsing();
-	return (printf("%sThis line is green.%s\n", GREEN, RESET));
+	return (ft_printf("%sThis line is green.%s\n", GREEN, RESET));
 }
