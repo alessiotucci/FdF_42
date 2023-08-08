@@ -6,16 +6,13 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/08 14:40:32 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/08 15:40:44 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_BONUS_H
-# define FDF_BONUS_H
-# include "./mlx_macos/mlx.h"
-# include "./mlx_macos/mlx_int.h"
-# include "./libft/libft.h"
-#include <GL/gl.h>
+#ifndef FDF_H
+# define FDF_H
+# include "libft/libft.h"
 # include <math.h>
 # include <fcntl.h>
 # include <sys/stat.h>
@@ -31,6 +28,7 @@
 # define YELLOW  "\033[1;33m"
 # define RED     "\033[1;31m"
 # define RESET   "\033[0m"
+# endif
 
 /* Define default size for the windows */
 # ifndef DEFAULT_WIDTH
@@ -45,3 +43,5 @@
 # ifndef PI
 #  define PI 3.14159265358979323846
 # endif
+
+void	parsing(void);
