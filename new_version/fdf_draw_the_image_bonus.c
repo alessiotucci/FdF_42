@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:19:26 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/02 17:05:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/08 11:29:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	bresenham(t_data *info, t_map *s, t_map *e)
 	y = s->y_display;
 	p = 2 * delta_y - delta_x;
 	ft_printf("line 64) while x:[%d] < e->x_display[%d]\n", x , e->x_display);
-	while (x < e->x_display)
+	while (x <= e->x_display)
 	{
 		draw_point(info, x, y);
 		if (p >= 0)
@@ -97,17 +97,17 @@ int	draw_lines(t_data *info, t_map ***map)
 	int	y;
 	
 	y = 0;
-	while (y < info->max_y)
+	while (y <= info->max_y)
 	{
 		x = 0;
-		while (x < info->max_x)
+		while (x <= info->max_x)
 		{
 			// Draw a line but how? this is not a good approach it goes into  seg vault
 
-			if (x < info->max_x && (map[y][x + 1] != NULL))
-				drawing(info, map[y][x + 1], map[y][x]);
-			if (y < info->max_y && (map[y + 1][x] != NULL))
-				drawing(info, map[y + 1][x], map[y][x]);
+			if (x < info->max_x)
+				drawing(info, map[y][x], map[y][x + 1]);
+			if (y < info->max_y)
+				drawing(info, map[y][x], map[y + 1][x]);
 			x++;
 		}
 		y++;
