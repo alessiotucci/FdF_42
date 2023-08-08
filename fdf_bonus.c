@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:59:31 by atucci            #+#    #+#             */
-/*   Updated: 2023/07/24 09:46:05 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/08 10:58:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static int	check_the_map(char *file_name, t_data info)
 {
-	int		fd;
+	int			fd;
 	char		*helping;
 	char		**matrix;
-	int		count_y;
-	int		count_x;
-	
+	int			count_y;
+	int			count_x;
+
 	count_x = 0;
 	count_y = 0;
 	fd = open(file_name, O_RDONLY);
@@ -28,8 +28,6 @@ static int	check_the_map(char *file_name, t_data info)
 		ft_printf("\033[1;31mCan't read the map 😴 \033[0m\n");
 		return (fd);
 	}
-	//helping  = get_next_line(fd);
-	//while (helping != NULL)
 	while ((helping = get_next_line(fd)) != NULL)
 	{
 		if (!helping)
@@ -38,24 +36,22 @@ static int	check_the_map(char *file_name, t_data info)
 		while (matrix[count_y] != NULL)
 		{
 			count_x = 0;
-			while (matrix[count_y][count_x] != '\0' &&  matrix[count_y][count_x] != '\n')
+			while (matrix[count_y][count_x] != '\0' && matrix[count_y][count_x] != '\n')
 				count_x++;
 		}
 		count_y++;
-		
 	}
 	info.max_x = count_x;
 	info.max_y = count_y;
 	ft_printf("map max x %d\n", info.max_x);
 	ft_printf("map max y %d\n", info.max_y);
-
-	return (fd);	
+	return (fd);
 }
 
 static int	what_kind_project(char *str)
 {
 	if (strncmp(str, "isometric", 9) == 0)
-        {
+	{
 		ft_printf("\033[1;42mIsometric\033[0m\n");
 		return (69);
 	}
@@ -65,7 +61,7 @@ static int	what_kind_project(char *str)
 		return (70);
 	}
 	else if (strncmp(str, "equirectangular", 15) == 0)
-        {
+	{
 		ft_printf("\033[1;42mequirecrangular\033[0m\n");
 		return (65);
 	}
@@ -73,7 +69,7 @@ static int	what_kind_project(char *str)
 		return (0);
 }
 
-static int check_windows_size(char *width, char *height)
+static int	check_windows_size(char *width, char *height)
 {
 	size_t	count;
 
@@ -100,10 +96,10 @@ static int check_windows_size(char *width, char *height)
 	return (1);
 }
 
-static int  check_the_extension(char *name_of_map)
+static int	check_the_extension(char *name_of_map)
 {
 	int	len;
-	
+
 	len = strlen(name_of_map);
 	if (len < 4)
 	{
@@ -122,12 +118,12 @@ static int  check_the_extension(char *name_of_map)
 int	main(int ac, char *av[])
 {
 	static t_data	info;
-	
+
 	info.win_width = DEFAULT_WIDTH;
-	info.win_height = DEFAULT_HEIGHT;	
+	info.win_height = DEFAULT_HEIGHT;
 	info.fd = ft_printf("let me check the params\n");
 	if (ac < 2)
-		return(ft_printf("Not  enough params\n"));
+		return (ft_printf("Not  enough params\n"));
 	if ((ac >= 2) && (ac <= 5))
 	{
 		info.fd = check_the_extension(av[1]);
@@ -139,17 +135,16 @@ int	main(int ac, char *av[])
 			{
 				info.win_width = ft_atoi(av[2]);
 				info.win_height = ft_atoi(av[3]);
-			}	
-		if (ac == 5)
-			info.projection_type = what_kind_project(av[4]);
-		info.fd = check_the_map(av[1], info);
-		}	
-	ft_printf("finestra opt%d\n", info.win_width);
-	ft_printf("finestra opt%d\n", info.win_height);
-	ft_printf("fd:%d\n", info.fd);
-// call the other funciton passing the fd file descriptor;
-	if (info.fd >= 0)
-		map_registration(&info);
-	return (0);
+			}
+			if (ac == 5)
+				info.projection_type = what_kind_project(av[4]);
+			info.fd = check_the_map(av[1], info);
+		}
+		ft_printf("finestra opt%d\n", info.win_width);
+		ft_printf("finestra opt%d\n", info.win_height);
+		ft_printf("fd:%d\n", info.fd);
+		if (info.fd >= 0)
+			map_registration(&info);
+		return (0);
 	}
 }
