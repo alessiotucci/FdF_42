@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/09 17:30:09 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/09 17:51:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 /* static function to check the map */
 static int	check_the_map(char *file_name, t_point **head)
 {
-	int	fd;
+	int		fd;
 	char	*help_line;
 	char	**matrix_map;
-	int	rows;
-	int	colums;
+	int		rows;
+	int		colums;
 
 	rows = 0;
 	colums = 0;
@@ -31,19 +31,18 @@ static int	check_the_map(char *file_name, t_point **head)
 	{
 		ft_printf("this is the line: %s\n", help_line);
 		matrix_map = ft_split(help_line, ' ');
-		while(matrix_map[rows] != NULL)
+		while (matrix_map[rows] != NULL)
 		{
-			int prova = atoi(matrix_map[rows]);
-			ft_printf("x:%d\ny:%d\nz is [%d]\n",rows, colums, prova);
 			create_list(head, rows, colums, matrix_map[rows]);
-		rows++;
+			rows++;
 		}
-	rows = 0;
-	colums++;
+		rows = 0;
+		colums++;
 	}
-		ft_printf("%s%sRemember to free split\n%s%s", BG_YELLOW, GREEN, BG_RESET, RESET);
-		return (0);
+	ft_printf("%s%s!free split\n%s%s", BG_YELLOW, GREEN, BG_RESET, RESET);
+	return (0);
 }
+
 /* static function to check if the size of windows is digits or not? */
 static int	check_windows_size(char *width, char *height)
 {
@@ -71,6 +70,7 @@ static int	check_windows_size(char *width, char *height)
 	}
 	return (1);
 }
+
 /*check the extension of the map*/
 static int	check_the_extension(char *name_of_map)
 {
@@ -101,18 +101,18 @@ int	main(int ac, char *av[])
 	width = DEFAULT_WIDTH;
 	height = DEFAULT_HEIGHT;
 	if (ac < 2)
-		return (ft_printf("%sNot enough params, did you forget map?%s\n", RED, RESET));
+		return (ft_printf("%sNot enough, forget map?%s\n", RED, RESET));
 	if (ac == 4)
+	{
+		if (check_windows_size(av[2], av[3]))
 		{
-			if (check_windows_size(av[2], av[3]))
-			{
-				width = ft_atoi(av[2]);
-				height = ft_atoi(av[3]);
-			}
+			width = ft_atoi(av[2]);
+			height = ft_atoi(av[3]);
 		}
+	}
 	check_the_extension(av[1]);
 	check_the_map(av[1], &head);
 	ft_printf("%swidth:%d\nheight:%d%s\n", YELLOW, width, height, RESET);
 	print_colored_list(&head);
 	return (ft_printf("%s Everything seems good to me %s\n", GREEN, RESET));
-	}
+}
