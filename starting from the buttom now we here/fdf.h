@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/09 14:52:31 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/09 16:42:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,33 +34,26 @@
 # define BG_CYAN         "\033[46m"
 # define BG_YELLOW       "\033[43m"
 # define BG_RED          "\033[41m"
-#endif
 
 /* Define default size for the windows */
-# ifndef DEFAULT_WIDTH
-#  define DEFAULT_WIDTH 1280
-# endif
+# define DEFAULT_WIDTH 1280
 
-# ifndef DEFAULT_HEIGHT
-#  define DEFAULT_HEIGHT 720
-# endif
+# define DEFAULT_HEIGHT 720
 
 /* Useful Macros for the angles */
-# ifndef PI
-#  define PI 3.14159265358979323846
-# endif
+# define PI 3.14159265358979323846
 
 /* Define the struct to hold the value of the map */
 typedef struct s_point
 {
-	int	x_map;
-	int	y_map;
-	int	z_map;
-	int	x_pixel;
-	int	y_pixel;
-	struct	s_point *go_right;
-	struct	s_point *go_down;
+	int		x_map;
+	int		y_map;
+	int		z_map;
+	int		x_pixel;
+	int		y_pixel;
+	struct s_point	*go_right;
+	struct s_point	*go_down;
 }		t_point;
 
-
-void	parsing(void);
+void	create_list(t_point **head, int x, int y, char *z_string);
+#endif
