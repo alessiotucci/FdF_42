@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/09 16:42:41 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/09 17:07:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ typedef struct s_point
 	int		y_pixel;
 	struct s_point	*go_right;
 	struct s_point	*go_down;
+	struct s_point	*next;
 }		t_point;
 
 void	create_list(t_point **head, int x, int y, char *z_string);
+void print_colored_list(t_point *head);
 #endif

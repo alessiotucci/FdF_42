@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/09 16:21:00 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/09 17:07:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "fdf.h"
 
 /* static function to check the map */
-static int	check_the_map(char *file_name)
+static int	check_the_map(char *file_name, t_point *head)
 {
 	int	fd;
 	char	*help_line;
@@ -35,6 +35,7 @@ static int	check_the_map(char *file_name)
 		{
 			int prova = atoi(matrix_map[rows]);
 			ft_printf("x:%d\ny:%d\nz is [%d]\n",rows, colums, prova);
+			create_list(&head, rows, colums, matrix_map[rows]);
 		rows++;
 		}
 	rows = 0;
@@ -92,9 +93,11 @@ static int	check_the_extension(char *name_of_map)
 
 int	main(int ac, char *av[])
 {
-	int	width;
-	int	height;
+	int		width;
+	int		height;
+	t_point	*head;
 
+	head = NULL;
 	width = DEFAULT_WIDTH;
 	height = DEFAULT_HEIGHT;
 	if (ac < 2)
@@ -108,7 +111,8 @@ int	main(int ac, char *av[])
 			}
 		}
 	check_the_extension(av[1]);
-	check_the_map(av[1]);
+	check_the_map(av[1], head);
 	ft_printf("%swidth:%d\nheight:%d%s\n", YELLOW, width, height, RESET);
+	print_colored_list(head);
 	return (ft_printf("%s Everything seems good to me %s\n", GREEN, RESET));
 	}
