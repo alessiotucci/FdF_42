@@ -6,10 +6,9 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/08 16:24:26 by atucci            #+#    #+#              #
-#    Updated: 2023/08/08 18:47:23 by atucci           ###   ########.fr        #
+#    Updated: 2023/08/09 11:27:46 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 #This sets the variable NAME to the name of the executable file that we will build.
 NAME = fdf
@@ -34,6 +33,9 @@ RM = rm -f
 
 CC = gcc -Wall -Wextra -Werror
 
+#I need to explain libft
+LIBFT = libft/libft.a
+
 MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 # Color codes for echo commands
@@ -51,7 +53,6 @@ TRASH_EMOJI := 🗑️
 
 
 
-LIBFT = libft/libft.a
 
 
 .c.o:
@@ -66,9 +67,9 @@ $(NAME): $(OBJS)
 		@echo "$(GREEN)$(MIC_DROP_EMOJI)$(NAME) binary created successfully! $(MIC_DROP_EMOJI)$(RESET)"
 
 #LET TRY ALONE
-$(NAME) : $(OBJS)
-	@echo "$(CYAN)I need to compile the mlx library$(RESET)"
-	$(MAKE) -C mlx_macos
+#$(NAME) : $(OBJS)
+#	@echo "$(CYAN)I need to compile the mlx library$(RESET)"
+#	$(MAKE) -C  mlx_macos 
 
 
 all: $(NAME)
@@ -92,4 +93,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY:			all clean re
+
