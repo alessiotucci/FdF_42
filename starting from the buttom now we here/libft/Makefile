@@ -6,7 +6,7 @@
 #    By: atucci <atucci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 14:12:05 by atucci            #+#    #+#              #
-#    Updated: 2023/06/27 16:10:42 by atucci           ###   ########.fr        #
+#    Updated: 2023/08/09 11:40:24 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,9 +60,6 @@ files 	   = ft_strlen \
 			 ft_printf_utils \
 			 ft_pointer \
 			 get_next_line \
-			 ft_read_to_backup \
-			 ft_get_line \
-			 ft_backup \
 
 
 

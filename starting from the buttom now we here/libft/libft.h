@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:38:39 by atucci            #+#    #+#             */
-/*   Updated: 2023/06/27 16:13:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/09 11:40:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,4 @@ int		pt_print_padding(char c, int width);
 int		check_formatting_flags(const char *str, int i);
 int		print_sign(int n);
 char	*get_next_line(int fd);
-char	*ft_read_to_backup(int fd, char *backup);
-char	*ft_get_line(char *backup);
-char	*ft_backup(char *backup);
 #endif 
