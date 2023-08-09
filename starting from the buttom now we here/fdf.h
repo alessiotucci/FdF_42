@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/09 17:07:14 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/09 17:27:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define YELLOW  "\033[1;33m"
 # define RED     "\033[1;31m"
 # define RESET   "\033[0m"
+
 /* Define Background colors macros */
 # define BG_RESET        "\033[49m"
 # define BG_GREEN        "\033[42m"
@@ -37,7 +38,6 @@
 
 /* Define default size for the windows */
 # define DEFAULT_WIDTH 1280
-
 # define DEFAULT_HEIGHT 720
 
 /* Useful Macros for the angles */
@@ -57,5 +57,5 @@ typedef struct s_point
 }		t_point;
 
 void	create_list(t_point **head, int x, int y, char *z_string);
-void print_colored_list(t_point *head);
+void print_colored_list(t_point **head);
 #endif

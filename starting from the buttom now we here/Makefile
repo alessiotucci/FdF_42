@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/08 16:24:26 by atucci            #+#    #+#              #
-#    Updated: 2023/08/09 11:27:46 by atucci           ###   ########.fr        #
+#    Updated: 2023/08/09 17:39:00 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = fdf
 #This sets the variable SRC to a list of C source files that are needed to build the push_swap executable.
 SRC = ./fdf.c \
 	  ./parsing.c \
-
+	  ./utils.c \
 
 #This sets the variable OBJS to a list of object files that need to be built from the SRC files.
 OBJS = $(SRC:.c=.o)
