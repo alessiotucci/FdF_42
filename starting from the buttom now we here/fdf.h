@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/10 09:45:21 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/10 10:47:28 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,28 @@ typedef struct s_point
 	struct s_point	*next;
 }		t_point;
 
+/* Define the struct to use for managing windows, image a other stuff */
+typedef struct s_date
+{
+	int	rows;
+	int	colums;
+	int	total_points;
+	int	width;
+	int	height;
+	void	*mlx;
+	void	*win;
+	void	*img;
+	int	bits;
+	int	lsize;
+	int	endian;
+	char *img_data;
+	double	spacing;
+	double	scaling;
+
+}		t_date;
 void	create_list(t_point **head, int x, int y, char *z_string);
 void	print_colored_list(t_point **head);
 int	free_split(char **tab);
 void	free_list(t_point *list);
+int	check_and_count(t_point *head, t_date *info_map);
 #endif

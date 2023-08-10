@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/10 09:47:53 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/10 10:50:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,26 +97,30 @@ static int	check_the_extension(char *name_of_map)
 	*and then I start creating the windows*/
 int	main(int ac, char *av[])
 {
-	int		width;
-	int		height;
 	t_point	*head;
+	t_date	info_map;
 
 	head = NULL;
-	width = DEFAULT_WIDTH;
-	height = DEFAULT_HEIGHT;
+//	info_map = NULL;
+	info_map.width = DEFAULT_WIDTH;
+	info_map.height = DEFAULT_HEIGHT;
 	if (ac < 2)
 		return (ft_printf("%sNot enough, forget map?%s\n", RED, RESET));
 	if (ac == 4)
 	{
 		if (check_windows_size(av[2], av[3]))
 		{
-			width = ft_atoi(av[2]);
-			height = ft_atoi(av[3]);
+			info_map.width = ft_atoi(av[2]);
+			info_map.height = ft_atoi(av[3]);
 		}
 	}
 	check_the_extension(av[1]);
 	check_the_map(av[1], &head);
-	ft_printf("%swidth:%d\nheight:%d%s\n", YELLOW, width, height, RESET);
+	ft_printf("%swidth:%d\nheight:%d%s\n", YELLOW, info_map.width, info_map.height, RESET);
+	//link_the_points(&head);
+	info_map.total_points = check_and_count(head, &info_map);
+	ft_printf("%sThe lenght of the list is :%d%s\n", GREEN, info_map.total_points, RESET);
+	ft_printf("%sThe map is a [%d X %d]%s\n", GREEN, info_map.colums, info_map.rows, RESET);
 	print_colored_list(&head);
 	free_list(head);
 	return (ft_printf("%s Everything seems good to me %s\n", GREEN, RESET));
