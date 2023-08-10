@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/09 18:00:21 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/10 09:33:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,11 @@ static int	check_the_extension(char *name_of_map)
 	ft_printf("\033[1;41mNot a valid .fdf extension\033[0m\n");
 	return (0);
 }
-
+/*
+	*This is the main body of the function
+	*where all the process starts
+	*I start with the parsing of the map
+	*and then I start creating the windows*/
 int	main(int ac, char *av[])
 {
 	int		width;
