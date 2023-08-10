@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:35:56 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/09 17:44:25 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/10 09:38:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,17 @@ void	print_colored_list(t_point **head)
 		ft_printf("\n");
 		current = current->next;
 	}
+}
+
+int	free_split(char **tab)
+{
+	int	count;
+
+	count = 0;
+	while (tab[count])
+	{
+		free(tab[count++]);
+	}
+	free(tab);
+	return (0);
 }

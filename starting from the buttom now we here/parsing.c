@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/09 17:40:36 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/10 09:44:54 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,17 @@ void	create_list(t_point **head, int x, int y, char *z_string)
 		while (current->next != NULL)
 			current = current->next;
 		current->next = new_node;
+	}
+}
+
+/*Function to free the list*/
+void	free_list(t_point *list)
+{
+	t_point	*tempy;
+	while (list != NULL)
+	{
+		tempy = list;
+		list = list->next;
+		free(tempy);
 	}
 }

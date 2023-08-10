@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/10 09:33:06 by atucci           ###   ########.fr       */
+/*   Updated: 2023/08/10 09:47:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_the_map(char *file_name, t_point **head)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		return (ft_printf("\033[1;31mCan't read the map 😴 \033[0m\n"));
-	while ((help_line = get_next_line(fd)) != NULL)
+	while ((help_line = get_next_line(fd)) != NULL) // gnl might leaks, this is not allowed by the norm;
 	{
 		ft_printf("this is the line: %s\n", help_line);
 		matrix_map = ft_split(help_line, ' ');
@@ -39,7 +39,7 @@ static int	check_the_map(char *file_name, t_point **head)
 		rows = 0;
 		colums++;
 	}
-	ft_printf("%s%s!free split\n%s%s", BG_YELLOW, GREEN, BG_RESET, RESET);
+	free_split(matrix_map);
 	return (0);
 }
 
@@ -118,5 +118,6 @@ int	main(int ac, char *av[])
 	check_the_map(av[1], &head);
 	ft_printf("%swidth:%d\nheight:%d%s\n", YELLOW, width, height, RESET);
 	print_colored_list(&head);
+	free_list(head);
 	return (ft_printf("%s Everything seems good to me %s\n", GREEN, RESET));
 }
