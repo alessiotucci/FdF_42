@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/21 14:03:48 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/21 14:54:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	main(int ac, char *av[])
 	check_the_map(av[1], &head);
 	ft_printf("%swidth:%d\nheight:%d%s\n", YELLOW, info_map.width, info_map.height, RESET);
 	info_map.total_points = check_and_count(head, &info_map);
-	point_connect(&head, &info_map);
+	point_connect(&head);
 	ft_printf("%sThe lenght of the list is :%d%s\n", GREEN, info_map.total_points, RESET);
 	ft_printf("%sThe map is a [%d X %d]%s\n", GREEN, info_map.colums, info_map.rows, RESET);
 	print_colored_list(&head);
