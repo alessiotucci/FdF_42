@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 09:36:54 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/21 09:41:37 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/21 10:49:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	print_colored_list(t_point **head)
 	while (current != NULL)
 	{
 		ft_printf("\n---------------------------------\n");
-		ft_printf("|		POINT: %d	|\n", count++);
+		ft_printf("|POINT:%d ADDRESS:%p |\n", count++, current);
 		ft_printf("---------------------------------\n");
 		ft_printf("\033[0;30;42mx_map: %d\033[0m\n", current->x_map);
 		ft_printf("\033[0;30;42my_map: %d\033[0m\n", current->y_map);
