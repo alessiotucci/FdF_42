@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/21 10:44:53 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/21 14:48:02 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	print_colored_list(t_point **head);
 int	free_split(char **tab);
 void	free_list(t_point *list);
 int	check_and_count(t_point *head, t_date *info_map);
+int	point_connect(t_point **head);
 // bard
 void	connect_down_nodes(t_point *current);
 void	point_bard(t_point **head);
