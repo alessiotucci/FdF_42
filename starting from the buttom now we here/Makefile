@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/08 16:24:26 by atucci            #+#    #+#              #
-#    Updated: 2023/08/09 17:39:00 by atucci           ###   ########.fr        #
+#    Updated: 2023/08/10 11:22:12 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ NAME = fdf
 SRC = ./fdf.c \
 	  ./parsing.c \
 	  ./utils.c \
+	  ./connect.c \
 
 #This sets the variable OBJS to a list of object files that need to be built from the SRC files.
 OBJS = $(SRC:.c=.o)
