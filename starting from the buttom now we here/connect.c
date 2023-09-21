@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:21:47 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/21 10:43:50 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/21 10:53:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	point_bard(t_point **head)
 /*function to go down*/
 void connect_down_nodes(t_point *current)
 {
+	ft_printf("function to connect\n");
 t_point *next_down_node;
 t_point *node;
 
