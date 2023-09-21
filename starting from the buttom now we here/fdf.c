@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/08/10 10:50:53 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/21 09:18:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	check_the_extension(char *name_of_map)
 	int	len;
 
 	len = strlen(name_of_map);
-	if (len <= 4)
+	if (len < 4)
 	{
 		ft_printf("\033[1;41mmap name is very short!\033[0m\n");
 		return (0);
