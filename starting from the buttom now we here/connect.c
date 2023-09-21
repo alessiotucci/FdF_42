@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:21:47 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/21 08:58:57 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/21 09:27:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int	point_connect(t_point **head, t_date *my_info)
 		}
 		y++;
 	}
+	ft_printf("this is where the fun start\n");
 return (0);
 }
