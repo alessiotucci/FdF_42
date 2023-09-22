@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/21 14:48:02 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/22 07:06:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,5 @@ int	point_connect(t_point **head);
 // bard
 void	connect_down_nodes(t_point *current);
 void	point_bard(t_point **head);
+void	new_windows(t_date *info_map);
 #endif
