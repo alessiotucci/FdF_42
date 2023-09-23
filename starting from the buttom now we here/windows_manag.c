@@ -6,14 +6,14 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/22 07:07:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/23 21:35:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./mlx/mlx.h"
-# include "./mlx/mlx_int.h"
 #include "fdf.h"
 #include "./libft/libft.h"
+//#include "./mlx/mlx_init.h"
+#include "./mlx/mlx_init.swift"
 
 void	new_windows(t_date *info_map)
 {
