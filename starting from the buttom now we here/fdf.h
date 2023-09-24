@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/24 13:40:45 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/24 15:56:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <stdio.h>
 # include <errno.h>
 # include <string.h>
-# include "./mlx/mlx.h"
-# include "./mlx/mlx_int.h"
 
 /* Define color macros */
 # define GREEN   "\033[1;32m"

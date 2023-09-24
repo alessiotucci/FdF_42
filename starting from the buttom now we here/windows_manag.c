@@ -6,10 +6,11 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/24 13:22:51 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/24 15:57:20 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx/mlx.h"
 #include "fdf.h"
 
 void	new_windows(t_date *info_map)
