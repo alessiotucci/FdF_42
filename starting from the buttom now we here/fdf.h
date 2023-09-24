@@ -6,12 +6,13 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/24 15:56:27 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/24 15:59:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
+# include "mlx/mlx.h"
 # include "libft/libft.h"
 # include <math.h>
 # include <fcntl.h>
