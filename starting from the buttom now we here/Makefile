@@ -61,10 +61,11 @@ TRASH_EMOJI := 🗑️
 	${CC} -I ${HDRS} -c $< -o ${<:.c=.o}
 
 #This is a rule that specifies how to build an object file from a C source file. It compiles the C file with the appropriate flags and options, and outputs the resulting object file.
-
+# there is a issue with the makefile and mlx
 $(NAME): $(OBJS)
 	@echo "$(CYAN)$(DANCING_EMOJI)Building $(NAME)...$(DANCING_EMOJI)$(RESET)"
-	$(MAKE) -C libft
+	$(MAKE) -C libft 
+	$(MAKE) -C mlx 
 	${CC} -o $(NAME) $(OBJS) $(LIBFT)
 		@echo "$(GREEN)$(MIC_DROP_EMOJI)$(NAME) binary created successfully! $(MIC_DROP_EMOJI)$(RESET)"
 
