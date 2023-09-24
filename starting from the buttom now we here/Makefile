@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/08 16:24:26 by atucci            #+#    #+#              #
-#    Updated: 2023/09/22 07:05:55 by atucci           ###   ########.fr        #
+#    Updated: 2023/09/23 21:26:34 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ $(NAME): $(OBJS)
 #LET TRY ALONE
 #$(NAME) : $(OBJS)
 #	@echo "$(CYAN)I need to compile the mlx library$(RESET)"
-#	$(MAKE) -C  mlx_macos 
+#	$(MAKE) -C  mlx 
 
 
 all: $(NAME)
@@ -83,7 +83,7 @@ clean:
 	@echo "$(YELLOW)$(TRASH_EMOJI) Cleaning up object files...$(TRASH_EMOJI)$(RESET)"
 	${RM} $(OBJS)
 	$(MAKE) -C libft clean
-	$(MAKE) -C mlx_macos clean
+	$(MAKE) -C mlx clean
 
 
 #This rule specifies how to completely remove the generated object files and the push_swap executable.
