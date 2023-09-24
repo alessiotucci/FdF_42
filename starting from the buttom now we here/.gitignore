@@ -1,0 +1,11 @@
+# Ignore Vim .swp files
+*.swp
+# Ignore DS_store
+.DS_Store
+
+# Ignore compiled C files
+*.o
+*.out
+*.swo
+*.swn
+
