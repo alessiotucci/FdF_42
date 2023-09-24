@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/24 15:59:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/24 17:16:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,17 @@ typedef struct s_point
 	struct s_point	*next;
 }		t_point;
 
+
+typedef struct s_graphics {
+	void	*mlx;
+	void	*win;
+	void	*img;
+	int	bits;
+	int	lsize;
+	int	endian;
+	char	*img_data;
+}		t_graphics;
+
 /* Define the struct to use for managing windows, image a other stuff */
 typedef struct s_date
 {
@@ -65,17 +76,12 @@ typedef struct s_date
 	int	total_points;
 	int	width;
 	int	height;
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int	bits;
-	int	lsize;
-	int	endian;
-	char *img_data;
 	double	spacing;
 	double	scaling;
-
+	t_graphics	graphics;
 }		t_date;
+
+
 void	create_list(t_point **head, int x, int y, char *z_string);
 void	print_colored_list(t_point **head);
 int	free_split(char **tab);
@@ -85,5 +91,5 @@ int	point_connect(t_point **head);
 // bard
 void	connect_down_nodes(t_point *current);
 void	point_bard(t_point **head);
-void	new_windows(t_date *info_map);
+void	new_windows(t_graphics *info_map, t_date *mac);
 #endif
