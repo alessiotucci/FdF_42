@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 13:37:16 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 15:27:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 # include <stdio.h>
 # include <errno.h>
 # include <string.h>
+
+/*this is the fix or the issues
+# include <X11/X.h>
+# include <X11/keysym.h>
+*/
 
 /* Define keyboard code */
 # define ARROW_LEFT 123
