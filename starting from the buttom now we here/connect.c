@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:21:47 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/21 14:53:44 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 17:37:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,21 @@ int	point_connect(t_point **head)
 return (0);
 }
 
+/*THIS WILL BE DELETED AFTERWARDS*/
+void	print_infos(t_date *date)
+{
+	ft_printf("------------------------------------\n");
+	ft_printf("|       info about the map         |\n");
+	ft_printf("------------------------------------\n");
+	ft_printf("rows: %d\n", date->rows);
+	ft_printf("columns: %d\n", date->colums);
+	ft_printf("total_points: %d\n", date->total_points);
+	ft_printf("width: %d\n", date->width);
+	ft_printf("height: %d\n", date->height);
+	printf("scaling_x: %f\n", date->scaling_x);
+	printf("scaling_y: %f\n", date->scaling_y);
+	printf("center_x: %f\n", date->center_x);
+	printf("center_y: %f\n", date->center_y);
+	ft_printf("------------------------------------\n");
+}
 

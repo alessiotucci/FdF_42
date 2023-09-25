@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 16:55:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 17:31:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ typedef struct s_date
 	int	height;
 //	double	spacing;
 //	double	scaling;
-	double	scalin_x;
-	double	scalin_y;
-	double	centerin_x;
-	double	centerin_y;
+	double	scaling_x;
+	double	scaling_y;
+	double	center_x;
+	double	center_y;
 	t_graphics	graphics;
 }		t_date;
 
@@ -118,4 +118,6 @@ void	connect_down_nodes(t_point *current);
 void	point_bard(t_point **head);
 void	new_windows(t_graphics *info_map, t_date *mac);
 void	clean_close(t_graphics *project);
+void	space_and_scale(t_date *info);
+void	print_infos(t_date *info);
 #endif
