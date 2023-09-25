@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 15:27:19 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 16:55:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,12 @@ typedef struct s_date
 	int	total_points;
 	int	width;
 	int	height;
-	double	spacing;
-	double	scaling;
+//	double	spacing;
+//	double	scaling;
+	double	scalin_x;
+	double	scalin_y;
+	double	centerin_x;
+	double	centerin_y;
 	t_graphics	graphics;
 }		t_date;
 
