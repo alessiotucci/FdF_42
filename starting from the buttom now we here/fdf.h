@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 18:49:48 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 19:28:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,11 +117,13 @@ int	point_connect(t_point **head);
 void	connect_down_nodes(t_point *current);
 void	point_bard(t_point **head);
 void	new_windows(t_graphics *info_map, t_date *mac);
+void	new_image(t_graphics *mag, t_date *inf);
 void	clean_close(t_graphics *project);
 void	space_and_scale(t_date *info);
 void	print_infos(t_date *info);
 void	int_to_pixel(t_date *info, t_point **head);
 /*Adding the function to draw in the image*/
 void	bresenham(t_date *info, t_point *start, t_point *end);
-void	draw_point(t_date *info, int x, int y);
+void	draw_point(t_graphics *info, int x, int y);
+void	draw_lines(t_date *info, t_point **head);
 #endif

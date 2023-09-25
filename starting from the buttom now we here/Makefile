@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/08 16:24:26 by atucci            #+#    #+#              #
-#    Updated: 2023/09/24 15:55:51 by atucci           ###   ########.fr        #
+#    Updated: 2023/09/25 19:23:41 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = ./fdf.c \
 	  ./utils.c \
 	  ./connect.c \
 	  ./windows_manag.c \
+	  ./bresenham.c \
 
 #--------------------------------------------------
 # This sets the variable OBJS to a list of object files that need to be built from the SRC files.

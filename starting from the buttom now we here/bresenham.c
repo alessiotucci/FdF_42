@@ -6,11 +6,13 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 18:47:57 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 19:33:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	bresenham(t_date *info, t_point start, t_point end)
+#include "fdf.h"
+
+void	bresenham(t_date *info, t_point *start, t_point *end)
 {
 	int	delta_x;
 	int	delta_y;
@@ -28,7 +30,7 @@ void	bresenham(t_date *info, t_point start, t_point end)
 	while (x <= end->x_pixel)
 	{
 		// do some drawing
-		draw_point(info, x, y);
+		draw_point(&info->graphics, x, y);
 		if (p >= 0)
 		{
 			y = y + 1;
@@ -41,13 +43,30 @@ void	bresenham(t_date *info, t_point start, t_point end)
 }
 
 /* In this function we will try to set pixel in the img of mlx*/
-void draw_point(t_date *info, int x, int y)
+void draw_point(t_graphics *info, int x, int y)
 {
 	int	index;
-
+// bits and lsize are inside graphics...
 	if (info == NULL)
 		return; // Do nothing if the parameters are NULL
 	index = (info->lsize * y) + (x * (info->bits / 8));
-	info->img_data[index] = 255; // Set the pixel to red
+	info->img_data[index] = 34; // Set the pixel to red
 	return ;
+}
+
+/* In this function we will loop throught the list of points and draw using the bresenham funciton*/
+void	draw_lines(t_date *info, t_point **head)
+{
+	t_point	*current;
+
+	current = *head;
+	while (current != NULL)
+	{
+		if (current->go_right != NULL)
+			bresenham(info, current, current->go_right);
+		if (current->go_down != NULL)
+			bresenham(info, current, current->go_down);
+		if (current->go_down != NULL)
+		current = current->next;
+	}
 }

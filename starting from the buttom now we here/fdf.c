@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 18:19:45 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 19:18:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ int	main(int ac, char *av[])
 	print_infos(&info_map);
 // creating the windows
 	new_windows(&info_map.graphics, &info_map);
+	new_image(&info_map.graphics, &info_map);
+	draw_lines(&info_map, &head);
 	free_list(head);
 	return (ft_printf("%s Everything seems good to me %s\n", GREEN, RESET));
 }
