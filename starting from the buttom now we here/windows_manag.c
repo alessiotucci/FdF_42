@@ -6,11 +6,22 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/24 17:18:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 13:22:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	new_image(t_grahics *manager, t_date *inf)
+{
+	manager->img = mlx_new_image(manager->win, inf->width, inf->height);
+	if (manager->img == NULL) // this will be modify later on
+		exit(0);
+	manager->img_data = mlx_get_data_addr();
+	if (manager->img_data == NULL)
+		exit(0); // this need to be modify as well
+	mlx_put_image_to_window();
+}
 
 void	new_windows(t_graphics *help, t_date *infos)
 {
