@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/24 17:16:35 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 13:09:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,22 @@
 # include <stdio.h>
 # include <errno.h>
 # include <string.h>
+
+/* Define keyboard code */
+# define ARROW_LEFT 123
+# define ARROW_RIGHT 124
+# define ARROW_DOWN 125
+# define ARROW_UP 126
+# define MINUS 27
+# define PLUS 24
+# define SPACE 49
+# define KEY_R 15
+# define MOUSE_CLICK_LEFT 1
+# define MOUSE_CLICK_RIGHT 2
+# define MOUSE_CLICK_MIDDLE 3
+# define MOUSE_WHEEL_UP 4
+# define MOUSE_WHEEL_DOWN 5
+# define ESCAPE 53
 
 /* Define color macros */
 # define GREEN   "\033[1;32m"
