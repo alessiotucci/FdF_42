@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 13:22:03 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 13:36:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@ void	new_image(t_grahics *manager, t_date *inf)
 		exit(0); // this need to be modify as well
 	mlx_put_image_to_window();
 }
-
+/* This function perfom a cleana close and then exit*/
+void	clean_close(t_graphics *project)
+{
+	mlx_destroy_window(project->win);
+	mlx_terminate(project->win);
+	exit(0);
+}
 void	new_windows(t_graphics *help, t_date *infos)
 {
 	help->win = mlx_init();

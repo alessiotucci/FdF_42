@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 13:09:00 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 13:37:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_point
 	struct s_point	*next;
 }		t_point;
 
-
+/* Define the struct used for graphis and other stuff*/
 typedef struct s_graphics {
 	void	*mlx;
 	void	*win;
@@ -108,4 +108,5 @@ int	point_connect(t_point **head);
 void	connect_down_nodes(t_point *current);
 void	point_bard(t_point **head);
 void	new_windows(t_graphics *info_map, t_date *mac);
+void	clean_close(t_graphics *project);
 #endif
