@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 17:50:18 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 18:19:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,14 @@ int	main(int ac, char *av[])
 	ft_printf("%swidth:%d\nheight:%d%s\n", YELLOW, info_map.width, info_map.height, RESET);
 	info_map.total_points = check_and_count(head, &info_map);
 	point_connect(&head);
+	space_and_scale(&info_map);
+	int_to_pixel(&info_map, &head);
 	ft_printf("%sThe lenght of the list is :%d%s\n", GREEN, info_map.total_points, RESET);
 	ft_printf("%sThe map is a [%d X %d]%s\n", GREEN, info_map.colums, info_map.rows, RESET);
+// print out to check them values
 	print_colored_list(&head);
-	space_and_scale(&info_map);
-	point_connect(&head);
 	print_infos(&info_map);
+// creating the windows
 	new_windows(&info_map.graphics, &info_map);
 	free_list(head);
 	return (ft_printf("%s Everything seems good to me %s\n", GREEN, RESET));

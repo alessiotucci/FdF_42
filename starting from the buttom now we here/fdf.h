@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 17:31:35 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 18:16:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,5 @@ void	new_windows(t_graphics *info_map, t_date *mac);
 void	clean_close(t_graphics *project);
 void	space_and_scale(t_date *info);
 void	print_infos(t_date *info);
+void	int_to_pixel(t_date *info, t_point **head);
 #endif

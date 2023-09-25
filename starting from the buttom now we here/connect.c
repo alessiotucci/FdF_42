@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:21:47 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 17:37:53 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/25 18:20:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,19 @@ int	point_connect(t_point **head)
 	}
 return (0);
 }
+/* THIS function will set the pixel values accordingly*/
+void	int_to_pixel(t_date *info, t_point **head)
+{
+	t_point	*current;
 
+	current = *head;
+	while (current != NULL)
+	{
+		current->x_pixel = info->center_x + (current->x_map * info->scaling_x);
+		current->y_pixel = info->center_y + (current->y_map * info->scaling_y);
+	current = current->next;
+	}
+}
 /*THIS WILL BE DELETED AFTERWARDS*/
 void	print_infos(t_date *date)
 {
