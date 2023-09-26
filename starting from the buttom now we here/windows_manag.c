@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 21:56:10 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/26 10:12:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	new_image(t_graphics *manager, t_date *inf)
 	manager->img = mlx_new_image(manager->win, inf->width, inf->height);
 	if (manager->img == NULL) // this will be modify later on
 		exit(0);// use the clean_close?
+	mlx_put_image_to_window(manager->mlx, manager->win, manager->img, 0, 0);
 	manager->img_data = mlx_get_data_addr(manager->img, &(manager->bits), &(inf->rows), &(manager->endian));
 	if (manager->img_data == NULL)
 		exit(0); // use the clean close?
-	mlx_put_image_to_window(manager->win, manager->mlx, manager->img, 0, 0);
 }
 /* This function perfom a cleana close and then exit*/
 void	clean_close(t_graphics *project)
@@ -47,11 +47,12 @@ int	esc_pressed(int keycode, void *param)
 
 void	new_windows(t_graphics *help, t_date *infos)
 {
-	help->win = mlx_init();
+	help->mlx = mlx_init();
 	if (help->win == NULL)
 		exit(0);
-	mlx_new_window(help->win, infos->width, infos->height, "testing out");
+	help->win = mlx_new_window(help->mlx, infos->width, infos->height, "testing out");
+	new_image(help, infos);
 //	mlx_hook(help->win, KeyPress, KeyPressMask, esc_pressed); // to be tested
-	mlx_loop(help->win);
+	mlx_loop(help->mlx);
 	return ;
 }
