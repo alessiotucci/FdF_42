@@ -53,6 +53,17 @@ understanding isometric projection allows the program to transform the map's coo
 [link 1](https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html)
 [link 2](https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx)
 
+| Step | Description                               | MiniLibX Function                   |
+|------|-------------------------------------------|------------------------------------|
+| 1    | Initialize the mlx connection             | `mlx_init`                         |
+| 2    | Create a window                           | `mlx_new_window`                   |
+| 3    | Create an image                           | `mlx_new_image`                    |
+| 4    | Get the image data                        | `mlx_get_data_addr`                |
+| 5    | Draw on the image                         | Modify pixel data                  |
+| 6    | Put the image onto the window             | `mlx_put_image_to_window`          |
+| 7    | Start the event loop                      | `mlx_loop`                         |
+
+
 
 
 
