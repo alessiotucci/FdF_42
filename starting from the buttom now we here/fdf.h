@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 19:28:23 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/26 10:49:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	point_connect(t_point **head);
 // bard
 void	connect_down_nodes(t_point *current);
 void	point_bard(t_point **head);
-void	new_windows(t_graphics *info_map, t_date *mac);
+void	new_windows(t_graphics *info_map, t_date *mac, t_point **head);
 void	new_image(t_graphics *mag, t_date *inf);
 void	clean_close(t_graphics *project);
 void	space_and_scale(t_date *info);

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/25 19:33:37 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/26 11:05:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,20 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 /* In this function we will try to set pixel in the img of mlx*/
 void draw_point(t_graphics *info, int x, int y)
 {
+	ft_printf("\t[%d][%d]\t", x, y);
 	int	index;
 // bits and lsize are inside graphics...
 	if (info == NULL)
 		return; // Do nothing if the parameters are NULL
 	index = (info->lsize * y) + (x * (info->bits / 8));
-	info->img_data[index] = 34; // Set the pixel to red
+	info->img_data[index] = (unsigned char)255; // Set the pixel to red
 	return ;
 }
 
 /* In this function we will loop throught the list of points and draw using the bresenham funciton*/
 void	draw_lines(t_date *info, t_point **head)
 {
+	ft_printf("[H]: check draw lines\n");
 	t_point	*current;
 
 	current = *head;
@@ -66,7 +68,6 @@ void	draw_lines(t_date *info, t_point **head)
 			bresenham(info, current, current->go_right);
 		if (current->go_down != NULL)
 			bresenham(info, current, current->go_down);
-		if (current->go_down != NULL)
 		current = current->next;
 	}
 }
