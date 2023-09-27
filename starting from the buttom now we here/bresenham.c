@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/26 11:05:21 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/27 10:49:39 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,39 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 /* In this function we will try to set pixel in the img of mlx*/
 void draw_point(t_graphics *info, int x, int y)
 {
-	ft_printf("\t[%d][%d]\t", x, y);
+	//ft_printf("\t[%d][%d]\t\n", x, y);
 	int	index;
 // bits and lsize are inside graphics...
 	if (info == NULL)
 		return; // Do nothing if the parameters are NULL
 	index = (info->lsize * y) + (x * (info->bits / 8));
 	info->img_data[index] = (unsigned char)255; // Set the pixel to red
+	// idk what is this
+info->img_data[index + 1] = (unsigned char)255; // Green channel
+info->img_data[index + 2] = (unsigned char)255; // Blue channel
+
 	return ;
 }
 
 /* In this function we will loop throught the list of points and draw using the bresenham funciton*/
 void	draw_lines(t_date *info, t_point **head)
 {
-	ft_printf("[H]: check draw lines\n");
+	ft_printf("\n--\t---\n[3]: check draw lines--> call bresenham --> call draw point\n");
 	t_point	*current;
 
 	current = *head;
 	while (current != NULL)
 	{
 		if (current->go_right != NULL)
+		{
+		ft_printf("%s \t- BRESENHAM[%p] going right %s\t-->\n", BG_CYAN,current, RESET);
 			bresenham(info, current, current->go_right);
-		if (current->go_down != NULL)
+		}
+			if (current->go_down != NULL)
+		{
+		ft_printf("%s \t- BRESENHAM[%p] going down %s\t--v\n", BG_CYAN,current, RESET);
 			bresenham(info, current, current->go_down);
+		}
 		current = current->next;
 	}
 }

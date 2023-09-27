@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/26 11:01:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/27 10:59:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 
 void	new_image(t_graphics *manager, t_date *inf)
 {
-	ft_printf("[1] new image function\n");
+	ft_printf("\nInside new image function;\ngetting address in img_data\n:::::::::::::::::\n\n");
 	manager->img = mlx_new_image(manager->win, inf->width, inf->height);
 	if (manager->img == NULL) // this will be modify later on
 		exit(0);// use the clean_close?
-	//mlx_put_image_to_window(manager->mlx, manager->win, manager->img, 0, 0);
 	manager->img_data = mlx_get_data_addr(manager->img, &(manager->bits), &(inf->rows), &(manager->endian));
 	if (manager->img_data == NULL)
 		exit(0); // use the clean close?
@@ -48,17 +47,17 @@ int	esc_pressed(int keycode, void *param)
 
 void	new_windows(t_graphics *help, t_date *infos, t_point **head)
 {
-	help->mlx = mlx_init();
+	help->mlx = mlx_init(); ft_printf("mlx_init has started\t");
 	if (help->win == NULL)
 		exit(0);
 	help->win = mlx_new_window(help->mlx, infos->width, infos->height, "testing out");
 	new_image(help, infos);
 //	mlx_hook(help->win, KeyPress, KeyPressMask, esc_pressed); // to be tested
-	ft_printf("[0]: ready to draw lines\n function call\n");
+
 	draw_lines(infos, head);
 
-
 	mlx_put_image_to_window(help->mlx, help->win, help->img, 0, 0);
+
 	mlx_loop(help->mlx);
 	return ;
 }
