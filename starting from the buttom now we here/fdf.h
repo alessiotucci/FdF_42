@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/26 10:49:21 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/27 11:42:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct s_point
 	struct s_point	*next;
 }		t_point;
 
-/* Define the struct used for graphis and other stuff*/
+/* Define the struct used for graphis and other stuff
 typedef struct s_graphics {
 	void	*mlx;
 	void	*win;
@@ -88,6 +88,7 @@ typedef struct s_graphics {
 	int	endian;
 	char	*img_data;
 }		t_graphics;
+*/
 
 /* Define the struct to use for managing windows, image a other stuff */
 typedef struct s_date
@@ -103,7 +104,14 @@ typedef struct s_date
 	double	scaling_y;
 	double	center_x;
 	double	center_y;
-	t_graphics	graphics;
+	void	*mlx;
+	void	*window;
+	void	*image_pointer;
+	int	bits;
+	int	lsize;
+	int	endian;
+	char	*image_string;
+	//t_graphics	graphics;
 }		t_date;
 
 
@@ -116,14 +124,14 @@ int	point_connect(t_point **head);
 // bard
 void	connect_down_nodes(t_point *current);
 void	point_bard(t_point **head);
-void	new_windows(t_graphics *info_map, t_date *mac, t_point **head);
-void	new_image(t_graphics *mag, t_date *inf);
-void	clean_close(t_graphics *project);
+void	new_windows(t_date *mac, t_point **head);
+void	new_image(t_date *inf);
+void	clean_close(t_date *project);
 void	space_and_scale(t_date *info);
 void	print_infos(t_date *info);
 void	int_to_pixel(t_date *info, t_point **head);
 /*Adding the function to draw in the image*/
 void	bresenham(t_date *info, t_point *start, t_point *end);
-void	draw_point(t_graphics *info, int x, int y);
+void	draw_point(t_date *info, int x, int y);
 void	draw_lines(t_date *info, t_point **head);
 #endif

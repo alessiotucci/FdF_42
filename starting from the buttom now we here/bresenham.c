@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/27 10:49:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/27 11:45:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 	while (x <= end->x_pixel)
 	{
 		// do some drawing
-		draw_point(&info->graphics, x, y);
+		draw_point(info, x, y);
 		if (p >= 0)
 		{
 			y = y + 1;
@@ -43,7 +43,7 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 }
 
 /* In this function we will try to set pixel in the img of mlx*/
-void draw_point(t_graphics *info, int x, int y)
+void draw_point(t_date *info, int x, int y)
 {
 	//ft_printf("\t[%d][%d]\t\n", x, y);
 	int	index;
@@ -51,10 +51,10 @@ void draw_point(t_graphics *info, int x, int y)
 	if (info == NULL)
 		return; // Do nothing if the parameters are NULL
 	index = (info->lsize * y) + (x * (info->bits / 8));
-	info->img_data[index] = (unsigned char)255; // Set the pixel to red
+	info->image_string[index] = (unsigned char)255; // Set the pixel to red
 	// idk what is this
-info->img_data[index + 1] = (unsigned char)255; // Green channel
-info->img_data[index + 2] = (unsigned char)255; // Blue channel
+info->image_string[index + 1] = (unsigned char)255; // Green channel
+info->image_string[index + 2] = (unsigned char)255; // Blue channel
 
 	return ;
 }

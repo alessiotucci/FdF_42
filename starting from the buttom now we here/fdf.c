@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/27 10:59:56 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/27 11:32:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int	main(int ac, char *av[])
 	print_colored_list(&head);
 	print_infos(&info_map);
 /* creating the windows*/
-	new_windows(&info_map.graphics, &info_map, &head);
+	new_windows(/*&info_map.graphics,*/ &info_map, &head);
 	/*
 		*1) open windows
 		*2) draw the image
