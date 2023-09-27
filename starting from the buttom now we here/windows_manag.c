@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/27 11:44:17 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/27 11:47:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 void	new_image(t_date *inf)
 {
 	ft_printf("\nInside new image function;\ngetting address in img_data\n:::::::::::::::::\n\n");
-	inf->image_pointer = mlx_new_image(inf->window, inf->width, inf->height);
-	if (inf->image_pointer == NULL) // this will be modify later on
+	inf->img_pointer = mlx_new_image(inf->window, inf->width, inf->height);
+	if (inf->img_pointer == NULL) // this will be modify later on
 		exit(0);// use the clean_close?
-	inf->image_string = mlx_get_data_addr(inf->image_pointer, &(inf->bits), &(inf->rows), &(inf->endian));
-	if (inf->image_string == NULL)
+	inf->img_string = mlx_get_data_addr(inf->img_pointer, &(inf->bits), &(inf->rows), &(inf->endian));
+	if (inf->img_string == NULL)
 		exit(0); // use the clean close?
 }
 /* This function perfom a cleana close and then exit*/
@@ -51,7 +51,7 @@ void	new_windows(t_date *help, t_point **head)
 
 	draw_lines(help, head);
 
-	mlx_put_image_to_window(help->mlx, help->window, help->image_pointer, 0, 0);
+	mlx_put_image_to_window(help->mlx, help->window, help->img_pointer, 0, 0);
 
 	mlx_loop(help->mlx);
 	return ;

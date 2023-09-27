@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/27 11:42:15 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/27 11:46:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,11 @@ typedef struct s_date
 	double	center_y;
 	void	*mlx;
 	void	*window;
-	void	*image_pointer;
+	void	*img_pointer;
 	int	bits;
 	int	lsize;
 	int	endian;
-	char	*image_string;
+	char	*img_string;
 	//t_graphics	graphics;
 }		t_date;
 
