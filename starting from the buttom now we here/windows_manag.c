@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 13:42:54 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 14:29:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,32 @@ void	clean_close(t_date *project)
 }
 
 /* This function handle the ESC key press*/
-int	esc_pressed(int keycode, void *param)
+int	key_pressed(int keycode, void *param)
 {
+	t_date *help = (t_date *) param;
 	if (keycode == ESCAPE)
-	{
-		t_date *help = (t_date *) param;
 		clean_close(help);
-	}
-		return (1);
+	else if (keycode == PLUS)
+		test_function(help);
+	else if (keycode == MINUS)
+		test_function(help);
+	else if (keycode == SPACE)
+		test_function(help);
+	else if (keycode == MOUSE_WHEEL_UP)
+		test_function(help);
+	else if (keycode == MOUSE_WHEEL_DOWN)
+		test_function(help);
+	return (1);
 }
+/* copied form gpt*/
+int	window_close(void *param)
+{
+	t_date *help = (t_date *)param;
+// Your cleanup or exit code here
+clean_close(help);
+return (0); // Return 0 to indicate that the event has been handled
+}
+
 
 void	new_windows(t_date *help, t_point **head)
 {
@@ -51,8 +68,8 @@ void	new_windows(t_date *help, t_point **head)
 		exit(0);
 	help->window = mlx_new_window(help->mlx, help->width, help->height, "testing out");
 	new_image(help);
-	mlx_hook(help->window, 2, 1, esc_pressed, help); // to be tested
-
+	mlx_hook(help->window, 2, 1, key_pressed, help); // to be tested
+mlx_hook(help->window, 17, 0L, window_close, help);
 	draw_lines(help, head);
 
 	mlx_put_image_to_window(help->mlx, help->window, help->img_pointer, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:35:56 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 12:09:23 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 14:07:46 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	free_split(char **tab)
 	count = 0;
 	while (tab[count])
 	{
-		free(tab[count++]);
+		free(tab[count++]); 
 	}
 	free(tab);
 	return (0);
@@ -54,10 +54,18 @@ int	free_split(char **tab)
 
 void	ft_draw_instructions(t_date *env)
 {
-	mlx_string_put(env->mlx, env->window, 5, 0, COLOR_RED,
-		"Alessio tucci FDF");
+	mlx_string_put(env->mlx, env->window, 5, 0, COLOR_RED,"Alessio tucci FDF");
 	mlx_string_put(env->mlx, env->window, 5, 20, COLOR_YELLOW,
 		"testing the function mlx string put...");
 	mlx_string_put(env->mlx, env->window, 5, 40, COLOR_MAGENTA,
 		"cant do any bonuses");
+}
+
+void	test_function(t_date *env)
+{
+	static int	count;
+
+	count = 0;
+	mlx_string_put(env->mlx, env->window, 5 + count, 60 + count, COLOR_GREEN,"void test_function");
+	count += 10;
 }
