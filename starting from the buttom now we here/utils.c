@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:35:56 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/21 15:02:25 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 10:20:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	print_colored_list(t_point **head)
 {
-	ft_printf("\n\n\n");
-	t_point	*current;
-	static int count;
+	t_point		*current;
+	static int	count;
 
+	ft_printf("\n\n\n");
 	count = 0;
 	current = *head;
 	while (current != NULL)
@@ -30,9 +30,9 @@ void	print_colored_list(t_point **head)
 		ft_printf("\033[0;30;42mz_map: %d\t\t\t|\033[0m\n", current->z_map);
 		ft_printf("%s x pixel: %d\t\t\t|%s\n", CYAN, current->x_pixel, RESET);
 		ft_printf("%s y pixel: %d\t\t\t|%s\n", CYAN, current->y_pixel, RESET);
-		ft_printf("\033[0;30;43mgo_right:%p\t\t|\033[0m\n", (void *)current->go_right);
-		ft_printf("\033[0;30;43mgo_down: %p\033[0m\n", (void *)current->go_down);
-		ft_printf("\033[0;30;41mnext: %p\033[0m\n", (void *)current->next);
+		ft_printf("\033[0;30;43mgo_right:%p\t\t|\033[0m\n", current->go_right);
+		ft_printf("\033[0;30;43mgo_down: %p\033[0m\n", current->go_down);
+		ft_printf("\033[0;30;41mnext: %p\033[0m\n", current->next);
 		ft_printf("---------------------------------\n");
 		ft_printf("\n\n\n");
 		current = current->next;
