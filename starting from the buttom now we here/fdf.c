@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 10:36:15 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 11:20:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	main(int ac, char *av[])
 {
 	t_point	*head;
 	t_date	info_map;
+	int flag;
 
 	head = NULL;
 	info_map.width = DEFAULT_WIDTH;
@@ -114,8 +115,12 @@ int	main(int ac, char *av[])
 			info_map.height = ft_atoi(av[3]);
 		}
 	}
-	check_the_extension(av[1]);
-	check_the_map(av[1], &head);
+	flag = check_the_extension(av[1]);
+	if (flag == 0)
+		exit (0);
+	flag = check_the_map(av[1], &head);
+	if (flag > 0)
+		exit (0);
 	check_and_count(head, &info_map);
 	print_colored_list(&head);
 	print_infos(&info_map);
