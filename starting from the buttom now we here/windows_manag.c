@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 14:29:30 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 17:53:41 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,8 @@
 void	new_image(t_date *inf)
 {
 	ft_printf("\nInside new image function;\ngetting address in img_data\n:::::::::::::::::\n\n");
-	inf->img_pointer = mlx_new_image(inf->window, inf->width, inf->height);
-	if (inf->img_pointer == NULL) // this will be modify later on
-		exit(0);// use the clean_close?
-	inf->img_string = mlx_get_data_addr(inf->img_pointer, &(inf->bits), &(inf->rows), &(inf->endian));
-	if (inf->img_string == NULL)
-		exit(0); // use the clean close?
-	//ft_bzero(inf->img_string, inf->width * inf->height * (inf->bits / 8));
+	inf->img_pointer = mlx_new_image(inf->mlx, inf->width, inf->height);
+	inf->img_string = mlx_get_data_addr(inf->img_pointer, &(inf->bits), &(inf->lsize), &(inf->endian));
 
 }
 /* This function perfom a cleana close and then exit*/
@@ -69,9 +64,20 @@ void	new_windows(t_date *help, t_point **head)
 	help->window = mlx_new_window(help->mlx, help->width, help->height, "testing out");
 	new_image(help);
 	mlx_hook(help->window, 2, 1, key_pressed, help); // to be tested
-mlx_hook(help->window, 17, 0L, window_close, help);
+	mlx_hook(help->window, 17, 0L, window_close, help);
 	draw_lines(help, head);
-
+/*
+	if(head)
+		my_mlx_pixel_put(help, 280, 142, 0x00FF0000);
+		my_mlx_pixel_put(help, 290, 143, 0x00FF0000);
+		my_mlx_pixel_put(help, 300, 141, 0x00FF0000);
+		my_mlx_pixel_put(help, 295, 142, 0x00FF0000);
+		my_mlx_pixel_put(help, 265, 140, 0x00FF0000);
+		my_mlx_pixel_put(help, 349, 141, 0x00FF0000);
+		my_mlx_pixel_put(help, 265, 143, 0x00FF0000);
+		my_mlx_pixel_put(help, 256, 143, 0x00FF0000);
+		my_mlx_pixel_put(help, 280, 144, 0x00FF0000);
+*/
 	mlx_put_image_to_window(help->mlx, help->window, help->img_pointer, 0, 0);
 	ft_draw_instructions(help);
 

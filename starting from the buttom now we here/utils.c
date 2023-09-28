@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:35:56 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 14:07:46 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 17:30:16 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,13 @@ void	test_function(t_date *env)
 	count = 0;
 	mlx_string_put(env->mlx, env->window, 5 + count, 60 + count, COLOR_GREEN,"void test_function");
 	count += 10;
+}
+
+/*this function is taken from the 42 docs*/
+void	my_mlx_pixel_put(t_date *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->img_string + (y * data->lsize + x * (data->bits / 8));
+	*(unsigned int*)dst = color;
 }

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 14:26:15 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 18:10:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 	x = start->x_pixel;
 	y = start->y_pixel;
 	p = 2 * delta_y - delta_x;
+	if (delta_x == 0)
+			while (y <= end->y_pixel)
+			draw_point(info, x, y++);
 	while (x <= end->x_pixel)
 	{
 		// do some drawing
@@ -46,6 +49,8 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 void draw_point(t_date *info, int x, int y)
 {
 	ft_printf("\t[%d][%d]\t\n", x, y);
+		my_mlx_pixel_put(info, x, y, 0x00FF0000);
+/*
 	int	index;
 // bits and lsize are inside graphics...
 	if (info == NULL)
@@ -57,7 +62,7 @@ void draw_point(t_date *info, int x, int y)
 	// idk what is this
 info->img_string[index + 1] = (unsigned char)255; // Green channel
 info->img_string[index + 2] = (unsigned char)255; // Blue channel
-	//}
+	//}*/
 	return ;
 }
 
