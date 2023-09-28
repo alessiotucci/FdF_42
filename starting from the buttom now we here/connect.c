@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   connect.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:21:47 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/27 10:26:50 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 10:11:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static	void update_point_connect(t_point *curr, t_point *right, t_point *down)
+static	void	update_point_connect(t_point *curr, t_point *rght, t_point *dwn)
 {
-	if (right != NULL)
-		curr->go_right = right;
-	if (down != NULL)
-		curr->go_down = down;
+	if (rght != NULL)
+		curr->go_right = rght;
+	if (dwn != NULL)
+		curr->go_down = dwn;
 }
 
 /*static function to return the wanted address with two coordinates passed*/
-static t_point *address_finder(int coor_x, int coor_y, t_point **head)
+static t_point	*address_finder(int coor_x, int coor_y, t_point **head)
 {
 	t_point	*current;
 
@@ -46,15 +46,16 @@ int	point_connect(t_point **head)
 	current = *head;
 	while (current != NULL)
 	{
-	helper = address_finder(current->x_map + 1, current->y_map, head);
-	update_point_connect(current, helper, NULL);
-	helper = address_finder(current->x_map, current->y_map + 1, head);
-	update_point_connect(current, NULL, helper);
-	current = current->next;
+		helper = address_finder(current->x_map + 1, current->y_map, head);
+		update_point_connect(current, helper, NULL);
+		helper = address_finder(current->x_map, current->y_map + 1, head);
+		update_point_connect(current, NULL, helper);
+		current = current->next;
 	}
-return (0);
+	return (0);
 }
 /* THIS function will set the pixel values accordingly*/
+
 void	int_to_pixel(t_date *info, t_point **head)
 {
 	t_point	*current;
@@ -64,10 +65,11 @@ void	int_to_pixel(t_date *info, t_point **head)
 	{
 		current->x_pixel = info->center_x + (current->x_map * info->scaling_x);
 		current->y_pixel = info->center_y + (current->y_map * info->scaling_y);
-	current = current->next;
+		current = current->next;
 	}
 }
 /*THIS WILL BE DELETED AFTERWARDS*/
+
 void	print_infos(t_date *date)
 {
 	ft_printf("------------------------------------\n");
@@ -84,4 +86,3 @@ void	print_infos(t_date *date)
 	printf("center_y: %f\n", date->center_y);
 	ft_printf("------------------------------------\n");
 }
-
