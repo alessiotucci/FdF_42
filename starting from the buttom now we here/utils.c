@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:35:56 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 11:09:51 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 12:09:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,10 @@ int	free_split(char **tab)
 
 void	ft_draw_instructions(t_date *env)
 {
-	int owl;
-
-	owl = env->width / 3;
-	mlx_string_put(env->mlx, env->window, 5, owl, 0xFFFFFF,
+	mlx_string_put(env->mlx, env->window, 5, 0, COLOR_RED,
 		"Alessio tucci FDF");
-	mlx_string_put(env->mlx, env->window, 5, 20, 0xFFFFFF,
-		"THIS funciton is copied from dan young bull ");
-	mlx_string_put(env->mlx, env->window, 5, 40, 0xFFFFFF,
+	mlx_string_put(env->mlx, env->window, 5, 20, COLOR_YELLOW,
+		"testing the function mlx string put...");
+	mlx_string_put(env->mlx, env->window, 5, 40, COLOR_MAGENTA,
 		"cant do any bonuses");
 }

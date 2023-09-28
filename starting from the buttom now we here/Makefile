@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/08 16:24:26 by atucci            #+#    #+#              #
-#    Updated: 2023/09/25 19:23:41 by atucci           ###   ########.fr        #
+#    Updated: 2023/09/28 13:37:19 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ LIBFT = libft/libft.a
 
 #--------------------------------------------------
 # This variable specifies additional flags required for MiniLibX (mlx).
-MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
 #--------------------------------------------------
 # Color codes for echo commands to make the output more visually informative.

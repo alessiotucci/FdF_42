@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 10:32:40 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 12:30:53 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@ void draw_point(t_date *info, int x, int y)
 // bits and lsize are inside graphics...
 	if (info == NULL)
 		return; // Do nothing if the parameters are NULL
+	//if (x >= 0 && x < info->width && y >= 0 && y < info->height)
+	//{
 	index = (info->lsize * y) + (x * (info->bits / 8));
 	info->img_string[index] = (unsigned char)255; // Set the pixel to red
 	// idk what is this
 info->img_string[index + 1] = (unsigned char)255; // Green channel
 info->img_string[index + 2] = (unsigned char)255; // Blue channel
-
+	//}
 	return ;
 }
 
