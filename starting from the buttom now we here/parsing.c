@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 10:17:06 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 10:32:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	free_list(t_point *list)
 /*This function check the size of the map,
  and update the info map struct accordingly*/
 
-int	check_and_count(t_point *head, t_date *info_map)
+void	check_and_count(t_point *head, t_date *info_map)
 {
 	t_point	*goofy;
 	int		count;
@@ -73,7 +73,11 @@ int	check_and_count(t_point *head, t_date *info_map)
 		goofy = goofy->next;
 		count++;
 	}
-	return (count);
+	info_map->total_points = count;
+	point_connect(&head);
+	space_and_scale(info_map);
+	int_to_pixel(info_map, &head);
+	return;
 }
 /*create a function to link the points (go_down & go_right)*/
 

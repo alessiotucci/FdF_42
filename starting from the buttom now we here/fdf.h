@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 10:04:31 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 11:00:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	create_list(t_point **head, int x, int y, char *z_string);
 void	print_colored_list(t_point **head);
 int		free_split(char **tab);
 void	free_list(t_point *list);
-int		check_and_count(t_point *head, t_date *info_map);
+void	check_and_count(t_point *head, t_date *info_map);
 int		point_connect(t_point **head);
 /* bard */
 void	connect_down_nodes(t_point *current);
@@ -130,4 +130,7 @@ void	int_to_pixel(t_date *info, t_point **head);
 void	bresenham(t_date *info, t_point *start, t_point *end);
 void	draw_point(t_date *info, int x, int y);
 void	draw_lines(t_date *info, t_point **head);
+/* cheating a little bit*/
+void	ft_draw_instructions(t_date *env);
+
 #endif

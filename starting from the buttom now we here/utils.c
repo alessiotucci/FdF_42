@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:35:56 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 10:20:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 11:09:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,17 @@ int	free_split(char **tab)
 	}
 	free(tab);
 	return (0);
+}
+
+void	ft_draw_instructions(t_date *env)
+{
+	int owl;
+
+	owl = env->width / 3;
+	mlx_string_put(env->mlx, env->window, 5, owl, 0xFFFFFF,
+		"Alessio tucci FDF");
+	mlx_string_put(env->mlx, env->window, 5, 20, 0xFFFFFF,
+		"THIS funciton is copied from dan young bull ");
+	mlx_string_put(env->mlx, env->window, 5, 40, 0xFFFFFF,
+		"cant do any bonuses");
 }

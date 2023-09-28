@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/27 11:46:32 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 10:32:40 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 /* In this function we will try to set pixel in the img of mlx*/
 void draw_point(t_date *info, int x, int y)
 {
-	//ft_printf("\t[%d][%d]\t\n", x, y);
+	ft_printf("\t[%d][%d]\t\n", x, y);
 	int	index;
 // bits and lsize are inside graphics...
 	if (info == NULL)

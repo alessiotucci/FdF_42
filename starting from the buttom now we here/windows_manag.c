@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/27 11:47:56 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 10:59:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	new_windows(t_date *help, t_point **head)
 	draw_lines(help, head);
 
 	mlx_put_image_to_window(help->mlx, help->window, help->img_pointer, 0, 0);
+	ft_draw_instructions(help);
 
 	mlx_loop(help->mlx);
 	return ;
