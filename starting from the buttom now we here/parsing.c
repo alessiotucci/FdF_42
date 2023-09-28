@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/27 10:28:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 10:17:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ void	create_list(t_point **head, int x, int y, char *z_string)
 }
 
 /*Function to free the list*/
+
 void	free_list(t_point *list)
 {
 	t_point	*tempy;
+
 	while (list != NULL)
 	{
 		tempy = list;
@@ -51,11 +53,13 @@ void	free_list(t_point *list)
 		free(tempy);
 	}
 }
-/*This function check the size of the map, and update the info map struct accordingly*/
+/*This function check the size of the map,
+ and update the info map struct accordingly*/
+
 int	check_and_count(t_point *head, t_date *info_map)
 {
-	t_point *goofy;
-	int	count;
+	t_point	*goofy;
+	int		count;
 
 	count = 0;
 	goofy = head;
@@ -72,6 +76,7 @@ int	check_and_count(t_point *head, t_date *info_map)
 	return (count);
 }
 /*create a function to link the points (go_down & go_right)*/
+
 void	space_and_scale(t_date *inf)
 {
 	inf->scaling_x = inf->width / inf->colums;
@@ -79,8 +84,8 @@ void	space_and_scale(t_date *inf)
 	inf->scaling_y = inf->height / inf->rows;
 	printf("the inf->scaling_y will be = %d / %d\n", inf->height, inf->rows);
 	inf->center_x = (inf->width - (inf->colums * inf->scaling_x)) / 2;
-	printf("the inf->center_x will be = (%d - (%d * %lf)) / 2\n", inf->width, inf->colums, inf->scaling_x);
+	printf("ctr_x=(%d-(%d*%lf))/2\n", inf->width, inf->colums, inf->scaling_x);
 	inf->center_x = (inf->height - (inf->rows * inf->scaling_y)) / 2;
-	printf("the inf->center_y will be = (%d - (%d * %lf)) / 2\n", inf->height, inf->rows, inf->scaling_y);
-
+	printf("ctr_y=(%d-(%d*%lf))/2\n", inf->height, inf->rows, inf->scaling_y);
 }
+/* ************************************************************************** */
