@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 11:20:40 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 19:25:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,10 +126,11 @@ int	main(int ac, char *av[])
 	print_infos(&info_map);
 	new_windows(&info_map, &head);
 	free_list(head);
-	return (ft_printf("%s Everything seems good to me %s\n", GREEN, RESET));
+	return ft_printf(0);
 }
 	/*
 		*1) open windows
 		*2) draw the image
 		*3) put image to windows
+		*4) check the pointers because you're dumb. (lsize != rows);
 	*/

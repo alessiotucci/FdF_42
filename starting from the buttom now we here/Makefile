@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/08 16:24:26 by atucci            #+#    #+#              #
-#    Updated: 2023/09/28 13:37:19 by atucci           ###   ########.fr        #
+#    Updated: 2023/09/28 19:13:22 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,10 @@ LIBFT = libft/libft.a
 # This variable specifies additional flags required for MiniLibX (mlx).
 MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
+
+#--------------------------------------------------
+# this is for mlx_dir
+MLX_DIR = ./mlx
 #--------------------------------------------------
 # Color codes for echo commands to make the output more visually informative.
 GREEN := \033[1;32m
@@ -94,6 +98,18 @@ fclean: clean
 	@echo "$(YELLOW)Cleaning up $(NAME) binary...$(RESET)"
 	${RM} $(NAME)
 	$(MAKE) -C libft fclean
+
+#--------------------------------------------------
+# Download and install the MLX library if it is not already installed.
+download_mlx:
+	if [ -e $(MLX_DIR) ]; \
+	then \
+	echo "MiniLibX's directory detected"; \
+	else \
+	git clone git@github.com:42Paris/minilibx-linux.git \
+	&& mv minilibx-linux mlx; fi
+
+#--------------------------------------------------
 
 #--------------------------------------------------
 # Rule for recompiling the project from scratch.

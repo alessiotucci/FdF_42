@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 17:53:41 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 19:19:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,6 @@ void	new_windows(t_date *help, t_point **head)
 	mlx_hook(help->window, 2, 1, key_pressed, help); // to be tested
 	mlx_hook(help->window, 17, 0L, window_close, help);
 	draw_lines(help, head);
-/*
-	if(head)
-		my_mlx_pixel_put(help, 280, 142, 0x00FF0000);
-		my_mlx_pixel_put(help, 290, 143, 0x00FF0000);
-		my_mlx_pixel_put(help, 300, 141, 0x00FF0000);
-		my_mlx_pixel_put(help, 295, 142, 0x00FF0000);
-		my_mlx_pixel_put(help, 265, 140, 0x00FF0000);
-		my_mlx_pixel_put(help, 349, 141, 0x00FF0000);
-		my_mlx_pixel_put(help, 265, 143, 0x00FF0000);
-		my_mlx_pixel_put(help, 256, 143, 0x00FF0000);
-		my_mlx_pixel_put(help, 280, 144, 0x00FF0000);
-*/
 	mlx_put_image_to_window(help->mlx, help->window, help->img_pointer, 0, 0);
 	ft_draw_instructions(help);
 
