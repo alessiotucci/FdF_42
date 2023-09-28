@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 10:08:21 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 10:36:15 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	check_the_map(char *file_name, t_point **head)
 		return (ft_printf("\033[1;31mCan't read the map 😴 \033[0m\n"));
 	while ((help_line = get_next_line(fd)) != NULL)
 	{
-		ft_printf("this is the line: %s\n", help_line);
 		matrix_map = ft_split(help_line, ' ');
 		while (matrix_map[rows] != NULL)
 		{
@@ -94,7 +93,8 @@ static int	check_the_extension(char *name_of_map)
 	*This is the main body of the function
 	*where all the process starts
 	*I start with the parsing of the map
-	*and then I start creating the windows*/
+	*and then I start creating the windows
+*/
 
 int	main(int ac, char *av[])
 {
@@ -116,13 +116,7 @@ int	main(int ac, char *av[])
 	}
 	check_the_extension(av[1]);
 	check_the_map(av[1], &head);
-	ft_printf("%swidth:%d\nheight:%d%s\n", YELLOW, info_map.width, info_map.height, RESET);
-	info_map.total_points = check_and_count(head, &info_map);
-	point_connect(&head);
-	space_and_scale(&info_map);
-	int_to_pixel(&info_map, &head);
-	ft_printf("%sThe lenght of the list is :%d%s\n", GREEN, info_map.total_points, RESET);
-	ft_printf("%sThe map is a [%d X %d]%s\n", GREEN, info_map.colums, info_map.rows, RESET);
+	check_and_count(head, &info_map);
 	print_colored_list(&head);
 	print_infos(&info_map);
 	new_windows(&info_map, &head);
