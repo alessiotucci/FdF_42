@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/27 11:46:51 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 10:04:31 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@
 /* Define the struct to hold the value of the map */
 typedef struct s_point
 {
-	int		x_map;
-	int		y_map;
-	int		z_map;
-	int		x_pixel;
-	int		y_pixel;
+	int				x_map;
+	int				y_map;
+	int				z_map;
+	int				x_pixel;
+	int				y_pixel;
 	struct s_point	*go_right;
 	struct s_point	*go_down;
 	struct s_point	*next;
@@ -93,13 +93,11 @@ typedef struct s_graphics {
 /* Define the struct to use for managing windows, image a other stuff */
 typedef struct s_date
 {
-	int	rows;
-	int	colums;
-	int	total_points;
-	int	width;
-	int	height;
-//	double	spacing;
-//	double	scaling;
+	int		rows;
+	int		colums;
+	int		total_points;
+	int		width;
+	int		height;
 	double	scaling_x;
 	double	scaling_y;
 	double	center_x;
@@ -107,21 +105,19 @@ typedef struct s_date
 	void	*mlx;
 	void	*window;
 	void	*img_pointer;
-	int	bits;
-	int	lsize;
-	int	endian;
+	int		bits;
+	int		lsize;
+	int		endian;
 	char	*img_string;
-	//t_graphics	graphics;
 }		t_date;
-
 
 void	create_list(t_point **head, int x, int y, char *z_string);
 void	print_colored_list(t_point **head);
-int	free_split(char **tab);
+int		free_split(char **tab);
 void	free_list(t_point *list);
-int	check_and_count(t_point *head, t_date *info_map);
-int	point_connect(t_point **head);
-// bard
+int		check_and_count(t_point *head, t_date *info_map);
+int		point_connect(t_point **head);
+/* bard */
 void	connect_down_nodes(t_point *current);
 void	point_bard(t_point **head);
 void	new_windows(t_date *mac, t_point **head);
