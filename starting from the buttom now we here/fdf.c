@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/27 11:32:56 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/28 10:08:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_the_map(char *file_name, t_point **head)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		return (ft_printf("\033[1;31mCan't read the map 😴 \033[0m\n"));
-	while ((help_line = get_next_line(fd)) != NULL) // gnl might leaks, this is not allowed by the norm;
+	while ((help_line = get_next_line(fd)) != NULL)
 	{
 		ft_printf("this is the line: %s\n", help_line);
 		matrix_map = ft_split(help_line, ' ');
@@ -95,13 +95,13 @@ static int	check_the_extension(char *name_of_map)
 	*where all the process starts
 	*I start with the parsing of the map
 	*and then I start creating the windows*/
+
 int	main(int ac, char *av[])
 {
 	t_point	*head;
 	t_date	info_map;
 
 	head = NULL;
-//	info_map = NULL;
 	info_map.width = DEFAULT_WIDTH;
 	info_map.height = DEFAULT_HEIGHT;
 	if (ac < 2)
@@ -115,7 +115,7 @@ int	main(int ac, char *av[])
 		}
 	}
 	check_the_extension(av[1]);
-	check_the_map(av[1], &head); // add them check bro! c'mon?!
+	check_the_map(av[1], &head);
 	ft_printf("%swidth:%d\nheight:%d%s\n", YELLOW, info_map.width, info_map.height, RESET);
 	info_map.total_points = check_and_count(head, &info_map);
 	point_connect(&head);
@@ -123,18 +123,14 @@ int	main(int ac, char *av[])
 	int_to_pixel(&info_map, &head);
 	ft_printf("%sThe lenght of the list is :%d%s\n", GREEN, info_map.total_points, RESET);
 	ft_printf("%sThe map is a [%d X %d]%s\n", GREEN, info_map.colums, info_map.rows, RESET);
-/* print out to check them values*/
 	print_colored_list(&head);
 	print_infos(&info_map);
-/* creating the windows*/
-	new_windows(/*&info_map.graphics,*/ &info_map, &head);
+	new_windows(&info_map, &head);
+	free_list(head);
+	return (ft_printf("%s Everything seems good to me %s\n", GREEN, RESET));
+}
 	/*
 		*1) open windows
 		*2) draw the image
 		*3) put image to windows
-		*/
-	//new_image(&info_map.graphics, &info_map);
-	//draw_lines(&info_map, &head);
-	free_list(head);
-	return (ft_printf("%s Everything seems good to me %s\n", GREEN, RESET));
-}
+	*/
