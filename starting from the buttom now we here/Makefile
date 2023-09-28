@@ -6,7 +6,7 @@
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/08 16:24:26 by atucci            #+#    #+#              #
-#    Updated: 2023/09/28 19:13:22 by atucci           ###   ########.fr        #
+#    Updated: 2023/09/28 19:29:27 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC = ./fdf.c \
 	  ./connect.c \
 	  ./windows_manag.c \
 	  ./bresenham.c \
-
+	  ./isometric.c \
 #--------------------------------------------------
 # This sets the variable OBJS to a list of object files that need to be built from the SRC files.
 OBJS = $(SRC:.c=.o)
