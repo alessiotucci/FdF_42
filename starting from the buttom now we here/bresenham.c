@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 18:10:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/29 06:40:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 void draw_point(t_date *info, int x, int y)
 {
 	ft_printf("\t[%d][%d]\t\n", x, y);
-		my_mlx_pixel_put(info, x, y, 0x00FF0000);
+		my_mlx_pixel_put(info, x, y, COLOR_WHITE);
 /*
 	int	index;
 // bits and lsize are inside graphics...
