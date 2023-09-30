@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:21:47 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 18:40:22 by atucci           ###   ########.fr       */
+/*   Updated: 2023/09/30 21:03:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	int_to_pixel(t_date *info, t_point **head)
 	current = *head;
 	while (current != NULL)
 	{
-		current->x_pixel = /*info->center_x + */(current->x_map * info->scaling_x);
-		current->y_pixel = /*info->center_y + */(current->y_map * info->scaling_y);
+		current->x_pixel = info->center_x + (current->x_map * info->scaling_x);
+		current->y_pixel = info->center_y + (current->y_map * info->scaling_y);
 		current = current->next;
 	}
 }
