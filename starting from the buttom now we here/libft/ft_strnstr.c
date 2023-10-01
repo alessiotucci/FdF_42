@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:30:59 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 10:32:22 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 11:02:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strnstr(const char *haystack, const char *nedle, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (needle[0] == '\0' || nedle == haystack)
+	if (nedle[0] == '\0' || nedle == haystack)
 		return ((char *)haystack);
 	if (!len)
 		return (0);
