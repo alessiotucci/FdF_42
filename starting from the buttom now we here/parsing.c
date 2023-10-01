@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/30 21:43:21 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 11:58:03 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ void	space_and_scale(t_date *inf)
 	//printf("the inf->scaling_y will be = %d / %d\n", inf->height, inf->rows);
 	inf->scaling_x = fmin(may, might);
 	inf->scaling_y = fmin(may, might);
-	inf->center_x = (inf->width - inf->scaling_x) / 2;
+	inf->center_x = (inf->width - (inf->scaling_x * (inf->colums - 1))) / 2;
 	printf("ctr_x=(%d-(%d*%lf))/2\n", inf->width, inf->colums, inf->scaling_x);
-	inf->center_y = (inf->height - inf->scaling_y) / 2;
+	inf->center_y = (inf->height - (inf->scaling_y * (inf->rows - 1))) / 2;
 	printf("ctr_y=(%d-(%d*%lf))/2\n", inf->height, inf->rows, inf->scaling_y);
 }
 /* ************************************************************************** */

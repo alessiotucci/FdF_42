@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 19:19:15 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 12:28:06 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	key_pressed(int keycode, void *param)
 		test_function(help);
 	else if (keycode == SPACE)
 		test_function(help);
-	else if (keycode == MOUSE_WHEEL_UP)
+	else if (keycode == MOUSE_CLICK_LEFT)
 		test_function(help);
-	else if (keycode == MOUSE_WHEEL_DOWN)
+	else if (keycode == MOUSE_CLICK_RIGHT)
 		test_function(help);
 	return (1);
 }

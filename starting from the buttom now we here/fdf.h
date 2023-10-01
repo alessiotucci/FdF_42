@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/30 21:42:08 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 13:20:56 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,4 +150,5 @@ int		key_pressed(int keycode, void *param);
 void	test_function(t_date *env);
 /* thanks to 42 Docs*/
 void	my_mlx_pixel_put(t_date *date, int x, int y, int color);
+void	isometric(t_date *info, t_point **head);
 #endif

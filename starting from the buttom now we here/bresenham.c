@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/30 21:14:09 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 11:43:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 /* In this function we will try to set pixel in the img of mlx*/
 void draw_point(t_date *info, int x, int y)
 {
-	ft_printf("\t[%d][%d]\t\n", x, y);
+	//ft_printf("\t[%d][%d]\t\n", x, y);
 	
 	if (x >= 0 && x < DEFAULT_WIDTH && y >= 0 && y < DEFAULT_HEIGHT)
 		my_mlx_pixel_put(info, x, y, COLOR_WHITE);
