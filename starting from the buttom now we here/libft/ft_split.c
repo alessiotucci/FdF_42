@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:10:04 by atucci            #+#    #+#             */
-/*   Updated: 2023/02/01 11:01:02 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 10:32:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	lenght_word(char const *s, char c)
 			start = cs;
 			while (cs < ft_strlen(s) && s[cs] != c)
 				cs++;
-		end = cs;
-		sublen = end - start;
+			end = cs;
+			sublen = end - start;
 			return (sublen);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:09:23 by atucci            #+#    #+#             */
-/*   Updated: 2023/01/28 15:49:39 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 10:36:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	{
 		str[index] = s1[index];
 		index++;
-	}	
+	}
 	while (s2[i])
 	{
 		str[index++] = s2[i++];

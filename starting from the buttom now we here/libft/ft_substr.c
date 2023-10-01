@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:09:03 by atucci            #+#    #+#             */
-/*   Updated: 2023/02/01 15:39:25 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 10:29:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		str[count] = *(s + start + count);
 		count++;
 	}
-str[count] = '\0';
+	str[count] = '\0';
 	return (str);
 }

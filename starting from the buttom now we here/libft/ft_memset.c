@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:00:41 by atucci            #+#    #+#             */
-/*   Updated: 2023/01/28 17:31:19 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 10:38:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -20,8 +20,8 @@ void	*ft_memset(void *dest, int v, size_t count)
 	c = 0;
 	while (c < count)
 	{
-	char_dest[c] = v;
-	c++;
+		char_dest[c] = v;
+		c++;
 	}
 	return (char_dest);
 }

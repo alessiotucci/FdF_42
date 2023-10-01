@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:39:36 by atucci            #+#    #+#             */
-/*   Updated: 2023/03/27 11:24:01 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 10:33:37 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%')
-		{	
+		{
 			count = phold(&args, ((char *) format)[i + 1], count);
 			i++;
 		}
 		else
 			count += pt_putchar(format[i]);
-	i++;
+		i++;
 	}
 	va_end(args);
 	return (count);

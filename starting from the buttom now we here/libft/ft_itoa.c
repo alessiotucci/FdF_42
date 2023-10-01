@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:10:24 by atucci            #+#    #+#             */
-/*   Updated: 2023/01/30 16:10:53 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 10:34:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -19,7 +19,7 @@ static unsigned int	digits(int n)
 	if (n > 0)
 		count = 0;
 	else
-	count = 1;
+		count = 1;
 	while (n != 0)
 	{
 		n /= 10;
@@ -51,8 +51,8 @@ char	*ft_itoa(int n)
 		res[0] = '0';
 	while (niu > 0)
 	{
-	res[len--] = (niu % 10) + '0';
-	niu /= 10;
+		res[len--] = (niu % 10) + '0';
+		niu /= 10;
 	}
 	return (res);
 }

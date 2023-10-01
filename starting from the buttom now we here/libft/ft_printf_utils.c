@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:47:28 by atucci            #+#    #+#             */
-/*   Updated: 2023/03/25 16:06:20 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 10:37:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -22,7 +22,7 @@ int	pt_strlen(const char *str)
 
 	count = 0;
 	while (str[count])
-	count++;
+		count++;
 	return (count);
 }
 

@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:04:07 by atucci            #+#    #+#             */
-/*   Updated: 2023/01/26 17:22:04 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 10:38:09 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	ft_memcmp(const void *ptr1, const void *ptr2, size_t num)
 	{
 		if (*p1 != *p2)
 			return (*p1 - *p2);
-	p1++;
-	p2++;
-	count++;
+		p1++;
+		p2++;
+		count++;
 	}
 	return (0);
 }

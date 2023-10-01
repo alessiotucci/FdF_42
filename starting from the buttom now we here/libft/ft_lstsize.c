@@ -6,7 +6,7 @@
 /*   By: atucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:37:51 by atucci            #+#    #+#             */
-/*   Updated: 2023/01/28 11:10:23 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 10:35:18 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -18,8 +18,8 @@ int	ft_lstsize(t_list *lst)
 	count = 0;
 	while (lst != NULL)
 	{
-	count++;
-	lst = lst -> next;
+		count++;
+		lst = lst -> next;
 	}
 	return (count);
 }
