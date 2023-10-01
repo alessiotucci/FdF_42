@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 15:45:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 18:30:13 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,10 @@ void	clean_close(t_date *project);
 void	space_and_scale(t_date *info);
 void	print_infos(t_date *info);
 void	int_to_pixel(t_date *info, t_point **head);
+void	int_to_isometric_pixel(t_date *info, t_point **head);
 /*Adding the function to draw in the image*/
 void	bresenham(t_date *info, t_point *start, t_point *end);
+void	old_bresenham(t_date *info, t_point *start, t_point *end);
 void	draw_point(t_date *info, int x, int y);
 void	draw_lines(t_date *info, t_point **head);
 /* using other function too*/
@@ -150,4 +152,5 @@ void	test_function(t_date *env);
 /* thanks to 42 Docs*/
 void	my_mlx_pixel_put(t_date *date, int x, int y, int color);
 void	isometric(t_date *info, t_point **head);
+/**/
 #endif

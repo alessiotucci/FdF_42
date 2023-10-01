@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:35:56 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 14:28:55 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 17:49:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,10 @@ void	test_function(t_date *env)
 /* In this function we will try to set pixel in the img of mlx*/
 void	draw_point(t_date *info, int x, int y)
 {
-	ft_printf("\t[%d][%d]\t\n", x, y);
-	if (x >= 0 && x < DEFAULT_WIDTH && y >= 0 && y < DEFAULT_HEIGHT)
+	if (x >= 0 && x <= DEFAULT_WIDTH && y >= 0 && y <= DEFAULT_HEIGHT)
+	{
+		ft_printf("\t[%d][%d]\t\n", x, y);
 		my_mlx_pixel_put(info, x, y, COLOR_WHITE);
+	}
 	return ;
 }

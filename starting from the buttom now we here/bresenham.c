@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 15:09:57 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 18:17:48 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	high_slop_line(t_date *info, t_point *start, t_point *end)
 	delta_y = end->y_pixel - start->y_pixel;
 	x = start->x_pixel;
 	y = start->y_pixel;
-	p = 2 * delta_y - delta_x;
+	p = 2 * delta_x - delta_y;
 	while (y <= end->y_pixel)
 	{
 		draw_point(info, x, y);
