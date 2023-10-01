@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:21:47 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 13:23:30 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 15:46:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,17 @@ int	point_connect(t_point **head)
 
 void	int_to_pixel(t_date *info, t_point **head)
 {
-	//isometric(info, head);
 	t_point	*current;
 
 	current = *head;
 	while (current != NULL)
 	{
-		current->x_pixel = info->center_x + (current->x_map * info->scaling_x);
-		current->y_pixel = info->center_y + (current->y_map * info->scaling_y);
+		current->x_pixel = info->center_x + (current->x_map * info->scaling);
+		current->y_pixel = info->center_y + (current->y_map * info->scaling);
+		current->z_pixel = (current->z_map * info->scaling);
 		current = current->next;
 	}
+isometric(info, head);
 }
 /*THIS WILL BE DELETED AFTERWARDS*/
 
@@ -81,8 +82,8 @@ void	print_infos(t_date *date)
 	ft_printf("total_points: %d\n", date->total_points);
 	ft_printf("width: %d\n", date->width);
 	ft_printf("height: %d\n", date->height);
-	printf("scaling_x: %f\n", date->scaling_x);
-	printf("scaling_y: %f\n", date->scaling_y);
+	printf("scaling_x: %f\n", date->scaling);
+	printf("scaling_y: %f\n", date->scaling);
 	printf("center_x: %f\n", date->center_x);
 	printf("center_y: %f\n", date->center_y);
 	ft_printf("------------------------------------\n");

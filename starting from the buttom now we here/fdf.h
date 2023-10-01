@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 13:20:56 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 15:45:11 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_point
 	int				z_map;
 	int				x_pixel;
 	int				y_pixel;
+	int				z_pixel;
 	struct s_point	*go_right;
 	struct s_point	*go_down;
 	struct s_point	*next;
@@ -112,8 +113,7 @@ typedef struct s_date
 	int		total_points;
 	int		width;
 	int		height;
-	double	scaling_x;
-	double	scaling_y;
+	double	scaling;
 	double	center_x;
 	double	center_y;
 	void	*mlx;
@@ -133,7 +133,6 @@ void	check_and_count(t_point *head, t_date *info_map);
 int		point_connect(t_point **head);
 /* bard */
 void	connect_down_nodes(t_point *current);
-void	point_bard(t_point **head);
 void	new_windows(t_date *mac, t_point **head);
 void	new_image(t_date *inf);
 void	clean_close(t_date *project);
@@ -144,7 +143,7 @@ void	int_to_pixel(t_date *info, t_point **head);
 void	bresenham(t_date *info, t_point *start, t_point *end);
 void	draw_point(t_date *info, int x, int y);
 void	draw_lines(t_date *info, t_point **head);
-/* cheating a little bit*/
+/* using other function too*/
 void	ft_draw_instructions(t_date *env);
 int		key_pressed(int keycode, void *param);
 void	test_function(t_date *env);

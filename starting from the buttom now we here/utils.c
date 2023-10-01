@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:35:56 by atucci            #+#    #+#             */
-/*   Updated: 2023/09/28 17:30:16 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 14:28:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,11 @@ void	test_function(t_date *env)
 	mlx_string_put(env->mlx, env->window, 5 + count, 60 + count, COLOR_GREEN,"void test_function");
 	count += 10;
 }
-
-/*this function is taken from the 42 docs*/
-void	my_mlx_pixel_put(t_date *data, int x, int y, int color)
+/* In this function we will try to set pixel in the img of mlx*/
+void	draw_point(t_date *info, int x, int y)
 {
-	char	*dst;
-
-	dst = data->img_string + (y * data->lsize + x * (data->bits / 8));
-	*(unsigned int*)dst = color;
+	ft_printf("\t[%d][%d]\t\n", x, y);
+	if (x >= 0 && x < DEFAULT_WIDTH && y >= 0 && y < DEFAULT_HEIGHT)
+		my_mlx_pixel_put(info, x, y, COLOR_WHITE);
+	return ;
 }

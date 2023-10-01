@@ -6,13 +6,39 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 13:59:34 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/01 15:09:57 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	bresenham(t_date *info, t_point *start, t_point *end)
+
+static void	vertical_line(t_date *info, t_point *start, t_point *end)
+{
+	int vertical_y;
+
+	vertical_y = start->y_pixel;
+	while (vertical_y <= end->y_pixel)
+	{
+		draw_point(info, start->x_pixel, vertical_y);
+		vertical_y++;
+	}
+}
+
+
+static void	horizontal_line(t_date *info, t_point *start, t_point *end)
+{
+	int horizontal_x;
+
+	horizontal_x = start->x_pixel;
+	while (horizontal_x <= end->x_pixel)
+	{
+		draw_point(info, horizontal_x, start->y_pixel);
+		horizontal_x++;
+	}
+}
+
+static void	low_slop_line(t_date *info, t_point *start, t_point *end)
 {
 	int	delta_x;
 	int	delta_y;
@@ -25,51 +51,59 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 	x = start->x_pixel;
 	y = start->y_pixel;
 	p = 2 * delta_y - delta_x;
-	if (delta_x == 0)
-		while (y <= end->y_pixel)
-			draw_point(info, x, y++);
 	while (x <= end->x_pixel)
 	{
 		draw_point(info, x, y);
 		if (p >= 0)
 		{
-			y = y + 1;
-			p = p + 2 * delta_y - 2 * delta_x;
+			y++;
+			p = p - 2 * delta_x;
 		}
-		else
-			p = p + 2 * delta_y;
-		x = x + 1;
+		p = p + 2 * delta_y;
+		x++;
 	}
 }
 
-/* In this function we will try to set pixel in the img of mlx*/
-void	draw_point(t_date *info, int x, int y)
-{
-	ft_printf("\t[%d][%d]\t\n", x, y);
-	if (x >= 0 && x < DEFAULT_WIDTH && y >= 0 && y < DEFAULT_HEIGHT)
-		my_mlx_pixel_put(info, x, y, COLOR_WHITE);
-	return ;
-}
 
-/* In this function we will loop throught the list 
-	* of points and draw using the bresenham funciton*/
-void	draw_lines(t_date *info, t_point **head)
+static void	high_slop_line(t_date *info, t_point *start, t_point *end)
 {
-	t_point	*current;
+	int	delta_x;
+	int	delta_y;
+	int	p;
+	int	x;
+	int	y;
 
-	current = *head;
-	while (current != NULL)
+	delta_x = end->x_pixel - start->x_pixel;
+	delta_y = end->y_pixel - start->y_pixel;
+	x = start->x_pixel;
+	y = start->y_pixel;
+	p = 2 * delta_y - delta_x;
+	while (y <= end->y_pixel)
 	{
-		if (current->go_right != NULL)
+		draw_point(info, x, y);
+		if (p >= 0)
 		{
-			ft_printf("%sbres:[%p]going right%s-->\n", BG_CYAN, current, RESET);
-			bresenham(info, current, current->go_right);
+			x++;
+			p = p - 2 * delta_y;
 		}
-		if (current->go_down != NULL)
-		{
-			ft_printf("%sbres:[%p]going down%s--v\n", BG_CYAN, current, RESET);
-			bresenham(info, current, current->go_down);
-		}
-		current = current->next;
+		p = p + 2 * delta_x;
+		y++;
 	}
+}
+
+void	bresenham(t_date *info, t_point *start, t_point *end)
+{
+	int	delta_x;
+	int	delta_y;
+
+	delta_x = end->x_pixel - start->x_pixel;
+	delta_y = end->y_pixel - start->y_pixel;
+	if (delta_x == 0)
+		vertical_line(info, start, end);
+	else if (delta_y == 0)
+		horizontal_line(info, start, end);
+	else if (abs(delta_y) < abs(delta_x))
+		low_slop_line(info, start, end);
+	else
+		high_slop_line(info, start, end);
 }
