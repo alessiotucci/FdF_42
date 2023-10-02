@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 17:54:26 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 10:08:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ int	main(int ac, char *av[])
 	if (flag > 0)
 		exit (0);
 	check_and_count(head, &info_map);
-	print_colored_list(&head);
-	print_infos(&info_map);
+	//print_colored_list(&head);
+	//print_infos(&info_map);
 	new_windows(&info_map, &head);
 	free_list(head);
 	return ft_printf(0);

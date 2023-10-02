@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 18:30:13 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 10:22:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,16 @@ typedef struct s_graphics {
 typedef struct s_date
 {
 	int		rows;
+	int		map_width;
 	int		colums;
+	int		map_height;
 	int		total_points;
 	int		width;
 	int		height;
+	double	max_x;
+	double	max_y;
+	double	min_x;
+	double	min_y;
 	double	scaling;
 	double	center_x;
 	double	center_y;
@@ -153,4 +159,5 @@ void	test_function(t_date *env);
 void	my_mlx_pixel_put(t_date *date, int x, int y, int color);
 void	isometric(t_date *info, t_point **head);
 /**/
+void find_min_max(t_date *info, t_point **head);
 #endif

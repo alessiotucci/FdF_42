@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 18:35:19 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 11:14:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,21 @@ void	draw_lines(t_date *info, t_point **head)
 {
 	t_point	*current;
 
+	// do delete 
+	//find_min_max(info, head);
 	current = *head;
 	while (current != NULL)
 	{
 		if (current->go_right != NULL)
 		{
-			ft_printf("%sbres:[%p]going right%s-->\n", BG_CYAN, current, RESET);
+			//ft_printf("%sbres:[%p]going right%s-->\n", BG_CYAN, current, RESET);
 			old_bresenham(info, current, current->go_right);
 			//if (current->go_right->go_down != NULL)
 				//bresenham(info, current, current->go_right->go_down);
 		}
 		if (current->go_down != NULL)
 		{
-			ft_printf("%sbres:[%p]going down%s--v\n", BG_CYAN, current, RESET);
+			//ft_printf("%sbres:[%p]going down%s--v\n", BG_CYAN, current, RESET);
 			old_bresenham(info, current, current->go_down);
 		}
 		current = current->next;
@@ -106,3 +108,62 @@ void	old_bresenham(t_date *info, t_point *start, t_point *end)
     }
     draw_point(info, end->x_pixel, end->y_pixel);
 }
+
+
+void	new_scaling_system(t_date *info, t_point **head)
+{
+	t_point *current = *head;
+	ft_printf("NEW SCALING\n we apply the formulas\n");
+	int	scaling = fmin((info->width / info->map_width), (info->height / info->map_height));
+	int	center_x = (info->width - (info->scaling * info->map_width)) / 2;
+	int	center_y = (info->height - (info->scaling * info->map_height)) / 2;
+
+	ft_printf("new scaling[%d]\nnew center x [%d]\nnew center y[%d]\n", scaling, center_x, center_y);
+
+while (current != NULL)
+	{
+// Calculate the isometric X-coordinate
+        current->x_pixel = (center_x) + ((current->x_map - current->y_map) * cos(PI / 6) * scaling);
+// Calculate the isometric Y-coordinate
+        current->y_pixel = (center_y) - (current->z_map * sin(PI / 6) * scaling) + ((current->x_map + current->y_map) * sin(PI / 6) * scaling);
+        current = current->next;
+	}
+
+}
+void find_min_max(t_date *info, t_point **head)
+{
+    // Calculate map dimensions
+    int min_x = INT_MAX;
+    int max_x = INT_MIN;
+    int min_y = INT_MAX;
+    int max_y = INT_MIN;
+
+    t_point *current = *head;
+    while (current != NULL)
+    {
+        if (current->x_pixel < min_x)
+									min_x = current->x_pixel;
+        if (current->x_pixel > max_x)
+									max_x = current->x_pixel;
+        if (current->y_pixel < min_y)
+									min_y = current->y_pixel;
+        if (current->y_pixel > max_y)
+									max_y = current->y_pixel;
+        current = current->next;
+    }
+				info->max_x = max_x;
+				info->max_y = max_y;
+				info->min_x = min_x;
+				info->min_y = min_y;
+	printf("\n---Finding min pixel and Max pixel:::\n we will need to do more scaling---\n");
+	printf("pixel max x: %lf\n", info->max_x);
+	printf("pixle max y: %lf\n",info->max_y);
+	printf("pixel min x: %lf\n", info->min_x);
+	printf("pixel min y: %lf\n", info->min_y);
+
+	// this function to split into more
+	info->map_width = max_x - min_x + 1;
+	info->map_height = max_y - min_y + 1;
+	//new_scaling_system(info, head);
+}
+
