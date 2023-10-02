@@ -6,16 +6,15 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/01 18:17:48 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 18:18:47 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-
 static void	vertical_line(t_date *info, t_point *start, t_point *end)
 {
-	int vertical_y;
+	int	vertical_y;
 
 	vertical_y = start->y_pixel;
 	while (vertical_y <= end->y_pixel)
@@ -25,10 +24,9 @@ static void	vertical_line(t_date *info, t_point *start, t_point *end)
 	}
 }
 
-
 static void	horizontal_line(t_date *info, t_point *start, t_point *end)
 {
-	int horizontal_x;
+	int	horizontal_x;
 
 	horizontal_x = start->x_pixel;
 	while (horizontal_x <= end->x_pixel)
@@ -63,7 +61,6 @@ static void	low_slop_line(t_date *info, t_point *start, t_point *end)
 		x++;
 	}
 }
-
 
 static void	high_slop_line(t_date *info, t_point *start, t_point *end)
 {

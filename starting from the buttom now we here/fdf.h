@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 13:15:49 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 19:21:38 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_point
 	int				x_pixel;
 	int				y_pixel;
 	int				z_pixel;
+	int				color;
 	struct s_point	*go_right;
 	struct s_point	*go_down;
 	struct s_point	*next;
@@ -140,6 +141,7 @@ void	test_function(t_date *env);
 /* thanks to 42 Docs*/
 void	my_mlx_pixel_put(t_date *date, int x, int y, int color);
 void	isometric(t_date *info, t_point **head);
-/**/
-void	find_min_max(t_date *info, t_point **head);
+/* check for the commas*/
+int		check_commas(char *str, t_point *new_node);
+int		color_zed(char *input, t_point *new_node);
 #endif

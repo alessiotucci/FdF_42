@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 14:18:20 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 19:39:34 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	create_list(t_point **head, int x, int y, char *z_string)
 		exit(1);
 	new_node->x_map = x;
 	new_node->y_map = y;
-	new_node->z_map = atoi(z_string);
+	new_node->z_map = check_commas(z_string, new_node);
 	new_node->x_pixel = 0;
 	new_node->y_pixel = 0;
 	new_node->go_right = NULL;
@@ -101,5 +101,45 @@ void	space_and_scale(t_date *inf)
 	inf->center_y = (inf->height - (inf->scaling * (inf->rows - 1))) / 2;
 	printf("\nold center y[%lf]\n=(%d-(%d*%lf))/2\n\n", inf->center_y,
 		inf->height, inf->rows - 1, inf->scaling);
+}
+
+int	check_commas(char *str, t_point *new_node)
+{
+	int	count;
+
+	count = 0;
+	while (str[count])
+	{
+		if (str[count] == ',')
+			return (color_zed(str, new_node));
+		count++;
+	}
+	return (atoi(str));
+}
+
+int	color_zed(char *input, t_point *new_node)
+{
+	int	i;
+	int	z;
+	int	color;
+
+	i = 0;
+	z = 0;
+	color = 0;
+	if (new_node)
+		ft_printf("weird map but ok %p\n", new_node);
+	while (input[i] != ',' && input[i] != '\0')
+	{
+		z = (z * 10) + (input[i] - '0');
+		i++;
+	}
+	if (input[i] == ',')
+		i++;
+	while (input[i] != '\0')
+	{
+		color = (color * 10) + (input[i] - '0');
+		i++;
+	}
+return (z);
 }
 /* ************************************************************************** */

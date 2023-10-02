@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:21:47 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 12:41:30 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 18:20:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,6 @@ int	point_connect(t_point **head)
 
 void	int_to_pixel(t_date *info, t_point **head)
 {
-
-	//int_to_isometric_pixel(info, head);
-	
-
 	t_point	*current;
 
 	current = *head;
