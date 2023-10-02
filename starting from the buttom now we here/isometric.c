@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 11:14:55 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 14:24:29 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,20 @@ void	draw_lines(t_date *info, t_point **head)
 
 void	old_bresenham(t_date *info, t_point *start, t_point *end)
 {
- int delta_x = abs(end->x_pixel - start->x_pixel);
-    int delta_y = abs(end->y_pixel - start->y_pixel);
-    int step_x = (start->x_pixel < end->x_pixel) ? 1 : -1;
-    int step_y = (start->y_pixel < end->y_pixel) ? 1 : -1;
+ 	int	delta_x;
+	int	delta_y;
+	int	step_x;
+	int	step_y;
+	int	p;
+	int	x;
+	int	y;
 
-    int x = start->x_pixel;
-    int y = start->y_pixel;
-    int p;
+	delta_x = abs(end->x_pixel - start->x_pixel);
+	delta_y = abs(end->y_pixel - start->y_pixel);
+	step_x = (start->x_pixel < end->x_pixel) ? 1 : -1;
+	step_y = (start->y_pixel < end->y_pixel) ? 1 : -1;
+	x = start->x_pixel;
+	y = start->y_pixel;
 
     if (delta_x >= delta_y)
     {
