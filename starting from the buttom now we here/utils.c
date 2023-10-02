@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:35:56 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 10:08:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 13:08:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,21 @@ int	free_split(char **tab)
 
 void	ft_draw_instructions(t_date *env)
 {
-	mlx_string_put(env->mlx, env->window, 5, 0, COLOR_RED,"Alessio tucci FDF");
-	mlx_string_put(env->mlx, env->window, 5, 20, COLOR_YELLOW,
-		"testing the function mlx string put...");
-	mlx_string_put(env->mlx, env->window, 5, 40, COLOR_MAGENTA,
-		"cant do any bonuses");
+	mlx_string_put(env->mlx, env->window, 540, 0, COLOR_RED,"atucci FDF, no bonus :(");
 }
 
-void	test_function(t_date *env)
+void	test_function(t_date *info)
 {
-	static int	count;
-
-	count = 0;
-	mlx_string_put(env->mlx, env->window, 5 + count, 60 + count, COLOR_GREEN,"void test_function");
-	count += 10;
+	mlx_string_put(info->mlx, info->window, 540, 30, COLOR_GREEN,"key pressed");
 }
 /* In this function we will try to set pixel in the img of mlx*/
 void	draw_point(t_date *info, int x, int y)
 {
-	if (x >= 0 && x < DEFAULT_WIDTH && y >= 0 && y < DEFAULT_HEIGHT)
+	if (x >= 0 && x < info->width && y >= 0 && y < info->height)
 	{
 		//ft_printf("\t[%d][%d]\t\n", x, y);
 		my_mlx_pixel_put(info, x, y, COLOR_WHITE);
+
 	}
 	return ;
 }

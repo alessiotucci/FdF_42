@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 10:22:17 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 13:15:49 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@
 # include <string.h>
 # include <stdio.h>
 
-
-
-/*this is the fix or the issues
-# include <X11/X.h>
-# include <X11/keysym.h>
-*/
-
 /* Define keyboard code */
 # define ARROW_LEFT 123
 # define ARROW_RIGHT 124
@@ -40,42 +33,31 @@
 # define PLUS 24
 # define SPACE 49
 # define KEY_R 15
-# define MOUSE_CLICK_LEFT 1
-# define MOUSE_CLICK_RIGHT 2
-# define MOUSE_CLICK_MIDDLE 3
-# define MOUSE_WHEEL_UP 4
-# define MOUSE_WHEEL_DOWN 5
 # define ESCAPE 53
-
 /* color for printing on the screen*/
-#define COLOR_WHITE 0xFFFFFF
-#define COLOR_BLACK 0x000000
-#define COLOR_RED 0xFF0000
-#define COLOR_GREEN 0x00FF00
-#define COLOR_BLUE 0x0000FF
-#define COLOR_YELLOW 0xFFFF00
-#define COLOR_MAGENTA 0xFF00FF
-#define COLOR_CYAN 0x00FFFF
-
-
+# define COLOR_WHITE 0xFFFFFF
+# define COLOR_BLACK 0x000000
+# define COLOR_RED 0xFF0000
+# define COLOR_GREEN 0x00FF00
+# define COLOR_BLUE 0x0000FF
+# define COLOR_YELLOW 0xFFFF00
+# define COLOR_MAGENTA 0xFF00FF
+# define COLOR_CYAN 0x00FFFF
 /* Define color macros */
 # define GREEN   "\033[1;32m"
 # define CYAN    "\033[1;36m"
 # define YELLOW  "\033[1;33m"
 # define RED     "\033[1;31m"
 # define RESET   "\033[0m"
-
 /* Define Background colors macros */
 # define BG_RESET        "\033[49m"
 # define BG_GREEN        "\033[42m"
 # define BG_CYAN         "\033[46m"
 # define BG_YELLOW       "\033[43m"
 # define BG_RED          "\033[41m"
-
 /* Define default size for the windows */
 # define DEFAULT_WIDTH 1280
 # define DEFAULT_HEIGHT 720
-
 /* Useful Macros for the angles */
 # define PI 3.14159265358979323846
 
@@ -159,5 +141,5 @@ void	test_function(t_date *env);
 void	my_mlx_pixel_put(t_date *date, int x, int y, int color);
 void	isometric(t_date *info, t_point **head);
 /**/
-void find_min_max(t_date *info, t_point **head);
+void	find_min_max(t_date *info, t_point **head);
 #endif

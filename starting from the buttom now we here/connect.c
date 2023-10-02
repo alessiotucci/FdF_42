@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:21:47 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 10:10:33 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 12:41:30 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int	point_connect(t_point **head)
 void	int_to_pixel(t_date *info, t_point **head)
 {
 
-	int_to_isometric_pixel(info, head);
+	//int_to_isometric_pixel(info, head);
 	
-/*
+
 	t_point	*current;
 
 	current = *head;
@@ -70,7 +70,7 @@ void	int_to_pixel(t_date *info, t_point **head)
 		current->x_pixel = info->center_x + (current->x_map * info->scaling);
 		current->y_pixel = info->center_y + (current->y_map * info->scaling);
 		current = current->next;
-	}*/
+	}
 }
 /*THIS WILL BE DELETED AFTERWARDS*/
 

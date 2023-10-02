@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 11:28:08 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 12:51:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	check_and_count(t_point *head, t_date *info_map)
 	info_map->total_points = count;
 	point_connect(&head);
 	space_and_scale(info_map);
-	int_to_pixel(info_map, &head);
+	//int_to_pixel(info_map, &head);
+	int_to_isometric_pixel(info_map, &head);
 	return;
 }
 /*create a function to link the points (go_down & go_right)*/
@@ -95,8 +96,8 @@ void	space_and_scale(t_date *inf)
 	inf->center_x = (inf->width - (inf->scaling * (inf->colums - 1))) / 2;	//I have swapped the rows and colum
 	printf("\n--SPACE--AND--SCALE--\nscaling the map as orthogonal :(\n");
 	printf("\nipo is %lf\n", ipo);
-	printf("\nold center x[%lf]\n=(%d-(%d*%lf))/2\n",inf->center_x, inf->width, inf->colums, inf->scaling);
+	printf("\nold center x[%lf]\n=(%d-(%d*%lf))/2\n",inf->center_x, inf->width, inf->colums - 1, inf->scaling);
 	inf->center_y = (inf->height - (inf->scaling * (inf->rows - 1))) / 2;
-	printf("\nold center y[%lf]\n=(%d-(%d*%lf))/2\n\n\n",inf->center_y, inf->height, inf->rows, inf->scaling);
+	printf("\nold center y[%lf]\n=(%d-(%d*%lf))/2\n\n\n",inf->center_y, inf->height, inf->rows - 1, inf->scaling);
 }
 /* ************************************************************************** */
