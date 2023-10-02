@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:19:48 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 13:33:11 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 20:14:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	new_windows(t_date *help, t_point **head)
 	if (help->mlx == NULL)
 		exit(0);
 	help->window = mlx_new_window(help->mlx, help->width,
-			help->height, "Fdf: fil de fer");
+			help->height, help->map_name);
 	new_image(help);
 	mlx_hook(help->window, 2, 1, key_pressed, help);
 	mlx_hook(help->window, 17, 0L, window_close, help);

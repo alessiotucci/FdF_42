@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 19:21:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/02 20:10:23 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_graphics {
 /* Define the struct to use for managing windows, image a other stuff */
 typedef struct s_date
 {
+	char		*map_name;
 	int		rows;
 	int		map_width;
 	int		colums;
