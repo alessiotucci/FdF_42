@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 14:28:30 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 15:19:33 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_date *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->img_string + (y * data->lsize + x * (data->bits / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 void	int_to_isometric_pixel(t_date *info, t_point **head)
