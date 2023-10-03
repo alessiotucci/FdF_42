@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 12:23:22 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 12:45:05 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ void	int_to_isometric_pixel(t_date *info, t_point **head)
 	current = *head;
 	while (current != NULL)
 	{
-		current->x_pixel = (info->center_x) + ((current->x_map - current->y_map) * cos(PI / 6) * info->scaling);
-		current->y_pixel = (info->center_y) - (current->z_map * sin(PI / 6) * info->scaling) + ((current->x_map + current->y_map) * sin(PI / 6) * info->scaling);
+		current->x_pixel = (info->center_x) + ((current->x_map - current->y_map)
+				* cos(PI / 6) * info->scaling);
+		current->y_pixel = (info->center_y) - (current->z_map * sin(PI / 6)
+				* info->scaling) + ((current->x_map + current->y_map)
+				* sin(PI / 6) * info->scaling);
 		current = current->next;
 	}
 }
@@ -56,6 +59,7 @@ void	draw_lines(t_date *info, t_point **head)
 		current = current->next;
 	}
 }
+/*
 static int calculate_step(int start, int end)
 {
   if (start < end)
@@ -113,3 +117,4 @@ void	old_bresenham(t_date *info, t_point *start, t_point *end)
 	}
 	draw_point(info, end->x_pixel, end->y_pixel);
 }
+*/

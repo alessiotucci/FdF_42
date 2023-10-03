@@ -6,11 +6,23 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 12:35:00 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 13:30:19 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	info_to_list(t_date *info, t_point **head)
+{
+	t_point	*goofy;
+
+	goofy = *head;
+	while (goofy != NULL)
+	{
+		goofy->infa = info;
+		goofy = goofy->next;
+	}
+}
 
 static int	calculate_step(int start, int end)
 {
@@ -35,7 +47,7 @@ static void	slope(int delta_x, int delta_y, t_point *start, t_point *end)
 	step_y = calculate_step(start->y_pixel, end->y_pixel);
 	while (x != end->x_pixel)
 	{
-		draw_point(start->infa, x, y);
+		draw_point(start->infa, x, y, start);
 		x += step_x;
 		if (p >= 0)
 		{
@@ -61,7 +73,7 @@ static void	slap(int delta_x, int delta_y, t_point *start, t_point *end)
 	step_y = calculate_step(start->y_pixel, end->y_pixel);
 	while (y != end->y_pixel)
 	{
-		draw_point(start->infa, x, y);
+		draw_point(start->infa, x, y, start);
 		y += step_y;
 		if (p >= 0)
 		{
@@ -87,5 +99,5 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 	{
 		slap(delta_x, delta_y, start, end);
 	}
-	draw_point(info, end->x_pixel, end->y_pixel);
+	draw_point(info, end->x_pixel, end->y_pixel, end);
 }

@@ -6,11 +6,12 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 12:54:40 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 13:35:01 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "./libft/libft.h"
 
 int	check_commas(char *str, t_point *new_node)
 {
@@ -21,9 +22,32 @@ int	check_commas(char *str, t_point *new_node)
 	{
 		if (str[count] == ',')
 			return (color_zed(str, new_node));
+		new_node->color = 0;
 		count++;
 	}
-	return (atoi(str));
+	return (ft_atoi(str));
+}
+/* Define a custom function to convert a hexadecimal string to an integer */
+
+unsigned long	ft_strtol(const char *str)
+{
+	const char		*hex;
+	unsigned long	result;
+	const char		*ptr;
+
+	hex = "0123456789abcdef";
+	result = 0;
+	if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
+		str += 2;
+	while (*str != '\0')
+	{
+		ptr = ft_strchr(hex, *str);
+		if (ptr == NULL)
+			break ;
+		result = result * 16 + (ptr - hex);
+		str++;
+	}
+	return (result);
 }
 
 int	color_zed(char *input, t_point *new_node)
@@ -44,11 +68,7 @@ int	color_zed(char *input, t_point *new_node)
 	}
 	if (input[i] == ',')
 		i++;
-	while (input[i] != '\0')
-	{
-		color = (color * 10) + (input[i] - '0');
-		i++;
-	}
+	new_node->color = ft_strtol(&input[i]);
 	return (z);
 }
 /* ************************************************************************** */

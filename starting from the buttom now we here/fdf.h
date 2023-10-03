@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 12:38:45 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 13:30:55 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct s_point
 	int				x_pixel;
 	int				y_pixel;
 	int				z_pixel;
-	int				color;
+	unsigned long	color;
 	struct s_point	*go_right;
 	struct s_point	*go_down;
 	struct s_point	*next;
@@ -110,7 +110,7 @@ int		free_split(char **tab);
 void	free_list(t_point *list);
 void	check_and_count(t_point *head, t_date *info_map);
 int		point_connect(t_point **head);
-/* bard */
+void	info_to_list(t_date *info, t_point **head);
 void	connect_down_nodes(t_point *current);
 void	new_windows(t_date *mac, t_point **head);
 void	new_image(t_date *inf);
@@ -122,7 +122,7 @@ void	int_to_isometric_pixel(t_date *info, t_point **head);
 /*Adding the function to draw in the image*/
 void	bresenham(t_date *info, t_point *start, t_point *end);
 void	old_bresenham(t_date *info, t_point *start, t_point *end);
-void	draw_point(t_date *info, int x, int y);
+void	draw_point(t_date *info, int x, int y, t_point *point);
 void	draw_lines(t_date *info, t_point **head);
 /* using other function too*/
 void	ft_draw_instructions(t_date *env);

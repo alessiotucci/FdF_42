@@ -6,24 +6,12 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 10:41:54 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 14:20:27 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
-
-void info_to_list(t_date *info, t_point **head)
-{
-	t_point	*goofy;
-
-	goofy = *head;
-	while (goofy != NULL)
-	{
-		goofy->infa = info;
-		goofy = goofy->next;
-	}
-}
 
 void	create_list(t_point **head, int x, int y, char *z_string)
 {
@@ -90,10 +78,11 @@ void	check_and_count(t_point *head, t_date *info_map)
 	info_to_list(info_map, &head);
 	point_connect(&head);
 	space_and_scale(info_map);
-	//int_to_pixel(info_map, &head);
 	int_to_isometric_pixel(info_map, &head);
 	return ;
 }
+
+/* here it was int_to_pixel(info_map, &head);*/
 /*create a function to link the points (go_down & go_right)*/
 
 void	space_and_scale(t_date *inf)
@@ -116,44 +105,3 @@ void	space_and_scale(t_date *inf)
 	printf("\nold center y[%lf]\n=(%d-(%d*%lf))/2\n\n", inf->center_y,
 		inf->height, inf->rows - 1, inf->scaling);
 }
-
-int	check_commas(char *str, t_point *new_node)
-{
-	int	count;
-
-	count = 0;
-	while (str[count])
-	{
-		if (str[count] == ',')
-			return (color_zed(str, new_node));
-		count++;
-	}
-	return (atoi(str));
-}
-
-int	color_zed(char *input, t_point *new_node)
-{
-	int	i;
-	int	z;
-	int	color;
-
-	i = 0;
-	z = 0;
-	color = 0;
-	if (new_node)
-		ft_printf("weird map but ok %p\n", new_node);
-	while (input[i] != ',' && input[i] != '\0')
-	{
-		z = (z * 10) + (input[i] - '0');
-		i++;
-	}
-	if (input[i] == ',')
-		i++;
-	while (input[i] != '\0')
-	{
-		color = (color * 10) + (input[i] - '0');
-		i++;
-	}
-return (z);
-}
-/* ************************************************************************** */

@@ -6,11 +6,10 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 10:43:28 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 14:25:21 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "fdf.h"
 
 /* static function to check the map */
@@ -53,7 +52,7 @@ static int	check_windows_size(char *width, char *height)
 		if (!ft_isdigit(width[count]))
 		{
 			ft_printf("\033[1;31mwrong size\033[0m\n");
-			return (0);
+			return (1);
 		}
 		count++;
 	}
@@ -63,11 +62,11 @@ static int	check_windows_size(char *width, char *height)
 		if (!ft_isdigit(height[count]))
 		{
 			ft_printf("\033[1;31mwrong size \033[0m\n");
-			return (0);
+			return (1);
 		}
 		count++;
 	}
-	return (1);
+	return (0);
 }
 
 /*check the extension of the map*/
@@ -84,10 +83,10 @@ static int	check_the_extension(char *name_of_map)
 	if (strncmp(name_of_map + len - 4, ".fdf", 4) == 0)
 	{
 		ft_printf("\033[1;32mGood file extension👍 \033[0m\n");
-		return (1);
+		return (0);
 	}
 	ft_printf("\033[1;41mNot a valid .fdf extension\033[0m\n");
-	return (0);
+	return (1);
 }
 /*
 	*This is the main body of the function
@@ -115,18 +114,12 @@ int	main(int ac, char *av[])
 			info_map.height = ft_atoi(av[3]);
 		}
 	}
-	flag = check_the_extension(av[1]);
+	flag = (check_the_extension(av[1]) + check_the_map(av[1], &head));
 	if (flag == 0)
-		exit (0);
-	flag = check_the_map(av[1], &head);
-	if (flag > 0)
 		exit (0);
 	info_map.map_name = av[1];
 	check_and_count(head, &info_map);
-	print_colored_list(&head);
-	print_infos(&info_map);
 	new_windows(&info_map, &head);
-	free_list(head);
 	return (0);
 }
 	/*
