@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 10:42:58 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 12:38:45 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,45 +61,31 @@
 /* Useful Macros for the angles */
 # define PI 3.14159265358979323846
 
-
-
-/* Define the struct used for graphis and other stuff
-typedef struct s_graphics {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int	bits;
-	int	lsize;
-	int	endian;
-	char	*img_data;
-}		t_graphics;
-*/
-
 /* Define the struct to use for managing windows, image a other stuff */
 typedef struct s_date
 {
 	char		*map_name;
-	int		rows;
-	int		map_width;
-	int		colums;
-	int		map_height;
-	int		total_points;
-	int		width;
-	int		height;
-	double	max_x;
-	double	max_y;
-	double	min_x;
-	double	min_y;
-	double	scaling;
-	double	center_x;
-	double	center_y;
-	void	*mlx;
-	void	*window;
-	void	*img_pointer;
-	int		bits;
-	int		lsize;
-	int		endian;
-	char	*img_string;
+	int			rows;
+	int			map_width;
+	int			colums;
+	int			map_height;
+	int			total_points;
+	int			width;
+	int			height;
+	double		max_x;
+	double		max_y;
+	double		min_x;
+	double		min_y;
+	double		scaling;
+	double		center_x;
+	double		center_y;
+	void		*mlx;
+	void		*window;
+	void		*img_pointer;
+	int			bits;
+	int			lsize;
+	int			endian;
+	char		*img_string;
 }		t_date;
 
 /* Define the struct to hold the value of the map */
