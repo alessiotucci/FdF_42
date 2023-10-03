@@ -6,26 +6,25 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 12:22:43 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 12:35:00 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int calculate_step(int start, int end)
+static int	calculate_step(int start, int end)
 {
-  if (start < end)
-    return 1;
-  else
-    return -1;
-  
+	if (start < end)
+		return (1);
+	else
+		return (-1);
 }
 
-static void slope(int delta_x, int delta_y, t_point *start, t_point *end)
+static void	slope(int delta_x, int delta_y, t_point *start, t_point *end)
 {
 	int	step_x;
 	int	step_y;
-	int	x; 
+	int	x;
 	int	y;
 	int	p;
 
@@ -36,19 +35,18 @@ static void slope(int delta_x, int delta_y, t_point *start, t_point *end)
 	step_y = calculate_step(start->y_pixel, end->y_pixel);
 	while (x != end->x_pixel)
 	{
-
 		draw_point(start->infa, x, y);
-        x += step_x;
-        if (p >= 0)
-        {
-            y += step_y;
-            p -= 2 * delta_x;
-        }
-        p += 2 * delta_y;
+		x += step_x;
+		if (p >= 0)
+		{
+			y += step_y;
+			p -= 2 * delta_x;
+		}
+		p += 2 * delta_y;
 	}
 }
 
-static void slap(int delta_x, int delta_y, t_point *start, t_point *end)
+static void	slap(int delta_x, int delta_y, t_point *start, t_point *end)
 {
 	int	step_x;
 	int	step_y;
@@ -63,15 +61,14 @@ static void slap(int delta_x, int delta_y, t_point *start, t_point *end)
 	step_y = calculate_step(start->y_pixel, end->y_pixel);
 	while (y != end->y_pixel)
 	{
-
 		draw_point(start->infa, x, y);
-        y += step_y;
-        if (p >= 0)
-        {
-            x += step_x;
-            p -= 2 * delta_y;
-        }
-        p += 2 * delta_x;
+		y += step_y;
+		if (p >= 0)
+		{
+			x += step_x;
+			p -= 2 * delta_y;
+		}
+		p += 2 * delta_x;
 	}
 }
 
@@ -86,10 +83,9 @@ void	bresenham(t_date *info, t_point *start, t_point *end)
 	{
 		slope(delta_x, delta_y, start, end);
 	}
-	else 
+	else
 	{
 		slap(delta_x, delta_y, start, end);
-	}	
+	}
 	draw_point(info, end->x_pixel, end->y_pixel);
 }
-
