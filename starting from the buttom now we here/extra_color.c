@@ -6,12 +6,23 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 13:35:01 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 16:08:04 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "./libft/libft.h"
+
+/* This function check if the windows width is possible */
+void	check_if_windows(t_date *info_map)
+{
+	if (info_map->width > MAX_WIDTH || info_map->height > MAX_HEIGHT)
+	{
+		ft_printf("This Mac hasnt a screen of that size\n");
+		exit (0);
+	}
+	return ;
+}
 
 int	check_commas(char *str, t_point *new_node)
 {
@@ -29,7 +40,7 @@ int	check_commas(char *str, t_point *new_node)
 }
 /* Define a custom function to convert a hexadecimal string to an integer */
 
-unsigned long	ft_strtol(const char *str)
+static unsigned long	ft_strtol(const char *str)
 {
 	const char		*hex;
 	unsigned long	result;

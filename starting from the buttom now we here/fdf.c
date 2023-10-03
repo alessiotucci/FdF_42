@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 15:12:17 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 16:06:50 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static int	check_windows_size(char *width, char *height)
 	{
 		if (!ft_isdigit(width[count]))
 		{
-			ft_printf("\033[1;31mwrong size\033[0m\n");
-			return (1);
+			ft_printf("\033[1;31mwrong size of windows\033[0m\n");
+			exit (0);
 		}
 		count++;
 	}
@@ -77,12 +77,12 @@ static int	check_windows_size(char *width, char *height)
 	{
 		if (!ft_isdigit(height[count]))
 		{
-			ft_printf("\033[1;31mwrong size \033[0m\n");
-			return (1);
+			ft_printf("\033[1;31mwrong size of windows\033[0m\n");
+			exit (0);
 		}
 		count++;
 	}
-	return (0);
+	return (1);
 }
 
 /*check the extension of the map*/
@@ -120,14 +120,15 @@ int	main(int ac, char *av[])
 	head = NULL;
 	info_map.width = DEFAULT_WIDTH;
 	info_map.height = DEFAULT_HEIGHT;
-	if (ac < 2)
-		return (ft_printf("%sNot enough, forget map?%s\n", RED, RESET));
+	if (ac < 2 || ac > 4 || ac == 3)
+		return (ft_printf("%sNot enough, or too much?%s\n", RED, RESET));
 	if (ac == 4)
 	{
 		if (check_windows_size(av[2], av[3]))
 		{
 			info_map.width = ft_atoi(av[2]);
 			info_map.height = ft_atoi(av[3]);
+			check_if_windows(&info_map);
 		}
 	}
 	flag = (check_the_extension(av[1]) + check_the_map(av[1], &head));

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 13:30:55 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 16:01:24 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@
 /* Define default size for the windows */
 # define DEFAULT_WIDTH 1280
 # define DEFAULT_HEIGHT 720
+# define MAX_WIDTH 5120
+# define MAX_HEIGHT 2880
 /* Useful Macros for the angles */
 # define PI 3.14159265358979323846
 
@@ -134,4 +136,6 @@ void	isometric(t_date *info, t_point **head);
 /* check for the commas*/
 int		check_commas(char *str, t_point *new_node);
 int		color_zed(char *input, t_point *new_node);
+/* check for the windows size */
+void	check_if_windows(t_date *info_map);
 #endif
