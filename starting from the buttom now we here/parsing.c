@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 15:23:45 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 18:57:14 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	create_list(t_point **head, int x, int y, char *z_string)
 
 void	free_list(t_point *list)
 {
-	t_point	*tempy;
+	t_point	*temp;
 
 	ft_printf("freeing the list\n");
 	while (list != NULL)
 	{
-		tempy = list;
+		temp = list;
 		list = list->next;
-		free(tempy);
+		free(temp);
 	}
 }
 /*This function check the size of the map,
