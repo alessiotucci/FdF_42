@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 20:09:55 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 09:44:07 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	free_list(t_point *list)
 {
 	t_point	*tempy;
 
+	ft_printf("freeing the list\n");
 	while (list != NULL)
 	{
 		tempy = list;

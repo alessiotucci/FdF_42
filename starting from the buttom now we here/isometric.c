@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 18:39:38 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 09:42:35 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,14 @@ void	old_bresenham(t_date *info, t_point *start, t_point *end)
 
 	delta_x = abs(end->x_pixel - start->x_pixel);
 	delta_y = abs(end->y_pixel - start->y_pixel);
-	step_x = (start->x_pixel < end->x_pixel) ? 1 : -1;
-	step_y = (start->y_pixel < end->y_pixel) ? 1 : -1;
+	if (start->x_pixel < end->x_pixel)
+		step_x = 1;
+	else
+		step_x = -1;
+	if (start->y_pixel < end->y_pixel)
+		step_y = 1;
+	else
+		step_y = -1;
 	x = start->x_pixel;
 	y = start->y_pixel;
 	if (delta_x >= delta_y)
