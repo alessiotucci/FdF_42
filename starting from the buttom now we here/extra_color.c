@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 16:08:04 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 16:11:32 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ void	check_if_windows(t_date *info_map)
 		ft_printf("This Mac hasnt a screen of that size\n");
 		exit (0);
 	}
+	if (info_map->width < 100 || info_map->height < 100)
+	{
+		ft_printf("That's a tiny windows, I'm not doing that\n");
+		exit (0);
+	}
+
 	return ;
 }
 
