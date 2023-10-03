@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 09:42:35 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 12:23:22 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,22 @@ void	draw_lines(t_date *info, t_point **head)
 	{
 		if (current->go_right != NULL)
 		{
-			old_bresenham(info, current, current->go_right);
+			bresenham(info, current, current->go_right);
 		}
 		if (current->go_down != NULL)
 		{
-			old_bresenham(info, current, current->go_down);
+			bresenham(info, current, current->go_down);
 		}
 		current = current->next;
 	}
+}
+static int calculate_step(int start, int end)
+{
+  if (start < end)
+    return 1;
+  else
+    return -1;
+  
 }
 
 void	old_bresenham(t_date *info, t_point *start, t_point *end)
@@ -69,14 +77,8 @@ void	old_bresenham(t_date *info, t_point *start, t_point *end)
 
 	delta_x = abs(end->x_pixel - start->x_pixel);
 	delta_y = abs(end->y_pixel - start->y_pixel);
-	if (start->x_pixel < end->x_pixel)
-		step_x = 1;
-	else
-		step_x = -1;
-	if (start->y_pixel < end->y_pixel)
-		step_y = 1;
-	else
-		step_y = -1;
+	step_x = calculate_step(start->x_pixel, end->x_pixel);
+	step_y = calculate_step(start->y_pixel, end->y_pixel);
 	x = start->x_pixel;
 	y = start->y_pixel;
 	if (delta_x >= delta_y)
