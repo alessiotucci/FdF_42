@@ -6,11 +6,26 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 14:25:21 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 15:12:17 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+/* static function to check the fd*/
+static	char	*check_the_fd(char *file_name)
+{
+	int	fd;
+
+	fd = open(file_name, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_printf("%sInvalid fd[%d]%s\n", RED, fd, RESET);
+		ft_printf("%sEXITING THE PROGRAM%s\n", BG_RED, RESET);
+		exit (0);
+	}
+	return (file_name);
+}
 
 /* static function to check the map */
 static int	check_the_map(char *file_name, t_point **head)
@@ -23,11 +38,12 @@ static int	check_the_map(char *file_name, t_point **head)
 
 	rows = 0;
 	colums = 0;
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
-		return (ft_printf("\033[1;31mCan't read the map 😴 \033[0m\n"));
-	while ((help_line = get_next_line(fd)) != NULL)
+	fd = open(check_the_fd(file_name), O_RDONLY);
+	while (1)
 	{
+		help_line = get_next_line(fd);
+		if (help_line == NULL)
+			break ;
 		matrix_map = ft_split(help_line, ' ');
 		while (matrix_map[rows] != NULL)
 		{
@@ -115,7 +131,7 @@ int	main(int ac, char *av[])
 		}
 	}
 	flag = (check_the_extension(av[1]) + check_the_map(av[1], &head));
-	if (flag == 0)
+	if (flag != 0)
 		exit (0);
 	info_map.map_name = av[1];
 	check_and_count(head, &info_map);
