@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:21:47 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 18:20:59 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 10:45:51 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	int_to_pixel(t_date *info, t_point **head)
 void	print_infos(t_date *date)
 {
 	ft_printf("------------------------------------\n");
-	ft_printf("|       info about the map         |\n");
+	ft_printf("| info about the map: %p|\n", date);
 	ft_printf("------------------------------------\n");
 	ft_printf("rows: %d\n", date->rows);
 	ft_printf("columns: %d\n", date->colums);

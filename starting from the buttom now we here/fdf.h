@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 20:10:23 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 10:42:58 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,7 @@
 /* Useful Macros for the angles */
 # define PI 3.14159265358979323846
 
-/* Define the struct to hold the value of the map */
-typedef struct s_point
-{
-	int				x_map;
-	int				y_map;
-	int				z_map;
-	int				x_pixel;
-	int				y_pixel;
-	int				z_pixel;
-	int				color;
-	struct s_point	*go_right;
-	struct s_point	*go_down;
-	struct s_point	*next;
-}		t_point;
+
 
 /* Define the struct used for graphis and other stuff
 typedef struct s_graphics {
@@ -114,6 +101,22 @@ typedef struct s_date
 	int		endian;
 	char	*img_string;
 }		t_date;
+
+/* Define the struct to hold the value of the map */
+typedef struct s_point
+{
+	t_date			*infa;
+	int				x_map;
+	int				y_map;
+	int				z_map;
+	int				x_pixel;
+	int				y_pixel;
+	int				z_pixel;
+	int				color;
+	struct s_point	*go_right;
+	struct s_point	*go_down;
+	struct s_point	*next;
+}		t_point;
 
 void	create_list(t_point **head, int x, int y, char *z_string);
 void	print_colored_list(t_point **head);

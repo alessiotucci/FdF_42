@@ -6,12 +6,24 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:30:57 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 09:44:07 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 10:41:54 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
+
+void info_to_list(t_date *info, t_point **head)
+{
+	t_point	*goofy;
+
+	goofy = *head;
+	while (goofy != NULL)
+	{
+		goofy->infa = info;
+		goofy = goofy->next;
+	}
+}
 
 void	create_list(t_point **head, int x, int y, char *z_string)
 {
@@ -75,6 +87,7 @@ void	check_and_count(t_point *head, t_date *info_map)
 		count++;
 	}
 	info_map->total_points = count;
+	info_to_list(info_map, &head);
 	point_connect(&head);
 	space_and_scale(info_map);
 	//int_to_pixel(info_map, &head);

@@ -6,11 +6,16 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:34:25 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 18:18:47 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 10:42:25 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+/*
+static void draw_line_helper(t_date *info, t_point *start, t_point *end)
+{
+  
+}
 
 static void	vertical_line(t_date *info, t_point *start, t_point *end)
 {
@@ -86,21 +91,31 @@ static void	high_slop_line(t_date *info, t_point *start, t_point *end)
 		p = p + 2 * delta_x;
 		y++;
 	}
-}
+} 
+
 
 void	bresenham(t_date *info, t_point *start, t_point *end)
 {
 	int	delta_x;
 	int	delta_y;
+	int	step_x;
+	int	step_y;
+	int	p;
 
-	delta_x = end->x_pixel - start->x_pixel;
-	delta_y = end->y_pixel - start->y_pixel;
-	if (delta_x == 0)
-		vertical_line(info, start, end);
-	else if (delta_y == 0)
-		horizontal_line(info, start, end);
-	else if (abs(delta_y) < abs(delta_x))
-		low_slop_line(info, start, end);
+	if (start->x_pixel < end->x_pixel)
+		step_x = 1;
 	else
-		high_slop_line(info, start, end);
+		step_x = -1;
+	if (start->y_pixel < end->y_pixel)
+		step_y = 1;
+	else
+		step_y = -1;
+	delta_x = abs(end->x_pixel - start->x_pixel);
+	delta_y = (end->y_pixel - start->y_pixel);
+	if (delta_x >= delta_y)
+
+	else 
+	
+	draw_point(info, end->x_pixel, end->y_pixel);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/02 20:11:29 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 10:43:28 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,8 @@ int	main(int ac, char *av[])
 		exit (0);
 	info_map.map_name = av[1];
 	check_and_count(head, &info_map);
-//	print_colored_list(&head);
-//	print_infos(&info_map);
+	print_colored_list(&head);
+	print_infos(&info_map);
 	new_windows(&info_map, &head);
 	free_list(head);
 	return (0);
