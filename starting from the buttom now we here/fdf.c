@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:36:11 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 19:00:29 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 19:42:26 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,12 @@ static int	check_the_map(char *file_name, t_point **head)
 		while (matrix_map[rows] != NULL)
 		{
 			create_list(head, rows, colums, matrix_map[rows]);
-			free(matrix_map[rows]);
 			rows++;
 		}
 		rows = 0;
-		colums++;
-		free(help_line);
-
+		colums = increment_and_free(colums, help_line, matrix_map);
 	}
-	free(help_line);
-	return (0);
+	return (this_free(help_line));
 }
 
 /* static function to check if the size of windows is digits or not? */

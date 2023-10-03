@@ -6,12 +6,21 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:33:06 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 16:11:32 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 19:41:59 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "./libft/libft.h"
+
+/* This function is used for incrementing a counter*/
+int	increment_and_free(int count, char *str, char **matrix)
+{
+	count++;
+	free(str);
+	free(matrix);
+	return (count);
+}
 
 /* This function check if the windows width is possible */
 void	check_if_windows(t_date *info_map)
@@ -26,7 +35,6 @@ void	check_if_windows(t_date *info_map)
 		ft_printf("That's a tiny windows, I'm not doing that\n");
 		exit (0);
 	}
-
 	return ;
 }
 

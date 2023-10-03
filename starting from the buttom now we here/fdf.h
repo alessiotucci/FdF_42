@@ -6,7 +6,7 @@
 /*   By: atucci <atucci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 14:08:20 by atucci            #+#    #+#             */
-/*   Updated: 2023/10/03 16:01:24 by atucci           ###   ########.fr       */
+/*   Updated: 2023/10/03 19:42:54 by atucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,4 +138,7 @@ int		check_commas(char *str, t_point *new_node);
 int		color_zed(char *input, t_point *new_node);
 /* check for the windows size */
 void	check_if_windows(t_date *info_map);
+/* increment  counter and freeing stuff */
+int		increment_and_free(int count, char *str, char **matrix);
+int		this_free(char *string);
 #endif
