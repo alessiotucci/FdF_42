@@ -5,102 +5,118 @@
 #                                                     +:+ +:+         +:+      #
 #    By: atucci <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/19 10:22:13 by atucci            #+#    #+#              #
-#    Updated: 2023/07/26 13:21:57 by atucci           ###   ########.fr        #
+#    Created: 2023/08/08 16:24:26 by atucci            #+#    #+#              #
+#    Updated: 2023/10/03 13:25:01 by atucci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re mlx_config make_subdirs norm download_mlx \
-		clean_mlx bonus rebonus
-.DEFAULT_GOAL := $(NAME)
-NAME := fdf
-LIB := libfdf.a
-LIB_BONUS := libfdf_bonus.a
-LIBS := mlx_linux/libmlx.a mlx_linux/libmlx_Linux.a libft/libft.a
-SRCS := $(filter-out %bonus%.c,$(wildcard fdf*.c))
-BONUS_SRCS := $(wildcard fdf*_bonus.c)
-HEADERS := fdf.h libft/libft.h $(wildcard mlx_linux/*.h)
-BONUS_HEADERS := fdf_bonus.h libft/libft.h $(wildcard mlx_linux/*.h)
-OBJS := $(patsubst %.c, %.o, $(SRCS))
-BONUS_OBJS := $(patsubst %.c, %.o, $(BONUS_SRCS))
-SUBDIRS := libft/ mlx_linux/
-LIB_DIRS := $(addprefix ./, $(SUBDIRS))
-LIB_FLAGS := $(addprefix -L, $(LIB_DIRS))
-CC := gcc
-CFLAGS := -Wall -Wextra -Werror -O3 -g
-LD_FLAGS := $(LIB_FLAGS) -lmlx -lft -lXext -lX11 -lm
+#--------------------------------------------------
+# This sets the variable NAME to the name of the executable file that we will build.
+NAME = fdf
 
-# Compilation for the main program
-$(NAME): $(LIB)
-	@echo "Compiling $(NAME)..."
-	$(CC) $(CFLAGS) $(addprefix -I, $(LIB_DIRS)) libfdf.a $(LD_FLAGS) -o $@
-	@echo "$(NAME) compiled successfully! 🚀"
+#--------------------------------------------------
+# This sets the variable SRC to a list of C source files that are needed to build the "fdf" executable.
+SRC = ./fdf.c \
+	  ./parsing.c \
+	  ./utils.c \
+	  ./connect.c \
+	  ./windows_manag.c \
+	  ./bresenham.c \
+	  ./isometric.c \
+	  ./extra_color.c \
+#--------------------------------------------------
+# This sets the variable OBJS to a list of object files that need to be built from the SRC files.
+OBJS = $(SRC:.c=.o)
 
+#--------------------------------------------------
+# This sets the variable HDRS to the path of the header file that is included in the project.
+HDRS = ./fdf.h
+
+#--------------------------------------------------
+# This sets the variable RM to the command that will be used to remove files.
+RM = rm -f
+
+#--------------------------------------------------
+# This sets the C compiler with specific warning flags.
+CC = gcc -Wall -Wextra -Werror
+
+#--------------------------------------------------
+# This variable specifies the path to the libft library, which will be used in the project.
+LIBFT = libft/libft.a
+
+#--------------------------------------------------
+# This variable specifies additional flags required for MiniLibX (mlx).
+MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit 
+
+
+#--------------------------------------------------
+# this is for mlx_dir
+MLX_DIR = ./mlx
+#--------------------------------------------------
+# Color codes for echo commands to make the output more visually informative.
+GREEN := \033[1;32m
+CYAN := \033[1;36m
+YELLOW := \033[1;33m
+RED := \033[1;31m
+RESET := \033[0m
+
+#--------------------------------------------------
+# Corny emojis for fun and engaging output messages.
+DANCING_EMOJI := 🕺
+MIC_DROP_EMOJI := 🎤🎶
+PARTY_EMOJI := 🎉
+TRASH_EMOJI := 🗑️
+
+#--------------------------------------------------
+# Rule for compiling C source files into object files.
+.c.o:
+	${CC} -I ${HDRS} -c $< -o ${<:.c=.o}
+
+#--------------------------------------------------
+# Rule for building the "fdf" executable.
+$(NAME): $(OBJS)
+	@echo "$(CYAN)$(DANCING_EMOJI)Building $(NAME)...$(DANCING_EMOJI)$(RESET)"
+	$(MAKE) -C libft
+	$(MAKE) -C mlx
+	${CC} -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAG)
+	@echo "$(GREEN)$(MIC_DROP_EMOJI)$(NAME) binary created successfully! $(MIC_DROP_EMOJI)$(RESET)"
+
+#--------------------------------------------------
+# Default target: building the "fdf" executable when running 'make all'.
 all: $(NAME)
 
-# Compilation for the bonus program
-bonus: $(LIB_BONUS)
-	@echo "Compiling bonus program..."
-	$(CC) $(CFLAGS) $(addprefix -I, $(LIB_DIRS)) libfdf_bonus.a $(LD_FLAGS) -o fdf
-	@echo "Bonus program compiled successfully! 🌟"
-
-# Building the static library
-$(LIB): mlx_config make_subdirs $(OBJS)
-	@echo "Building static library $(LIB)..."
-	ar rcs $@ $(OBJS) $(HEADERS) $(LIBS)
-	@echo "$(LIB) built successfully! 📚"
-
-$(LIB_BONUS): mlx_config make_subdirs $(BONUS_OBJS)
-	@echo "Building static library $(LIB_BONUS)..."
-	ar rcs $@ $(BONUS_OBJS) $(BONUS_HEADERS) $(LIBS)
-	@echo "$(LIB_BONUS) built successfully! 📚"
-
-$(OBJS): $(SRCS) $(HEADERS)
-	$(CC) $(CFLAGS) -c $^
-
-$(BONUS_OBJS): $(BONUS_SRCS) $(BONUS_HEADERS)
-	$(CC) $(CFLAGS) -c $^
-
-# Configuring the minilibx
-mlx_config:
-	@echo "Configuring minilibx..."
-	cd mlx_linux && ./configure
-	@echo "Minilibx configured successfully! ✨"
-
-# Building subdirectories
-make_subdirs:
-	@echo "Building subdirectories..."
-	for dir in $(filter-out mlx_linux/,$(SUBDIRS)); do $(MAKE) -C $$dir; done
-	@echo "Subdirectories built successfully! 🏗️"
-
+#--------------------------------------------------
+# Rule for cleaning up generated object files.
 clean:
-	@echo "Cleaning object files..."
-	rm -f $(OBJS) $(BONUS_OBJS) $(wildcard **/*.o) $(wildcard *.gch) $(wildcard **/*.gch)
-	@echo "Object files cleaned up! 🧹"
+	@echo "$(YELLOW)$(TRASH_EMOJI) Cleaning up object files...$(TRASH_EMOJI)$(RESET)"
+	${RM} $(OBJS)
+	$(MAKE) -C libft clean
+	$(MAKE) -C mlx clean
 
+#--------------------------------------------------
+# Rule for completely removing generated object files and the "fdf" executable.
 fclean: clean
-	@echo "Cleaning up generated files..."
-	rm -f $(LIBS) $(LIB) $(LIB_BONUS) fdf
-	@echo "All generated files cleaned up! 🗑️"
+	@echo "$(YELLOW)Cleaning up $(NAME) binary...$(RESET)"
+	${RM} $(NAME)
+	$(MAKE) -C libft fclean
 
+#--------------------------------------------------
+# Download and install the MLX library if it is not already installed.
+download_mlx:
+	if [ -e $(MLX_DIR) ]; \
+	then \
+	echo "MiniLibX's directory detected"; \
+	else \
+	git clone git@github.com:42Paris/minilibx-linux.git \
+	&& mv minilibx-linux mlx; fi
+
+#--------------------------------------------------
+
+#--------------------------------------------------
+# Rule for recompiling the project from scratch.
 re: fclean all
 
-rebonus: fclean bonus
-
-# Cloning and cleaning minilibx
-download_mlx:
-	@echo "Downloading minilibx..."
-	git clone git@github.com:42Paris/minilibx-linux.git
-	mv minilibx-linux mlx_linux
-	@echo "Minilibx downloaded successfully! 🚀"
-
-clean_mlx: fclean
-	@echo "Cleaning minilibx..."
-	rm -rfd mlx_linux
-	@echo "Minilibx cleaned up! 🧹"
-
-norm:
-	@echo "Running norminette..."
-	norminette $(filter-out mlx_linux/%, $(SRCS_FILES) $(wildcard **/*.c) $(HEADERS) $(BONUS_HEADERS))
-	@echo "Norminette check completed! 📏"
+#--------------------------------------------------
+# .PHONY targets to specify non-file targets.
+.PHONY: all clean fclean re
 
