@@ -62,15 +62,15 @@ When I come back I was working on it by myself and I was able to finished it. I 
 [link 1](https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html)
 [link 2](https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx)
 
-| Step | Description                               | MiniLibX Function                   |
-|------|-------------------------------------------|------------------------------------|
-| 1    | Initialize the mlx connection             | `mlx_init`                         |
-| 2    | Create a window                           | `mlx_new_window`                   |
-| 3    | Create an image                           | `mlx_new_image`                    |
-| 4    | Get the image data                        | `mlx_get_data_addr`                |
-| 5    | Draw on the image                         | Modify pixel data                  |
-| 6    | Put the image onto the window             | `mlx_put_image_to_window`          |
-| 7    | Start the event loop                      | `mlx_loop`                         |
+| Step | Description                               | MiniLibX Function                   | Inside my code |
+|------|-------------------------------------------|------------------------------------|-----------------|
+| 1    | Initialize the mlx connection             | `mlx_init`                         | [``windows_manage``](https://github.com/alessiotucci/FdF_42/blob/main/windows_manag.c#L61C1-L62C1)|
+| 2    | Create a window                           | `mlx_new_window`                   | [``new_windows``](https://github.com/alessiotucci/FdF_42/blob/main/windows_manag.c#L65)|
+| 3    | Create an image                           | `mlx_new_image`                    | [``new_image``](https://github.com/alessiotucci/FdF_42/blob/main/windows_manag.c#L18C1-L19C1)|
+| 4    | Get the image data                        | `mlx_get_data_addr`                | [``new_image``](https://github.com/alessiotucci/FdF_42/blob/main/windows_manag.c#L20C1-L21C1)|
+| 5    | Draw on the image                         | Modify pixel data                  |    ...|
+| 6    | Put the image onto the window             | `mlx_put_image_to_window`          |  [``new_windows``](https://github.com/alessiotucci/FdF_42/blob/main/windows_manag.c#L71C1-L72C1)|
+| 7    | Start the event loop                      | `mlx_loop`                         |  [``new_windows``](https://github.com/alessiotucci/FdF_42/blob/main/windows_manag.c#L74C8-L74C8)|
 
 
 
