@@ -1,9 +1,10 @@
-
-![image](https://github.com/alessiotucci/FdF_42/assets/116757689/2d0459ec-a4be-4263-b3e8-b01bdcb62955)
-
 # FdF_42
  FdF stands for "Fil de Fer" (Wireframe) and it is a graphical project that involves creating a 3D wireframe representation of a landscape based on height maps.
+
  
+ ![image](https://github.com/alessiotucci/FdF_42/assets/116757689/868846b3-3958-4f4f-98fc-bbd317938b3d)
+
+
 # Bresenham's Algorithm 
 Imagine you have a piece of graph paper and you want to draw a straight line between two points on the paper. Bresenham's Algorithm is like a clever strategy that helps you decide which squares on the paper to fill in to create the line.
 
