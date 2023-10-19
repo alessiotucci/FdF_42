@@ -28,6 +28,12 @@ By applying isometric projection, the project aims to display the map in a visua
 It ensures that the elevation levels are properly represented, and the lines connecting the points follow the correct angles and perspectives, creating the illusion of depth.
  
  # THE LONG JOURNEY (almost 4 month)
+ <img width="200" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/77dfd5c2-e649-4c81-9c63-96fbf2d8146a">
+<img width="200" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/86633a24-7856-45f8-a9dd-29d0a0a10b0d">
+<img width="200" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/b26975ec-8164-4c47-86b8-387f57985ea1">
+<img width="200" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/53b2535d-d81d-4108-80de-ef46d635470f">
+
+ 
  during the long journey to try to understand this project, I have changed OS (from MacOs to Ubuntu), worked by myself and in couple with a friend, and I wasted a lot of days, so in August I decided to freeze it because I was going on Holidays in asia.
 
 <img width="401" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/5b00c7a5-8442-4ee6-832b-d24e3816abec">
@@ -59,8 +65,10 @@ When I come back I was working on it by myself and I was able to finished it. I 
 
 
 # tutorial on how to work with Images:
-[link 1](https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html)
-[link 2](https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx)
+|Useful blog post|
+|----------------|
+|[how to create a image in mlx](https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html)|
+|[Pixel drawing with the minilibx](https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx)|
 
 | Step | Description                               | MiniLibX Function                   | Inside my code |
 |------|-------------------------------------------|------------------------------------|-----------------|
