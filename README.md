@@ -30,7 +30,7 @@ It ensures that the elevation levels are properly represented, and the lines con
  # THE LONG JOURNEY (almost 4 month)
  during the long journey to try to understand this project, I have changed OS (from MacOs to Ubuntu), worked by myself and in couple with a friend, and I wasted a lot of days, so in August I decided to freeze it.
 
-<img width="501" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/5b00c7a5-8442-4ee6-832b-d24e3816abec">
+<img width="401" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/5b00c7a5-8442-4ee6-832b-d24e3816abec">
 <br>
 
 
@@ -38,7 +38,7 @@ When I come back I was working on it by myself and I was able to finished it. I 
 
 <br>
 
-<img width="501" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/635bfaed-d792-46dc-9afe-e1bddc74a107">
+<img height="700" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/635bfaed-d792-46dc-9afe-e1bddc74a107">
 
 
  
