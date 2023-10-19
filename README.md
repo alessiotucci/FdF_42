@@ -17,9 +17,9 @@ The other choiche was the DDA but I didn't want to work with float points and I 
 
 # Isometric projection
 
-<img width="501" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/e34cb88f-126c-4939-b7ac-f1f665a63bf3">
+<img width="490" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/e34cb88f-126c-4939-b7ac-f1f665a63bf3">
 
-<img width="250" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/0ca0cf28-a8a3-4b87-bded-ecba38996ff5">
+<img width="355" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/0ca0cf28-a8a3-4b87-bded-ecba38996ff5">
 
 In the FdF project, the map represents a terrain or landscape with different elevation levels.
 
@@ -38,7 +38,7 @@ When I come back I was working on it by myself and I was able to finished it. I 
 
 <br>
 
-<img height="700" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/635bfaed-d792-46dc-9afe-e1bddc74a107">
+<img width="401" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/635bfaed-d792-46dc-9afe-e1bddc74a107">
 
 
  
