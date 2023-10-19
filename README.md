@@ -5,8 +5,7 @@
 
 
 # Bresenham's Algorithm 
-Imagine you have a piece of graph paper and you want to draw a straight line between two points on the paper. Bresenham's Algorithm is like a clever strategy that helps you decide which squares on the paper to fill in to create the line.
-
+I have watched the video to start understanding the functionality of the algorithm, then I have tried to implementing according to the school norm
 
 [![bersenham's ALGORITHM](https://ytcards.demolab.com/?id=RGB-wlatStc)](https://youtu.be/RGB-wlatStc)
 
@@ -14,14 +13,19 @@ Imagine you have a piece of graph paper and you want to draw a straight line bet
 
 By using Bresenham's Algorithm, the FdF project can efficiently draw lines between the points, avoiding the need to calculate and plot every single pixel along the line. The algorithm works by making decisions based on the slope of the line and the position of pixels to determine which pixels to light up, resulting in a straight line approximation.
 
+The other choiche was the DDA but I didn't want to work with float points and I have seen around that most of the people haven't used this algorithm.
+
 # Isometric projection
 
 <img width="501" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/e34cb88f-126c-4939-b7ac-f1f665a63bf3">
 
 <img width="250" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/0ca0cf28-a8a3-4b87-bded-ecba38996ff5">
 
-In the FdF project, the map represents a terrain or landscape with different elevation levels. By applying isometric projection, the project aims to display the map in a visually appealing and intuitive manner. Without isometric projection, the map would appear flat and lose the depth and dimensionality necessary for understanding its structure.
-understanding isometric projection allows the program to transform the map's coordinates and display them in a visually pleasing way. It ensures that the elevation levels are properly represented, and the lines connecting the points follow the correct angles and perspectives, creating the illusion of depth.
+In the FdF project, the map represents a terrain or landscape with different elevation levels.
+
+By applying isometric projection, the project aims to display the map in a visually appealing and intuitive manner. 
+
+It ensures that the elevation levels are properly represented, and the lines connecting the points follow the correct angles and perspectives, creating the illusion of depth.
  
  # THE LONG JOURNEY (almost 4 month)
  during the long journey to try to understand this project, I have changed OS (from MacOs to Ubuntu), worked by myself and in couple with a friend, and I wasted a lot of days, so in August I decided to freeze it.
