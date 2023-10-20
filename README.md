@@ -1,7 +1,7 @@
 # FdF_42
  FdF stands for "Fil de Fer" (Wireframe) and it is a graphical project that involves creating a 3D wireframe representation of a landscape based on height maps.
 
- 
+ [![my project overview](https://ytcards.demolab.com/?id=QVobB3pZoIY&ab_channel=AlessioTucci&title=Fdf+project+overview+42)](https://youtu.be/QVobB3pZoIY?feature=shared)
 
 
 # Bresenham's Algorithm 
