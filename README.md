@@ -7,9 +7,7 @@
 # Bresenham's Algorithm 
 I have watched the video to start understanding the functionality of the algorithm, then I have tried to implementing according to the school norm
 
-[![bersenham's ALGORITHM](https://ytcards.demolab.com/?id=RGB-wlatStc)](https://youtu.be/RGB-wlatStc)
-
-<img width="280" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/2bc03250-9633-4c96-a74e-1360efde61c8">
+[![bersenham's ALGORITHM](https://ytcards.demolab.com/?id=RGB-wlatStc)](https://youtu.be/RGB-wlatStc) <img width="360" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/2bc03250-9633-4c96-a74e-1360efde61c8">
 
 By using Bresenham's Algorithm, the FdF project can efficiently draw lines between the points, avoiding the need to calculate and plot every single pixel along the line. The algorithm works by making decisions based on the slope of the line and the position of pixels to determine which pixels to light up, resulting in a straight line approximation.
 
