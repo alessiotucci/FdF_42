@@ -7,11 +7,18 @@
 # Bresenham's Algorithm 
 I have watched the video to start understanding the functionality of the algorithm, then I have tried to implementing according to the school norm
 
-[![bersenham's ALGORITHM](https://ytcards.demolab.com/?id=RGB-wlatStc)](https://youtu.be/RGB-wlatStc) <img width="360" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/2bc03250-9633-4c96-a74e-1360efde61c8">
+<img width="360" alt="image" src="https://github.com/alessiotucci/FdF_42/assets/116757689/2bc03250-9633-4c96-a74e-1360efde61c8">
+
+|Useful yt videos| Description |
+|----------------|-------------|
+| [![bersenham's ALGORITHM](https://ytcards.demolab.com/?id=RGB-wlatStc)](https://youtu.be/RGB-wlatStc) | [`abdul bari`](https://www.youtube.com/@abdul_bari) is one of the greates when it comes to explain how algorithm works | 
+| [![Useful detailed video](https://ytcards.demolab.com/?id=y_SPO_b-WXk)](https://youtu.be/y_SPO_b-WXk?feature=shared) |This video is a little bit shorter and help me understand better the overrall logic.| 
 
 By using Bresenham's Algorithm, the FdF project can efficiently draw lines between the points, avoiding the need to calculate and plot every single pixel along the line. The algorithm works by making decisions based on the slope of the line and the position of pixels to determine which pixels to light up, resulting in a straight line approximation.
 
 The other choiche was the DDA but I didn't want to work with float points and I have seen around that most of the people haven't used this algorithm.
+
+
 
 # Isometric projection
 
